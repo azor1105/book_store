@@ -1,5 +1,4 @@
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../data/models/saved_book/saved_book_model.dart';
@@ -16,7 +15,6 @@ class SaveBookButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String userId = context.read<User?>()!.uid;
     return StreamBuilder<List<SavedBookModel>>(
       stream: context
           .read<SavedBookProvider>()
@@ -26,7 +24,7 @@ class SaveBookButton extends StatelessWidget {
           if (snapshot.data!.isEmpty) {
             return IconButton(
               onPressed: () async {
-                await context
+                context
                     .read<SavedBookProvider>()
                     .addBookToSavedBooks(userId: userId, bookId: bookItem.id);
               },
@@ -39,7 +37,7 @@ class SaveBookButton extends StatelessWidget {
           } else {
             return IconButton(
               onPressed: () async {
-                await context
+                context
                     .read<SavedBookProvider>()
                     .deleteSavedBook(docId: snapshot.data![0].id);
               },
