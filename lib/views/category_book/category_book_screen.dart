@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import '../../constants/route_names.dart';
+import '../../utils/constants/route_names.dart';
 import '../../utils/my_icons.dart';
 import '../author_book/widgets/book_info_item.dart';
 

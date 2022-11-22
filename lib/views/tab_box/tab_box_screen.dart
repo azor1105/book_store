@@ -1,13 +1,12 @@
 import 'package:book_store/utils/my_colors.dart';
 import 'package:book_store/utils/my_fonts.dart';
 import 'package:book_store/utils/my_icons.dart';
-import 'package:book_store/views/home/home_screen.dart';
-import 'package:book_store/views/profile/profile_screen.dart';
-import 'package:book_store/views/saved/saved_books_screen.dart';
+import 'package:book_store/views/tab_box/tabs/home/home_screen.dart';
+import 'package:book_store/views/tab_box/tabs/profile/profile_screen.dart';
+import 'package:book_store/views/tab_box/tabs/saved/saved_books_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 
 class TabBoxScreen extends StatefulWidget {
   const TabBoxScreen({super.key});
@@ -27,7 +26,10 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: _screens[currentIndex],
+        child: IndexedStack(
+          index: currentIndex,
+          children: _screens,
+        ),
       ),
       backgroundColor: MyColors.white,
       bottomNavigationBar: Container(

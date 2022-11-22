@@ -1,4 +1,4 @@
-import 'package:book_store/constants/route_names.dart';
+import 'package:book_store/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/data/services/services.dart';
 import 'package:book_store/providers/book_provider.dart';

@@ -1,4 +1,4 @@
-import 'package:book_store/constants/route_names.dart';
+import 'package:book_store/utils/constants/route_names.dart';
 import 'package:book_store/utils/my_colors.dart';
 import 'package:book_store/utils/my_fonts.dart';
 import 'package:book_store/utils/my_icons.dart';

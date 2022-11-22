@@ -1,4 +1,4 @@
-import 'package:book_store/constants/shared_pref_keys.dart';
+import 'package:book_store/utils/constants/shared_pref_keys.dart';
 import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/providers/auth_provider.dart';
 import 'package:book_store/utils/my_colors.dart';

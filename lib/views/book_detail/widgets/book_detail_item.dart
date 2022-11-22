@@ -1,5 +1,5 @@
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:book_store/views/home/widgets/rectangle_shimmer_item.dart';
+import 'package:book_store/views/tab_box/tabs/home/widgets/rectangle_shimmer_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

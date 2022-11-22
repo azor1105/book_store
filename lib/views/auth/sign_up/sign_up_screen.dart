@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import '../../../constants/shared_pref_keys.dart';
+import '../../../utils/constants/shared_pref_keys.dart';
 import '../../../data/local_data/local_data.dart';
 import '../../../utils/my_fonts.dart';
 import '../widgets/custom_rectangle_text_button.dart';

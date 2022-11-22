@@ -1,4 +1,4 @@
-import 'package:book_store/constants/route_names.dart';
+import 'package:book_store/utils/constants/route_names.dart';
 import 'package:book_store/data/models/author/author_model.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/providers/book_provider.dart';
@@ -6,7 +6,7 @@ import 'package:book_store/utils/my_colors.dart';
 import 'package:book_store/utils/my_fonts.dart';
 import 'package:book_store/utils/my_icons.dart';
 import 'package:book_store/views/author_book/widgets/book_info_item.dart';
-import 'package:book_store/views/home/widgets/rectangle_shimmer_item.dart';
+import 'package:book_store/views/tab_box/tabs/home/widgets/rectangle_shimmer_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
