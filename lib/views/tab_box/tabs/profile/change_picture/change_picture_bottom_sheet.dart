@@ -1,12 +1,13 @@
 import 'package:book_store/providers/auth_provider.dart';
+import 'package:book_store/utils/my_colors.dart';
+import 'package:book_store/utils/my_fonts.dart';
 import 'package:book_store/utils/utility_functions.dart';
+import 'package:book_store/views/tab_box/tabs/profile/widgets/pick_img.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../utils/my_colors.dart';
-import '../../../../../../utils/my_fonts.dart';
-import '../widgets/pick_img.dart';
+
 
 void changePictureBottomSheet(BuildContext context) {
   showModalBottomSheet(
@@ -66,16 +67,16 @@ void changePictureBottomSheet(BuildContext context) {
               ),
               TextButton(
                 onPressed: () async {
-                  var file = await getFromCamera(() {});
                   Navigator.of(context).pop();
+                  var file = await getFromCamera(() {});
                   if (file != null) {
-                    MyUtils.showLoader(context);
                     String imageUrl = await context
                         .read<AuthProvider>()
                         .uploadImage(file, context);
                     var user = context.read<User?>();
                     await user!.updatePhotoURL(imageUrl);
-                    Navigator.of(context).pop();
+                  } else {
+                    MyUtils.getMyToast(message: 'Image is not picked');
                   }
                 },
                 child: Text(
@@ -88,16 +89,16 @@ void changePictureBottomSheet(BuildContext context) {
               ),
               TextButton(
                 onPressed: () async {
-                  var file = await getFromGallery(() {});
                   Navigator.of(context).pop();
+                  var file = await getFromGallery(() {});
                   if (file != null) {
-                    MyUtils.showLoader(context);
                     String imageUrl = await context
                         .read<AuthProvider>()
                         .uploadImage(file, context);
                     var user = context.read<User?>();
                     await user!.updatePhotoURL(imageUrl);
-                    Navigator.of(context).pop();
+                  } else {
+                    MyUtils.getMyToast(message: 'Image is not picked');
                   }
                 },
                 child: Text(

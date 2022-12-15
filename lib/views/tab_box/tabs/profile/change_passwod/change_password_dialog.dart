@@ -180,24 +180,19 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                   child: TextButtonWithBackground(
                     onPressed: () async {
                       if (oldPasswordController.text != widget.oldPassword) {
-                        MyUtils.getMyToast(
-                          message: "Password is wrong",
-                          context: context,
-                        );
+                        MyUtils.getMyToast(message: "Password is wrong");
                       } else if (newPasswordController.text.length < 6) {
                         MyUtils.getMyToast(
                           message: 'Password must be\n minimum 6 symbols',
-                          context: context,
                         );
                       } else {
+                        Navigator.of(context).pop();
                         await context.read<AuthProvider>().updatePassword(
                               context: context,
                               password: newPasswordController.text.trim(),
                             );
-                        Navigator.of(context).pop();
                         await context.read<AuthProvider>().signOut(context);
-                        MyUtils.getMyToast(
-                            message: "You need to sign in", context: context);
+                        MyUtils.getMyToast(message: "You need to sign in");
                       }
                     },
                     title: "Edit",

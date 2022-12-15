@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class MyUtils {
-  static getMyToast({required String message, required BuildContext context}) =>
+  static getMyToast({required String message}) =>
       Fluttertoast.showToast(
         msg: message,
         toastLength: Toast.LENGTH_SHORT,

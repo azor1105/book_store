@@ -125,15 +125,14 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
                             .hasMatch(userNameController.text);
                         if (userNameController.text == widget.userName) {
                           MyUtils.getMyToast(
-                              message: 'This name is\nalready selected',
-                              context: context);
+                            message: 'This name is\nalready selected',
+                          );
                         } else if (userNameController.text.length < 3) {
                           MyUtils.getMyToast(
-                              message: 'Name must be minimum\n 4 characters',
-                              context: context);
+                            message: 'Name must be minimum\n 4 characters'
+                          );
                         } else if (!userNameIsValid) {
-                          MyUtils.getMyToast(
-                              message: 'Name is wrong', context: context);
+                          MyUtils.getMyToast(message: 'Name is wrong');
                         } else {
                           await context.read<AuthProvider>().updateDisplayName(
                                 context: context,

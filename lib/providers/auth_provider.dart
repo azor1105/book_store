@@ -100,7 +100,6 @@ class AuthProvider {
   ) async {
     try {
       //1- qadam rasm yuklandi
-      // MyUtils.showLoader(context);
       String storagePath = "users_img/${file.name}";
       var ref = FirebaseStorage.instance.ref().child(storagePath);
       var task = await ref.putFile(File(file.path));
@@ -109,7 +108,7 @@ class AuthProvider {
       //3-qadam rasm url qaytaradi
       return downloadUrl;
     } on FirebaseException catch (error) {
-      MyUtils.getMyToast(message: error.message.toString(), context: context);
+      MyUtils.getMyToast(message: error.message.toString());
       throw Exception();
     }
   }
