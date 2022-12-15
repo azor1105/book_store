@@ -1,5 +1,6 @@
 import 'dart:io';
-
+import 'package:book_store/data/local_data/local_data.dart';
+import 'package:book_store/utils/constants/shared_pref_keys.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -99,13 +100,24 @@ class AuthProvider {
     BuildContext context,
   ) async {
     try {
-      //1- qadam rasm yuklandi
+      //1- qadam eski rasmni ochirib tashlash
+      String? userImgStorage = StorageRepository.getString(
+          keyOfValue: SharedPrefKeys.userImgStorage);
+      if (userImgStorage != null) {
+        String storagePath = "users_img/$userImgStorage";
+        await FirebaseStorage.instance.ref().child(storagePath).delete();
+      }
+      //2- qadam rasm yuklandi
       String storagePath = "users_img/${file.name}";
       var ref = FirebaseStorage.instance.ref().child(storagePath);
       var task = await ref.putFile(File(file.path));
-      //2 -qadam rasm url get
+      //3 -qadam rasm url get
       String downloadUrl = await task.ref.getDownloadURL();
-      //3-qadam rasm url qaytaradi
+      //4-qadam rasm url qaytaradi
+      StorageRepository.putString(
+        key: SharedPrefKeys.userImgStorage,
+        value: file.name,
+      );
       return downloadUrl;
     } on FirebaseException catch (error) {
       MyUtils.getMyToast(message: error.message.toString());
