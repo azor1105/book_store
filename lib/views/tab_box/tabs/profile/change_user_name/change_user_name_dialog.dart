@@ -1,13 +1,12 @@
 import 'package:book_store/providers/auth_provider.dart';
 import 'package:book_store/utils/utility_functions.dart';
 import 'package:book_store/views/on_boarding/on_boarding_screens/widgets/text_button_with_background.dart';
+import 'package:book_store/views/tab_box/tabs/profile/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../../../utils/my_colors.dart';
 import '../../../../../utils/my_fonts.dart';
-
 import '../widgets/outlined_text_button.dart';
 
 class ChangeUserNameDialog extends StatefulWidget {
@@ -41,66 +40,38 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.r),
+      ),
       elevation: 0.0,
       backgroundColor: MyColors.cE5E5E5,
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.8,
         height: MediaQuery.of(context).size.height * 0.3,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 10.h,
-            ),
-            Center(
-              child: Text(
-                "Change profile name",
-                style: MyFonts.w700.copyWith(
-                  fontSize: 16.sp,
-                  color: MyColors.blackWithOpacity087,
+        child: Padding(
+          padding: EdgeInsets.all(15.sp),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 10.h),
+              Center(
+                child: Text(
+                  "Change profile name",
+                  style: MyFonts.w700.copyWith(
+                    fontSize: 16.sp,
+                    color: MyColors.blackWithOpacity087,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Container(
-              width: double.infinity,
-              height: 1,
-              color: MyColors.c979797,
-            ),
-            SizedBox(
-              height: 16..h,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: TextField(
-                maxLength: 25,
-                style: MyFonts.w400.copyWith(
-                  color: MyColors.blackWithOpacity087,
-                ),
+              SizedBox(height: 10.h),
+              Divider(height: 1.h, color: MyColors.c979797),
+              SizedBox(height: 16.h),
+              UniversalTextField(
                 controller: userNameController,
-                decoration: InputDecoration(
-                  counterStyle: MyFonts.w400.copyWith(fontSize: 12.sp),
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 0.8,
-                      color: MyColors.c979797,
-                    ),
-                  ),
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 0.8,
-                      color: MyColors.c979797,
-                    ),
-                  ),
-                ),
+                maxLength: 25,
               ),
-            ),
-            const Expanded(child: SizedBox()),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: Row(
+              const Expanded(child: SizedBox()),
+              Row(
                 children: [
                   Expanded(
                     child: MyOutlinedButton(
@@ -112,14 +83,13 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      height: 30,
+                      height: 40.h,
                     ),
                   ),
-                  SizedBox(
-                    width: 20.w,
-                  ),
+                  SizedBox(width: 20.w),
                   Expanded(
                     child: TextButtonWithBackground(
+                      height: 40.h,
                       onPressed: () async {
                         bool userNameIsValid = RegExp('[a-zA-Z]')
                             .hasMatch(userNameController.text);
@@ -129,8 +99,7 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
                           );
                         } else if (userNameController.text.length < 3) {
                           MyUtils.getMyToast(
-                            message: 'Name must be minimum\n 4 characters'
-                          );
+                              message: 'Name must be minimum\n 4 characters');
                         } else if (!userNameIsValid) {
                           MyUtils.getMyToast(message: 'Name is wrong');
                         } else {
@@ -146,11 +115,8 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
                   ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

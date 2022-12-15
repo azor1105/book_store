@@ -18,22 +18,22 @@ class CategoryItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 150,
+        height: 150.h,
         margin: EdgeInsets.symmetric(horizontal: 10.w),
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(10.sp),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
           color: MyColors.cE5E5E5,
         ),
         child: Row(
           children: [
             CachedNetworkImage(
                 imageUrl: categoryItem.categoryImg,
-                height: 115,
+                height: 115.h,
                 placeholder: (context, url) {
-                  return const RectangleShimmerItem(
-                    height: 115,
-                    width: 150,
+                  return  RectangleShimmerItem(
+                    height: 115.h,
+                    width: 150.w,
                   );
                 }),
             SizedBox(width: 10.w),

@@ -15,17 +15,15 @@ class SignOutDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
       elevation: 0.0,
       backgroundColor: MyColors.white,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.8,
-        height: MediaQuery.of(context).size.height * 0.25,
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 10.h),
+        height: MediaQuery.of(context).size.height * 0.23,
+        padding: EdgeInsets.all(15.sp),
         child: Column(
           children: [
-            SizedBox(
-              height: 10.h,
-            ),
             Text(
               "Log out",
               style: MyFonts.w700.copyWith(
@@ -33,17 +31,9 @@ class SignOutDialog extends StatelessWidget {
                 color: MyColors.blackWithOpacity087,
               ),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Container(
-              width: double.infinity,
-              height: 1,
-              color: MyColors.c979797,
-            ),
-            SizedBox(
-              height: 24.w,
-            ),
+            SizedBox(height: 10.h),
+            Divider(height: 1.h, color: MyColors.c979797),
+            SizedBox(height: 24.w),
             Text(
               "Are you sure?",
               style: MyFonts.w500.copyWith(
@@ -51,40 +41,34 @@ class SignOutDialog extends StatelessWidget {
                 color: MyColors.blackWithOpacity087,
               ),
             ),
-            SizedBox(
-              height: 20.h,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: MyOutlinedButton(
-                      width: double.infinity,
-                      title: Text(
-                        "Cancel",
-                        style: MyFonts.w400.copyWith(color: MyColors.c8687E7),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      height: 30,
+            const Spacer(),
+            Row(
+              children: [
+                Expanded(
+                  child: MyOutlinedButton(
+                    width: double.infinity,
+                    title: Text(
+                      "Cancel",
+                      style: MyFonts.w400.copyWith(color: MyColors.c8687E7),
                     ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    height: 40.h,
                   ),
-                  SizedBox(
-                    width: 20.w,
+                ),
+                SizedBox(width: 20.w),
+                Expanded(
+                  child: TextButtonWithBackground(
+                    height: 40.h,
+                    onPressed: () async {
+                      Navigator.of(context).pop();
+                      await context.read<AuthProvider>().signOut(context);
+                    },
+                    title: "Log out",
                   ),
-                  Expanded(
-                    child: TextButtonWithBackground(
-                      onPressed: () async {
-                        Navigator.of(context).pop();
-                        await context.read<AuthProvider>().signOut(context);
-                      },
-                      title: "Log out",
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             )
           ],
         ),

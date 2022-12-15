@@ -9,12 +9,13 @@ class TextButtonWithBackground extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.title,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 48,
+      height: height ?? 48.h,
       child: AnimatedSize(
         duration: const Duration(milliseconds: 500),
         child: TextButton(
@@ -39,4 +40,5 @@ class TextButtonWithBackground extends StatelessWidget {
 
   final VoidCallback onPressed;
   final String title;
+  final double? height;
 }

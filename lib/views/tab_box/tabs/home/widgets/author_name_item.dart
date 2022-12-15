@@ -17,11 +17,11 @@ class AuthorNameItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 5.w),
-        padding: const EdgeInsets.all(5),
+        padding: EdgeInsets.all(5.sp),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),
             color: MyColors.white,
-            border: Border.all(width: 1, color: Colors.grey)),
+            border: Border.all(width: 1.w, color: Colors.grey)),
         child: Text(
           authorName,
           style: MyFonts.w600.copyWith(

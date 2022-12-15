@@ -2,6 +2,7 @@ import 'package:book_store/utils/my_icons.dart';
 import 'package:book_store/views/tab_box/tabs/home/widgets/rectangle_shimmer_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileImgItem extends StatelessWidget {
   const ProfileImgItem({super.key, this.photoURL});
@@ -14,12 +15,12 @@ class ProfileImgItem extends StatelessWidget {
             height: 100,
           )
         : ClipRRect(
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(50.r),
             child: CachedNetworkImage(
                 fit: BoxFit.cover,
                 imageUrl: photoURL!,
-                height: 100,
-                width: 100,
+                height: 100.h,
+                width: 70.w,
                 placeholder: (context, url) {
                   return const RectangleShimmerItem();
                 }),

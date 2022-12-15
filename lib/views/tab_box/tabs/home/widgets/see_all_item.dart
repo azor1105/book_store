@@ -26,7 +26,7 @@ class SeeAllItem extends StatelessWidget {
           ),
           TextButton(
             style: TextButton.styleFrom(
-              primary: MyColors.c8687E7,
+              foregroundColor: MyColors.c8687E7,
             ),
             onPressed: seeAllOnPressed,
             child: Text(

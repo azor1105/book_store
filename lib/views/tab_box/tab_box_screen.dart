@@ -74,7 +74,7 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
                   currentIndex == 0
                       ? MyIcons.selectedHomeIcon
                       : MyIcons.unselectedHomeIcon,
-                  height: 24,
+                  height: 24.sp,
                   color: currentIndex == 0 ? MyColors.c8687E7 : Colors.grey,
                 ),
                 label: "Home",
@@ -84,7 +84,7 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
                   currentIndex == 1
                       ? MyIcons.selectedSaveIcon
                       : MyIcons.unselectedSaveIcon,
-                  height: 24,
+                  height: 24.sp,
                   color: currentIndex == 1 ? MyColors.c8687E7 : Colors.grey,
                 ),
                 label: "Saved",
@@ -94,7 +94,7 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
                   currentIndex == 2
                       ? MyIcons.selectedProfileIcon
                       : MyIcons.unselectedProfileIcon,
-                  height: 24,
+                  height: 24.sp,
                   color: currentIndex == 2 ? MyColors.c8687E7 : Colors.grey,
                 ),
                 label: "Profile",

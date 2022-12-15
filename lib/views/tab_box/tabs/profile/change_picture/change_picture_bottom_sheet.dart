@@ -8,16 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-
 void changePictureBottomSheet(BuildContext context) {
   showModalBottomSheet(
     context: context,
     barrierColor: Colors.transparent,
     isScrollControlled: true,
-    shape: const RoundedRectangleBorder(
+    shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
-        topRight: Radius.circular(12),
-        topLeft: Radius.circular(12),
+        topRight: Radius.circular(10.r),
+        topLeft: Radius.circular(10.r),
       ),
     ),
     backgroundColor: Colors.white,
@@ -33,12 +32,12 @@ void changePictureBottomSheet(BuildContext context) {
               offset: const Offset(1, 3),
             )
           ],
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(12),
-            topRight: Radius.circular(12),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(12.r),
+            topRight: Radius.circular(12.r),
           ),
         ),
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16.sp),
         height: MediaQuery.of(context).size.height * 0.27,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w),
@@ -54,17 +53,9 @@ void changePictureBottomSheet(BuildContext context) {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Container(
-                width: double.infinity,
-                height: 1,
-                color: MyColors.c979797,
-              ),
-              SizedBox(
-                height: 28.h,
-              ),
+              SizedBox(height: 10.h),
+              Divider(height: 1.h, color: MyColors.c979797),
+              SizedBox(height: 28.h),
               TextButton(
                 onPressed: () async {
                   Navigator.of(context).pop();

@@ -13,19 +13,19 @@ class MyOutlinedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: TextButton.styleFrom(
-        primary: MyColors.c8875FF,
-        side:  const BorderSide(width: 2, color: MyColors.c8E7CFF),
-        backgroundColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4.r),
+    return SizedBox(
+      height: height,
+      width: width,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          foregroundColor: MyColors.c8875FF,
+          side: const BorderSide(width: 2, color: MyColors.c8E7CFF),
+          backgroundColor: Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4.r),
+          ),
         ),
-      ),
-      onPressed: onPressed,
-      child: SizedBox(
-        width: width.w,
-        height: height.h,
+        onPressed: onPressed,
         child: Center(child: title),
       ),
     );

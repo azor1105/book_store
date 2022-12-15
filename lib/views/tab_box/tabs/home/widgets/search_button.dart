@@ -14,13 +14,13 @@ class SearchButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        primary: MyColors.c8687E7,
+        foregroundColor: MyColors.c8687E7,
       ),
       onPressed: searchOnPressed,
       child: Row(children: [
         Image.asset(
           MyIcons.searchIcon,
-          height: 24,
+          height: 24.h,
         ),
         SizedBox(width: 30.w),
         Text(

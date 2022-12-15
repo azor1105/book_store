@@ -1,6 +1,7 @@
 import 'package:book_store/providers/auth_provider.dart';
 import 'package:book_store/utils/utility_functions.dart';
 import 'package:book_store/views/on_boarding/on_boarding_screens/widgets/text_button_with_background.dart';
+import 'package:book_store/views/tab_box/tabs/profile/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -36,12 +37,15 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.r),
+      ),
       elevation: 0.0,
       backgroundColor: MyColors.white,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.8,
         height: MediaQuery.of(context).size.height * 0.48,
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 10.h),
+        padding: EdgeInsets.all(15.sp),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -54,108 +58,52 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Container(
-              width: double.infinity,
-              height: 1,
-              color: MyColors.c979797,
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: Text(
-                "Enter old password",
-                style: MyFonts.w400.copyWith(
-                  fontSize: 14.sp,
-                  color: MyColors.blackWithOpacity087,
-                ),
+            SizedBox(height: 10.h),
+            Divider(height: 1.h, color: MyColors.c979797),
+            SizedBox(height: 10.h),
+            Text(
+              "Enter old password",
+              style: MyFonts.w400.copyWith(
+                fontSize: 14.sp,
+                color: MyColors.blackWithOpacity087,
               ),
             ),
-            SizedBox(
-              height: 8.h,
+            SizedBox(height: 8.h),
+            UniversalTextField(
+              controller: oldPasswordController,
+              focusNode: oldPasswordFocusNode,
+              maxLength: 12,
+              obscureText: true,
+              textStyle: MyFonts.w400.copyWith(
+                color: MyColors.blackWithOpacity087,
+                letterSpacing: 8.0,
+              ),
+              onSubmitted: (v) {
+                MyUtils.fieldFocusChange(
+                    context, oldPasswordFocusNode, newPasswordFocusNode);
+              },
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: TextField(
-                maxLength: 12,
-                style: MyFonts.w400.copyWith(
-                  color: MyColors.blackWithOpacity087,
-                  letterSpacing: 8.0,
-                ),
-                obscureText: true,
-                controller: oldPasswordController,
-                focusNode: oldPasswordFocusNode,
-                onSubmitted: (v) {
-                  MyUtils.fieldFocusChange(
-                      context, oldPasswordFocusNode, newPasswordFocusNode);
-                },
-                decoration: InputDecoration(
-                  counterStyle: MyFonts.w400.copyWith(fontSize: 12.sp),
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 0.8,
-                      color: MyColors.c979797,
-                    ),
-                  ),
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 0.8,
-                      color: MyColors.c979797,
-                    ),
-                  ),
-                ),
+            SizedBox(height: 10.h),
+            Text(
+              "Enter new password",
+              style: MyFonts.w400.copyWith(
+                fontSize: 14.sp,
+                color: MyColors.blackWithOpacity087,
               ),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: Text(
-                "Enter new password",
-                style: MyFonts.w400.copyWith(
-                  fontSize: 14.sp,
-                  color: MyColors.blackWithOpacity087,
-                ),
+            SizedBox(height: 8.h),
+            UniversalTextField(
+              controller: newPasswordController,
+              focusNode: newPasswordFocusNode,
+              maxLength: 12,
+              obscureText: true,
+              textStyle: MyFonts.w400.copyWith(
+                color: MyColors.blackWithOpacity087,
+                letterSpacing: 8.0,
               ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: TextField(
-                maxLength: 12,
-                style: MyFonts.w400.copyWith(
-                  color: MyColors.blackWithOpacity087,
-                  letterSpacing: 8.0,
-                ),
-                obscureText: true,
-                controller: newPasswordController,
-                focusNode: newPasswordFocusNode,
-                onSubmitted: (v) {
-                  newPasswordFocusNode.unfocus();
-                },
-                decoration: InputDecoration(
-                  counterStyle: MyFonts.w400.copyWith(fontSize: 12.sp),
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 0.8,
-                      color: MyColors.c979797,
-                    ),
-                  ),
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 0.8,
-                      color: MyColors.c979797,
-                    ),
-                  ),
-                ),
-              ),
+              onSubmitted: (v) {
+                newPasswordFocusNode.unfocus();
+              },
             ),
             const Expanded(child: SizedBox()),
             Row(
@@ -170,14 +118,13 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    height: 30,
+                    height: 40.h,
                   ),
                 ),
-                SizedBox(
-                  width: 20.w,
-                ),
+                SizedBox(width: 20.w),
                 Expanded(
                   child: TextButtonWithBackground(
+                    height: 40.h,
                     onPressed: () async {
                       if (oldPasswordController.text != widget.oldPassword) {
                         MyUtils.getMyToast(message: "Password is wrong");

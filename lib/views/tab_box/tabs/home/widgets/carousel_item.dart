@@ -19,12 +19,12 @@ class CarouselItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 150,
-        margin: const EdgeInsets.only(top: 25),
+        width: 150.w,
+        margin: EdgeInsets.only(top: 25.h),
         child: Column(
           children: [
             Container(
-              height: 200,
+              height: 200.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
                 boxShadow: [
@@ -40,11 +40,11 @@ class CarouselItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.r),
                 child: CachedNetworkImage(
                     imageUrl: bookItem.image,
-                    height: 200,
+                    height: 200.h,
                     placeholder: (context, url) {
-                      return  RectangleShimmerItem(
-                        height: 200,
-                        width: 150,
+                      return RectangleShimmerItem(
+                        height: 200.h,
+                        width: 150.w,
                         radius: 10.r,
                       );
                     }),

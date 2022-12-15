@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                     options: CarouselOptions(
-                      height: 320,
+                      height: 320.h,
                       viewportFraction: 0.55,
                       aspectRatio: 8,
                       enlargeCenterPage: true,
@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (snapshot.hasData) {
                         final categories = snapshot.data!;
                         return SizedBox(
-                          height: 120,
+                          height: 120.h,
                           child: ListView(
                             padding: EdgeInsets.symmetric(horizontal: 5.w),
                             scrollDirection: Axis.horizontal,

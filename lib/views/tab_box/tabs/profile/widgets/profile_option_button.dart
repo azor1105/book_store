@@ -17,7 +17,7 @@ class ProfileItemButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        primary: MyColors.c8687E7,
+        foregroundColor: MyColors.c8687E7,
         backgroundColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4.r),
@@ -33,10 +33,9 @@ class ProfileItemButton extends StatelessWidget {
               SvgPicture.asset(
                 iconPath,
                 color: MyColors.blackWithOpacity087,
+                height: 18.h,
               ),
-              SizedBox(
-                width: 12.w,
-              ),
+              SizedBox(width: 12.w),
               Text(
                 title,
                 style: MyFonts.w400.copyWith(
@@ -48,6 +47,7 @@ class ProfileItemButton extends StatelessWidget {
               SvgPicture.asset(
                 MyIcons.intoIcon,
                 color: MyColors.blackWithOpacity087,
+                height: 15.h,
               ),
             ],
           ),
