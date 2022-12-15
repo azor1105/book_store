@@ -104,7 +104,7 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                               Navigator.pushNamed(
                                 context,
                                 RouteNames.bookDetail,
-                                arguments: bookItem.id,
+                                arguments: bookItem,
                               );
                             },
                           );

@@ -57,7 +57,7 @@ class SearchDelegateScreen extends SearchDelegate {
               Navigator.pushNamed(
                 context,
                 RouteNames.bookDetail,
-                arguments: resultBookItem!.id,
+                arguments: resultBookItem,
               );
             },
           )

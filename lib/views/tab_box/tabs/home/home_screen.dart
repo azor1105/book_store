@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.pushNamed(
                             context,
                             RouteNames.bookDetail,
-                            arguments: books[index].id,
+                            arguments: books[index],
                           );
                         },
                         bookItem: books[index],

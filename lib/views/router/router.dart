@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/utils/constants/route_names.dart';
 import 'package:book_store/data/models/author/author_model.dart';
 import 'package:book_store/data/models/category/category_model.dart';
@@ -39,7 +40,7 @@ class Routes {
       case RouteNames.bookDetail:
         return MaterialPageRoute(
           builder: (_) =>
-              BookDetailScreen(bookId: settings.arguments as String),
+              BookDetailScreen(bookModel: settings.arguments as BookModel),
         );
       case RouteNames.categoryBook:
         return MaterialPageRoute(

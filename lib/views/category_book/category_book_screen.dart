@@ -112,7 +112,7 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
                               Navigator.pushNamed(
                                 context,
                                 RouteNames.bookDetail,
-                                arguments: bookItem.id,
+                                arguments: bookItem,
                               );
                             },
                           );

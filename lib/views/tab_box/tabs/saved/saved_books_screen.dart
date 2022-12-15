@@ -58,7 +58,7 @@ class SavedBooksScreen extends StatelessWidget {
                             Navigator.pushNamed(
                               context,
                               RouteNames.bookDetail,
-                              arguments: savedBooks[index].bookId,
+                              arguments: savedBooks[index],
                             );
                           },
                         );
