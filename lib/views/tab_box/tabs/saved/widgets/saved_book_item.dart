@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../../providers/book_provider.dart';
 import '../../../../../utils/my_colors.dart';
 import '../../../../../utils/my_fonts.dart';
@@ -57,56 +56,57 @@ class SavedBookItem extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10.r),
                     child: CachedNetworkImage(
-                        imageUrl: bookItem.image,
-                        height: 120,
-                        placeholder: (context, url) {
-                          return const RectangleShimmerItem(
-                            height: 120,
-                            width: 90,
-                          );
-                        }),
+                      imageUrl: bookItem.image,
+                      height: 120.h,
+                      placeholder: (context, url) {
+                        return RectangleShimmerItem(
+                          height: 120.h,
+                          width: 90.w,
+                        );
+                      },
+                    ),
                   ),
                   SizedBox(width: 20.h),
                   Expanded(
-                    child: SizedBox(
-                      height: 120,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            bookItem.bookName,
-                            maxLines: 2,
-                            style: MyFonts.w400.copyWith(
-                              fontSize: 15.sp,
-                              color: MyColors.blackWithOpacity063,
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          bookItem.bookName,
+                          maxLines: 2,
+                          style: MyFonts.w400.copyWith(
+                            fontSize: 15.sp,
+                            color: MyColors.blackWithOpacity063,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          Text(
-                            bookItem.categoryName,
-                            style: MyFonts.w500.copyWith(
-                              fontSize: 15.sp,
-                              color: MyColors.c8687E7,
-                            ),
+                        ),
+                        SizedBox(height: 10.h),
+                        Text(
+                          bookItem.categoryName,
+                          style: MyFonts.w500.copyWith(
+                            fontSize: 15.sp,
+                            color: MyColors.c8687E7,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                bookItem.language,
-                                style: MyFonts.w300.copyWith(
-                                  fontSize: 15.sp,
-                                  color: MyColors.blackWithOpacity063,
-                                ),
+                        ),
+                        SizedBox(height: 10.h),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              bookItem.language,
+                              style: MyFonts.w300.copyWith(
+                                fontSize: 15.sp,
+                                color: MyColors.blackWithOpacity063,
                               ),
-                              GestureDetector(
-                                  onTap: onDeleteTap,
-                                  child: SvgPicture.asset(MyIcons.deleteIcon)),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                            GestureDetector(
+                              onTap: onDeleteTap,
+                              child: SvgPicture.asset(MyIcons.deleteIcon, height: 16.h,),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   )
                 ],
@@ -124,5 +124,4 @@ class SavedBookItem extends StatelessWidget {
 
   final String bookId;
   final VoidCallback onDeleteTap;
-
 }

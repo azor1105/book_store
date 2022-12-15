@@ -8,15 +8,18 @@ class NoBookItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Lottie.asset(MyIcons.noBookLottie, reverse: true),
-        Text(
-          "Sorry but no books",
-          style: MyFonts.w600,
-        ),
-      ],
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Lottie.asset(MyIcons.noBookLottie, reverse: true),
+          Text(
+            "Sorry but no books",
+            style: MyFonts.w600,
+          ),
+        ],
+      ),
     );
   }
 }
