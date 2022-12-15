@@ -1,5 +1,6 @@
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../data/models/saved_book/saved_book_model.dart';
 import '../../../providers/saved_book_provider.dart';
@@ -30,7 +31,7 @@ class SaveBookButton extends StatelessWidget {
               },
               icon: Image.asset(
                 MyIcons.unselectedSaveIcon,
-                height: 24,
+                height: 24.h,
                 color: Colors.grey,
               ),
             );
@@ -41,16 +42,19 @@ class SaveBookButton extends StatelessWidget {
                     .read<SavedBookProvider>()
                     .deleteSavedBook(docId: snapshot.data![0].id);
               },
-              icon: Image.asset(MyIcons.selectedSaveIcon,
-                  height: 24, color: MyColors.c8687E7),
+              icon: Image.asset(
+                MyIcons.selectedSaveIcon,
+                height: 24.h,
+                color: MyColors.c8687E7,
+              ),
             );
           }
         }
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: EdgeInsets.symmetric(horizontal: 12.w),
           child: Image.asset(
             MyIcons.unselectedSaveIcon,
-            height: 24,
+            height: 24.h,
             color: Colors.grey,
           ),
         );

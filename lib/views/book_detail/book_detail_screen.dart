@@ -54,6 +54,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
             icon: SvgPicture.asset(
               MyIcons.arrowBackIcon,
               color: MyColors.black,
+              height: 15.h,
             ),
           ),
         ),
@@ -78,7 +79,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: readMore ? 60 : null,
+                      height: readMore ? 60.h : null,
                       child: Text(
                         widget.bookModel.description,
                         style: MyFonts.w300.copyWith(
@@ -100,11 +101,9 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                       ),
                     ),
                     BookDetailInfoItem(bookItem: widget.bookModel),
+                    SizedBox(height: 20.h),
                     SizedBox(
-                      height: 20.h,
-                    ),
-                    SizedBox(
-                      height: 70,
+                      height: 70.h,
                       width: double.infinity,
                       child: TextButton(
                         style: TextButton.styleFrom(

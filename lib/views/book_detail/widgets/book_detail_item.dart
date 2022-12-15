@@ -18,7 +18,7 @@ class BookDetailItem extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 250,
+          height: 250.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.r),
             boxShadow: [
@@ -33,14 +33,14 @@ class BookDetailItem extends StatelessWidget {
           child: Hero(
             tag: bookItem.id,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(15.r),
+              borderRadius: BorderRadius.circular(10.r),
               child: CachedNetworkImage(
                   imageUrl: bookItem.image,
-                  height: 200,
+                  height: 200.h,
                   placeholder: (context, url) {
-                    return const RectangleShimmerItem(
-                      height: 200,
-                      width: 200,
+                    return  RectangleShimmerItem(
+                      height: 200.h,
+                      width: 200.w,
                     );
                   }),
             ),
