@@ -44,7 +44,7 @@ class CarouselItem extends StatelessWidget {
                     placeholder: (context, url) {
                       return RectangleShimmerItem(
                         height: 200.h,
-                        width: 150.w,
+                        width: 110.w,
                         radius: 10.r,
                       );
                     }),

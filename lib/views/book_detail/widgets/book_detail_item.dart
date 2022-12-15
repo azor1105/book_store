@@ -40,7 +40,7 @@ class BookDetailItem extends StatelessWidget {
                   placeholder: (context, url) {
                     return  RectangleShimmerItem(
                       height: 200.h,
-                      width: 200.w,
+                      width: 140.w,
                     );
                   }),
             ),

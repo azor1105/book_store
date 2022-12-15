@@ -28,14 +28,15 @@ class CategoryItem extends StatelessWidget {
         child: Row(
           children: [
             CachedNetworkImage(
-                imageUrl: categoryItem.categoryImg,
-                height: 115.h,
-                placeholder: (context, url) {
-                  return  RectangleShimmerItem(
-                    height: 115.h,
-                    width: 150.w,
-                  );
-                }),
+              imageUrl: categoryItem.categoryImg,
+              height: 115.h,
+              placeholder: (context, url) {
+                return RectangleShimmerItem(
+                  height: 115.h,
+                  width: 120.w,
+                );
+              },
+            ),
             SizedBox(width: 10.w),
             SizedBox(
               width: 80.w,

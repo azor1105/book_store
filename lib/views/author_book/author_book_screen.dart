@@ -75,7 +75,7 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                                 placeholder: (context, url) {
                                   return RectangleShimmerItem(
                                     height: 100.h,
-                                    width: 60.w,
+                                    width: 70.w,
                                   );
                                 },
                               ),
