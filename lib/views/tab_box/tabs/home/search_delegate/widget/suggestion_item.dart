@@ -20,7 +20,7 @@ class SuggestionItem extends StatelessWidget {
       child: Container(
         width: double.infinity,
         margin: EdgeInsets.symmetric(vertical: 10.h),
-        padding: const EdgeInsets.all(15),
+        padding:  EdgeInsets.all(15.sp),
         decoration: BoxDecoration(
           color: MyColors.white,
           borderRadius: BorderRadius.circular(15.r),
@@ -40,13 +40,13 @@ class SuggestionItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(6.r),
               child: CachedNetworkImage(
                 imageUrl: bookItem.image,
-                height: 90,
+                height: 90.h,
               ),
             ),
             SizedBox(width: 15.w),
             Expanded(
               child: SizedBox(
-                height: 90,
+                height: 90.h,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
