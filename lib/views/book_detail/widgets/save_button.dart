@@ -50,9 +50,9 @@ class SaveBookButton extends StatelessWidget {
             );
           }
         }
-        return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12.w),
-          child: Image.asset(
+        return IconButton(
+          onPressed: (){},
+          icon: Image.asset(
             MyIcons.unselectedSaveIcon,
             height: 24.h,
             color: Colors.grey,

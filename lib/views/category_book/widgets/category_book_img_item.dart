@@ -11,19 +11,19 @@ class CategoryBookImgItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      margin: EdgeInsets.symmetric(horizontal: 
-      20.w),
+      height: 200.h,
+      margin: EdgeInsets.symmetric(horizontal: 20.w),
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.r),
         color: MyColors.cE5E5E5,
       ),
       child: CachedNetworkImage(
-          imageUrl: imageUrl,
-          placeholder: (context, url) {
-            return const RectangleShimmerItem();
-          }),
+        imageUrl: imageUrl,
+        placeholder: (context, url) {
+          return const RectangleShimmerItem();
+        },
+      ),
     );
   }
 

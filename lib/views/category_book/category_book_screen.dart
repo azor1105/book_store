@@ -30,7 +30,7 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
   bool animateOpacity = false;
   late final AnimationController _animationController = AnimationController(
     vsync: this,
-    duration: const Duration(seconds: 1, milliseconds: 500),
+    duration: const Duration(milliseconds:700),
   )
     ..forward()
     ..addListener(() {
@@ -66,6 +66,7 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
                   icon: SvgPicture.asset(
                     MyIcons.arrowBackIcon,
                     color: MyColors.black,
+                    height: 15.h,
                   ),
                 ),
               ),
@@ -90,19 +91,18 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
                     visible: snapshot.data!.isNotEmpty,
                     child: AnimatedOpacity(
                       opacity: animateOpacity ? 1.0 : 0.0,
-                      duration: const Duration(seconds: 2),
+                      duration: const Duration(milliseconds: 500),
                       child: GridView.builder(
                         shrinkWrap: true,
                         physics: const ClampingScrollPhysics(),
                         itemCount: snapshot.data!.length,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 20.w, vertical: 20.h),
+                        padding: EdgeInsets.all(25.sp),
                         gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                             SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          mainAxisSpacing: 20,
-                          crossAxisSpacing: 25,
-                          childAspectRatio: 0.55,
+                          mainAxisSpacing: 20.h,
+                          crossAxisSpacing: 25.w,
+                          childAspectRatio: 0.45.h,
                         ),
                         itemBuilder: (context, index) {
                           BookModel bookItem = snapshot.data![index];

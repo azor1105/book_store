@@ -40,17 +40,18 @@ class BookInfoItem extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.r),
                 child: CachedNetworkImage(
-                    width: 200,
-                    fit: BoxFit.fill,
-                    imageUrl: bookItem.image,
-                    height: 200,
-                    placeholder: (context, url) {
-                      return const RectangleShimmerItem(
-                        height: 200,
-                        width: 200,
-                        radius: 10,
-                      );
-                    }),
+                  fit: BoxFit.fill,
+                  imageUrl: bookItem.image,
+                  height: 200.h,
+                  width: 200.w,
+                  placeholder: (context, url) {
+                    return RectangleShimmerItem(
+                      height: 200.h,
+                      width: 200.w,
+                      radius: 10.r,
+                    );
+                  },
+                ),
               ),
             ),
             SizedBox(height: 10.h),
@@ -65,9 +66,11 @@ class BookInfoItem extends StatelessWidget {
                     Text(
                       bookItem.bookName,
                       style: MyFonts.w600.copyWith(
-                          fontSize: 13.sp,
-                          color: MyColors.black,
-                          overflow: TextOverflow.ellipsis),
+                        fontSize: 13.sp,
+                        color: MyColors.black,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      maxLines: 4,
                     ),
                     Text(
                       bookItem.authorName,

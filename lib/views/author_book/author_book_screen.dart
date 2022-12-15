@@ -49,10 +49,11 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                       icon: SvgPicture.asset(
                         MyIcons.arrowBackIcon,
                         color: MyColors.black,
+                        height: 15.h,
                       ),
                     ),
                     elevation: 0.0,
-                    expandedHeight: 200,
+                    expandedHeight: 200.h,
                     title: Text(
                       widget.author.authorFullName,
                       style: MyFonts.w600.copyWith(
@@ -67,16 +68,17 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                         child: Column(
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
+                              borderRadius: BorderRadius.circular(50.r),
                               child: CachedNetworkImage(
-                                  imageUrl: widget.author.authorImg,
-                                  height: 100,
-                                  placeholder: (context, url) {
-                                    return const RectangleShimmerItem(
-                                      height: 100,
-                                      width: 100,
-                                    );
-                                  }),
+                                imageUrl: widget.author.authorImg,
+                                height: 100.h,
+                                placeholder: (context, url) {
+                                  return RectangleShimmerItem(
+                                    height: 100.h,
+                                    width: 60.w,
+                                  );
+                                },
+                              ),
                             ),
                             SizedBox(height: 10.h),
                             Text(
@@ -111,12 +113,11 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                         },
                         childCount: snapshot.data!.length,
                       ),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        mainAxisSpacing: 20,
-                        crossAxisSpacing: 25,
-                        childAspectRatio: 0.55,
+                        mainAxisSpacing: 20.h,
+                        crossAxisSpacing: 25.w,
+                        childAspectRatio: 0.45.h,
                       ),
                     ),
                   ),
