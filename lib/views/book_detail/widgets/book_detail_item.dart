@@ -30,17 +30,20 @@ class BookDetailItem extends StatelessWidget {
               ),
             ],
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15.r),
-            child: CachedNetworkImage(
-                imageUrl: bookItem.image,
-                height: 200,
-                placeholder: (context, url) {
-                  return const RectangleShimmerItem(
-                    height: 200,
-                    width: 200,
-                  );
-                }),
+          child: Hero(
+            tag: bookItem.id,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15.r),
+              child: CachedNetworkImage(
+                  imageUrl: bookItem.image,
+                  height: 200,
+                  placeholder: (context, url) {
+                    return const RectangleShimmerItem(
+                      height: 200,
+                      width: 200,
+                    );
+                  }),
+            ),
           ),
         ),
         SizedBox(height: 20.h),

@@ -35,19 +35,22 @@ class BookInfoItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10.r),
-              child: CachedNetworkImage(
-                  width: 200,
-                  fit: BoxFit.fill,
-                  imageUrl: bookItem.image,
-                  height: 200,
-                  placeholder: (context, url) {
-                    return const RectangleShimmerItem(
-                      height: 200,
-                      width: 200,
-                    );
-                  }),
+            Hero(
+              tag: bookItem.id,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.r),
+                child: CachedNetworkImage(
+                    width: 200,
+                    fit: BoxFit.fill,
+                    imageUrl: bookItem.image,
+                    height: 200,
+                    placeholder: (context, url) {
+                      return const RectangleShimmerItem(
+                        height: 200,
+                        width: 200,
+                      );
+                    }),
+              ),
             ),
             SizedBox(height: 10.h),
             Expanded(

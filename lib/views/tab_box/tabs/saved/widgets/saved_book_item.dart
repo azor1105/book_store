@@ -1,4 +1,5 @@
 import 'package:book_store/data/models/book/book_model.dart';
+import 'package:book_store/utils/constants/route_names.dart';
 import 'package:book_store/views/tab_box/tabs/home/widgets/rectangle_shimmer_item.dart';
 import 'package:book_store/views/tab_box/tabs/saved/widgets/shimmer_saved_book_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -17,7 +18,6 @@ class SavedBookItem extends StatelessWidget {
     super.key,
     required this.bookId,
     required this.onDeleteTap,
-    required this.savedBookItemOnTap,
   });
 
   @override
@@ -28,7 +28,13 @@ class SavedBookItem extends StatelessWidget {
         if (futureSnapshot.hasData) {
           BookModel bookItem = futureSnapshot.data!;
           return GestureDetector(
-            onTap: savedBookItemOnTap,
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                RouteNames.bookDetail,
+                arguments: bookItem,
+              );
+            },
             child: Container(
               margin: EdgeInsets.symmetric(vertical: 10.h),
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
@@ -118,5 +124,5 @@ class SavedBookItem extends StatelessWidget {
 
   final String bookId;
   final VoidCallback onDeleteTap;
-  final VoidCallback savedBookItemOnTap;
+
 }

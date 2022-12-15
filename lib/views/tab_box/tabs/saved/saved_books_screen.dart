@@ -8,7 +8,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../../../../utils/constants/route_names.dart';
 
 class SavedBooksScreen extends StatelessWidget {
   const SavedBooksScreen({super.key});
@@ -53,13 +52,6 @@ class SavedBooksScreen extends StatelessWidget {
                             await context
                                 .read<SavedBookProvider>()
                                 .deleteSavedBook(docId: savedBooks[index].id);
-                          },
-                          savedBookItemOnTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              RouteNames.bookDetail,
-                              arguments: savedBooks[index],
-                            );
                           },
                         );
                       },
