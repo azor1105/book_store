@@ -6,6 +6,7 @@ class RectangleShimmerItem extends StatelessWidget {
     super.key,
     this.width = 0,
     this.height = 0,
+    this.radius = 15,
   });
 
   @override
@@ -17,7 +18,7 @@ class RectangleShimmerItem extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(radius),
           color: Colors.white,
         ),
       ),
@@ -26,4 +27,5 @@ class RectangleShimmerItem extends StatelessWidget {
 
   final double? width;
   final double? height;
+  final double radius;
 }

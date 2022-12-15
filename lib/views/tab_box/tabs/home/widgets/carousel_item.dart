@@ -42,9 +42,10 @@ class CarouselItem extends StatelessWidget {
                     imageUrl: bookItem.image,
                     height: 200,
                     placeholder: (context, url) {
-                      return const RectangleShimmerItem(
+                      return  RectangleShimmerItem(
                         height: 200,
                         width: 150,
+                        radius: 10.r,
                       );
                     }),
               ),

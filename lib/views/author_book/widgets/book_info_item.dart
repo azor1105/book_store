@@ -48,6 +48,7 @@ class BookInfoItem extends StatelessWidget {
                       return const RectangleShimmerItem(
                         height: 200,
                         width: 200,
+                        radius: 10,
                       );
                     }),
               ),
@@ -68,7 +69,6 @@ class BookInfoItem extends StatelessWidget {
                           color: MyColors.black,
                           overflow: TextOverflow.ellipsis),
                     ),
-
                     Text(
                       bookItem.authorName,
                       style: MyFonts.w500.copyWith(
