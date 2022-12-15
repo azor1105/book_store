@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   SeeAllItem(
-                    title: "Categories",
+                    title: "Genres",
                     seeAllOnPressed: () {},
                   ),
                   StreamBuilder<List<CategoryModel>>(
