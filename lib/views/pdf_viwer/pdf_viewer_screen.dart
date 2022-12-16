@@ -47,7 +47,7 @@ class PdfViewerScreen extends StatelessWidget {
         ],
       ),
       body: SfPdfViewer.network(
-        'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
+        bookModel.bookPdfPath,
         key: _pdfViewerKey,
         scrollDirection: PdfScrollDirection.horizontal,
         pageLayoutMode: PdfPageLayoutMode.single,
