@@ -6,7 +6,7 @@ Future<XFile?> getFromGallery(VoidCallback update) async {
   XFile? imageFile;
   imageFile = await picker.pickImage(
     maxHeight: 500,
-    maxWidth: 500,
+    maxWidth: 700,
     source: ImageSource.gallery,
   );
   return imageFile;
@@ -17,7 +17,7 @@ Future<XFile?> getFromCamera(VoidCallback update) async {
   XFile? imageFile;
   imageFile = await picker.pickImage(
     maxHeight: 500,
-    maxWidth: 500,
+    maxWidth: 700,
     source: ImageSource.camera,
   );
   return imageFile;

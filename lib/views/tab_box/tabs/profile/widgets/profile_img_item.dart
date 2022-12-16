@@ -20,9 +20,13 @@ class ProfileImgItem extends StatelessWidget {
               fit: BoxFit.cover,
               imageUrl: photoURL!,
               height: 100.h,
-              // width: 80.w,
+              width: 90.w,
               placeholder: (context, url) {
-                return const RectangleShimmerItem();
+                return RectangleShimmerItem(
+                  height: 100.h,
+                  width: 90.w,
+                  radius: 50.r,
+                );
               },
             ),
           );
