@@ -15,7 +15,7 @@ class LogOutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        primary: MyColors.c8687E7,
+        foregroundColor: MyColors.c8687E7,
         backgroundColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4.r),

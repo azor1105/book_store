@@ -37,4 +37,3 @@ class MyIcons {
   static const String aboutUsIcon = "assets/svg/about_us_icon.svg";
   static const String logoutIcon = "assets/svg/logout_icon.svg";
 }
-// logout_icon

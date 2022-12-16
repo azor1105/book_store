@@ -1,5 +1,10 @@
 import 'package:book_store/utils/my_colors.dart';
+import 'package:book_store/utils/my_fonts.dart';
+import 'package:book_store/utils/my_icons.dart';
+import 'package:book_store/views/auth/widgets/custom_rectangle_text_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 
 class NoInternetScreen extends StatelessWidget {
   const NoInternetScreen({super.key});
@@ -8,6 +13,34 @@ class NoInternetScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.white,
+      body: Column(
+        children: [
+          const Spacer(),
+          Lottie.asset(
+            MyIcons.noInternetLottie,
+            reverse: true,
+          ),
+          SizedBox(height: 30.h),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 70.w),
+            child: Text(
+              'Please check the internet connection',
+              style: MyFonts.w600.copyWith(fontSize: 18.sp),
+              textAlign: TextAlign.center,
+              maxLines: 2,
+            ),
+          ),
+          const Spacer(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: CustomRectangleTextButton(
+              onPressed: () {},
+              title: 'Go to offline',
+            ),
+          ),
+          SizedBox(height: 20.h),
+        ],
+      ),
     );
   }
 }

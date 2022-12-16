@@ -28,7 +28,7 @@ class SignInWithItem extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
-          primary: MyColors.c8687E7,
+          foregroundColor: MyColors.c8687E7,
         ),
         child: Row(
           children: [

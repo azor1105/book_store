@@ -14,7 +14,7 @@ class SimpleTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        primary: MyColors.c8687E7,
+        foregroundColor: MyColors.c8687E7,
       ),
       onPressed: onPressed,
       child: Text(
