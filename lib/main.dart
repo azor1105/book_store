@@ -6,6 +6,7 @@ import 'package:book_store/providers/book_provider.dart';
 import 'package:book_store/providers/category_provider.dart';
 import 'package:book_store/providers/saved_book_provider.dart';
 import 'package:book_store/utils/my_colors.dart';
+import 'package:book_store/views/no_internet/no_internet_screen.dart';
 import 'package:book_store/views/router/router.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
@@ -15,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
 import 'utils/constants/shared_pref_keys.dart';
 import 'views/auth/auth_screen.dart';
 import 'views/on_boarding/main_on_boarding_screen.dart';
@@ -76,11 +76,11 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         designSize: const Size(375, 812),
         builder: (context, child) {
-          return MaterialApp(
+          return const MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: child,
-            onGenerateRoute: Routes.generateRoute,
-            initialRoute: RouteNames.splash,
+            home: NoInternetScreen(),
+            // onGenerateRoute: Routes.generateRoute,
+            // initialRoute: RouteNames.noInternet,
           );
         },
       ),
