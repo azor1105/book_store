@@ -54,11 +54,9 @@ class Routes {
           ),
         );
       case RouteNames.pdfView:
-        var data = settings.arguments as List<dynamic>;
         return MaterialPageRoute(
-          builder: (_) => PDFViewerPage(
-            file: data[0] as File,
-            bookName: data[1] as String,
+          builder: (_) => PdfViewerScreen(
+            bookModel: settings.arguments as BookModel,
           ),
         );
       default:

@@ -1,9 +1,7 @@
 import 'package:book_store/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:book_store/data/services/services.dart';
 import 'package:book_store/utils/my_colors.dart';
 import 'package:book_store/utils/my_fonts.dart';
-import 'package:book_store/utils/utility_functions.dart';
 import 'package:book_store/views/book_detail/widgets/book_detail_info_item.dart';
 import 'package:book_store/views/book_detail/widgets/book_detail_item.dart';
 import 'package:book_store/views/book_detail/widgets/save_button.dart';
@@ -113,17 +111,14 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                           backgroundColor: MyColors.c8687E7,
                         ),
                         onPressed: () async {
-                          MyUtils.showLoader(context);
-                          final pdf = await ApiServices.loadFirebase(
-                              widget.bookModel.bookPdfPath);
-                          Navigator.of(context).pop();
+                          // MyUtils.showLoader(context);
+                          // final pdf = await ApiServices.loadFirebase(
+                          //     widget.bookModel.bookPdfPath);
+                          // Navigator.of(context).pop();
                           Navigator.pushNamed(
                             context,
                             RouteNames.pdfView,
-                            arguments: [
-                              pdf,
-                              widget.bookModel.bookName,
-                            ],
+                            arguments: widget.bookModel,
                           );
                         },
                         child: Center(
