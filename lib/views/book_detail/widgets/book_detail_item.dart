@@ -23,8 +23,8 @@ class BookDetailItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(15.r),
             boxShadow: [
               BoxShadow(
-                spreadRadius: 7,
-                blurRadius: 7,
+                spreadRadius: 3,
+                blurRadius: 4,
                 color: Colors.grey.shade300,
                 offset: const Offset(1, 3),
               ),
@@ -40,7 +40,7 @@ class BookDetailItem extends StatelessWidget {
                   placeholder: (context, url) {
                     return  RectangleShimmerItem(
                       height: 200.h,
-                      width: 140.w,
+                      width: 150.w,
                     );
                   }),
             ),

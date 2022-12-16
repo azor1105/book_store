@@ -17,13 +17,14 @@ class ProfileImgItem extends StatelessWidget {
         : ClipRRect(
             borderRadius: BorderRadius.circular(50.r),
             child: CachedNetworkImage(
-                fit: BoxFit.cover,
-                imageUrl: photoURL!,
-                height: 100.h,
-                width: 70.w,
-                placeholder: (context, url) {
-                  return const RectangleShimmerItem();
-                }),
+              fit: BoxFit.cover,
+              imageUrl: photoURL!,
+              height: 100.h,
+              // width: 80.w,
+              placeholder: (context, url) {
+                return const RectangleShimmerItem();
+              },
+            ),
           );
   }
 

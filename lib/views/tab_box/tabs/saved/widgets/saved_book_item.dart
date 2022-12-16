@@ -102,7 +102,7 @@ class SavedBookItem extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: onDeleteTap,
-                              child: SvgPicture.asset(MyIcons.deleteIcon, height: 16.h,),
+                              child: SvgPicture.asset(MyIcons.deleteIcon, height: 18.h,),
                             ),
                           ],
                         ),

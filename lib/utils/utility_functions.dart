@@ -1,18 +1,18 @@
 import 'package:book_store/utils/my_colors.dart';
 import 'package:book_store/utils/my_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class MyUtils {
-  static getMyToast({required String message}) =>
-      Fluttertoast.showToast(
+  static getMyToast({required String message}) => Fluttertoast.showToast(
         msg: message,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM_RIGHT,
         timeInSecForIosWeb: 1,
         backgroundColor: MyColors.c8687E7,
         textColor: Colors.white,
-        fontSize: 16.0,
+        fontSize: 16.sp,
       );
 
   static void fieldFocusChange(
@@ -31,7 +31,7 @@ class MyUtils {
         content: Text(
           text ?? "",
           style: MyFonts.w500.copyWith(
-            fontSize: 16,
+            fontSize: 16.sp,
             color: MyColors.white,
           ),
         ),

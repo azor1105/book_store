@@ -26,7 +26,7 @@ class MyOutlinedButton extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        child: Center(child: title),
+        child: title,
       ),
     );
   }

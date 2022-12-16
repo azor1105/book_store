@@ -44,7 +44,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
       backgroundColor: MyColors.white,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.8,
-        height: MediaQuery.of(context).size.height * 0.48,
+        height: MediaQuery.of(context).size.height * 0.5,
         padding: EdgeInsets.all(15.sp),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
