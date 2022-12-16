@@ -70,7 +70,6 @@ class BookInfoItem extends StatelessWidget {
                         color: MyColors.black,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 4,
                     ),
                     Text(
                       bookItem.authorName,

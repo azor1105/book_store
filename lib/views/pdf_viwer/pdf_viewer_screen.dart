@@ -49,7 +49,6 @@ class PdfViewerScreen extends StatelessWidget {
       body: SfPdfViewer.network(
         bookModel.bookPdfPath,
         key: _pdfViewerKey,
-        scrollDirection: PdfScrollDirection.horizontal,
         pageLayoutMode: PdfPageLayoutMode.single,
       ),
     );

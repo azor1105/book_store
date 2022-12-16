@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/utils/constants/route_names.dart';
 import 'package:book_store/data/models/author/author_model.dart';
@@ -8,6 +7,7 @@ import 'package:book_store/views/auth/auth_screen.dart';
 import 'package:book_store/views/author_book/author_book_screen.dart';
 import 'package:book_store/views/book_detail/book_detail_screen.dart';
 import 'package:book_store/views/category_book/category_book_screen.dart';
+import 'package:book_store/views/no_internet/no_internet_screen.dart';
 import 'package:book_store/views/on_boarding/main_on_boarding_screen.dart';
 import 'package:book_store/views/pdf_viwer/pdf_viewer_screen.dart';
 import 'package:book_store/views/splash/splash_screen.dart';
@@ -17,6 +17,10 @@ import 'package:flutter/material.dart';
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case RouteNames.noInternet:
+        return MaterialPageRoute(
+          builder: (_) => const NoInternetScreen(),
+        );
       case RouteNames.splash:
         return MaterialPageRoute(
           builder: (_) => const SplashScreen(),
