@@ -11,35 +11,38 @@ class NoInternetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyColors.white,
-      body: Column(
-        children: [
-          const Spacer(),
-          Lottie.asset(
-            MyIcons.noInternetLottie,
-            reverse: true,
-          ),
-          SizedBox(height: 30.h),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 70.w),
-            child: Text(
-              'Please check the internet connection',
-              style: MyFonts.w600.copyWith(fontSize: 18.sp),
-              textAlign: TextAlign.center,
-              maxLines: 2,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: MyColors.white,
+        body: Column(
+          children: [
+            const Spacer(),
+            Lottie.asset(
+              MyIcons.noInternetLottie,
+              reverse: true,
             ),
-          ),
-          const Spacer(),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: CustomRectangleTextButton(
-              onPressed: () {},
-              title: 'Go to offline',
+            SizedBox(height: 30.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 70.w),
+              child: Text(
+                'Please check the internet connection',
+                style: MyFonts.w600.copyWith(fontSize: 18.sp),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+              ),
             ),
-          ),
-          SizedBox(height: 20.h),
-        ],
+            const Spacer(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: CustomRectangleTextButton(
+                onPressed: () {},
+                title: 'Go to offline',
+              ),
+            ),
+            SizedBox(height: 20.h),
+          ],
+        ),
       ),
     );
   }

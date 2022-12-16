@@ -1,3 +1,4 @@
+import 'package:book_store/cubits/connectivity/connectivity_cubit.dart';
 import 'package:book_store/utils/constants/route_names.dart';
 import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/providers/auth_provider.dart';
@@ -6,14 +7,17 @@ import 'package:book_store/providers/book_provider.dart';
 import 'package:book_store/providers/category_provider.dart';
 import 'package:book_store/providers/saved_book_provider.dart';
 import 'package:book_store/utils/my_colors.dart';
+import 'package:book_store/utils/utility_functions.dart';
 import 'package:book_store/views/no_internet/no_internet_screen.dart';
 import 'package:book_store/views/router/router.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'utils/constants/shared_pref_keys.dart';
@@ -78,9 +82,8 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {
           return const MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: NoInternetScreen(),
-            // onGenerateRoute: Routes.generateRoute,
-            // initialRoute: RouteNames.noInternet,
+            onGenerateRoute: Routes.generateRoute,
+            initialRoute: RouteNames.splash,
           );
         },
       ),
@@ -94,13 +97,33 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User?>();
-
-    if (StorageRepository.getBool(keyOfValue: SharedPrefKeys.showOnBoarding) ==
-        null) {
-      return const MainOnBoardingScreen();
-    } else if (firebaseUser?.uid != null) {
-      return const TabBoxScreen();
-    }
-    return const AuthScreen();
+    return BlocProvider(
+      create: (context) => ConnectivityCubit(),
+      child: BlocConsumer<ConnectivityCubit, ConnectivityState>(
+        listenWhen: (previous, current) =>
+            previous.connectivityResult != current.connectivityResult ||
+            firebaseUser?.uid == null,
+        buildWhen: (previous, current) =>
+            previous.connectivityResult != current.connectivityResult ||
+            firebaseUser?.uid == null,
+        builder: (context, state) {
+          if (state.connectivityResult == ConnectivityResult.none) {
+            return const NoInternetScreen();
+          } else if (StorageRepository.getBool(
+                  keyOfValue: SharedPrefKeys.showOnBoarding) ==
+              null) {
+            return const MainOnBoardingScreen();
+          } else if (firebaseUser?.uid != null) {
+            return const TabBoxScreen();
+          }
+          return const AuthScreen();
+        },
+        listener: (context, state) {
+          if (state.connectivityResult == ConnectivityResult.none) {
+            Navigator.pushNamed(context, RouteNames.noInternet);
+          }
+        },
+      ),
+    );
   }
 }
