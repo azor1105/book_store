@@ -29,9 +29,9 @@ class CarouselItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.r),
                 boxShadow: [
                   BoxShadow(
-                    spreadRadius: 4,
-                    blurRadius: 4,
-                    color: MyColors.blackWithOpacity044,
+                    spreadRadius: 3,
+                    blurRadius: 3,
+                    color: Colors.grey.shade300,
                     offset: const Offset(1, 3),
                   ),
                 ],

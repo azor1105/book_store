@@ -37,7 +37,7 @@ class NoInternetScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: CustomRectangleTextButton(
                 onPressed: () {},
-                title: 'Go to offline',
+                title: 'Read saved books',
               ),
             ),
             SizedBox(height: 20.h),

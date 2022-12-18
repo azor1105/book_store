@@ -7,7 +7,6 @@ import 'package:book_store/providers/book_provider.dart';
 import 'package:book_store/providers/category_provider.dart';
 import 'package:book_store/providers/saved_book_provider.dart';
 import 'package:book_store/utils/my_colors.dart';
-import 'package:book_store/utils/utility_functions.dart';
 import 'package:book_store/views/no_internet/no_internet_screen.dart';
 import 'package:book_store/views/router/router.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -99,10 +98,7 @@ class MainScreen extends StatelessWidget {
     final firebaseUser = context.watch<User?>();
     return BlocProvider(
       create: (context) => ConnectivityCubit(),
-      child: BlocConsumer<ConnectivityCubit, ConnectivityState>(
-        listenWhen: (previous, current) =>
-            previous.connectivityResult != current.connectivityResult ||
-            firebaseUser?.uid == null,
+      child: BlocBuilder<ConnectivityCubit, ConnectivityState>(
         buildWhen: (previous, current) =>
             previous.connectivityResult != current.connectivityResult ||
             firebaseUser?.uid == null,
@@ -117,11 +113,6 @@ class MainScreen extends StatelessWidget {
             return const TabBoxScreen();
           }
           return const AuthScreen();
-        },
-        listener: (context, state) {
-          if (state.connectivityResult == ConnectivityResult.none) {
-            Navigator.pushNamed(context, RouteNames.noInternet);
-          }
         },
       ),
     );
