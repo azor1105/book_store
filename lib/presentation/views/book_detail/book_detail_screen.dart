@@ -6,12 +6,11 @@ import 'package:book_store/presentation/views/book_detail/widgets/book_detail_in
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/save_button.dart';
 import 'package:book_store/presentation/widgets/buttons/simple_text_button.dart';
+import 'package:book_store/presentation/widgets/simple_app_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import '../../utils/my_icons.dart';
 
 class BookDetailScreen extends StatefulWidget {
   const BookDetailScreen({
@@ -30,9 +29,8 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: MyColors.white,
+      appBar: SimpleAppBar(
+        title: '',
         actions: [
           Center(
             child: Padding(
@@ -44,18 +42,6 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
             ),
           ),
         ],
-        leading: Center(
-          child: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: SvgPicture.asset(
-              MyIcons.arrowBackIcon,
-              color: MyColors.black,
-              height: 15.h,
-            ),
-          ),
-        ),
       ),
       backgroundColor: MyColors.white,
       body: SingleChildScrollView(

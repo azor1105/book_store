@@ -1,10 +1,6 @@
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:book_store/presentation/utils/my_colors.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
-import 'package:book_store/presentation/utils/my_icons.dart';
+import 'package:book_store/presentation/widgets/simple_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PdfViewerScreen extends StatelessWidget {
@@ -15,24 +11,8 @@ class PdfViewerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          bookModel.bookName,
-          style: MyFonts.w400.copyWith(fontSize: 15.sp),
-        ),
-        backgroundColor: MyColors.white,
-        leading: Center(
-          child: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: SvgPicture.asset(
-              MyIcons.arrowBackIcon,
-              color: MyColors.black,
-              height: 15.h,
-            ),
-          ),
-        ),
+      appBar: SimpleAppBar(
+        title: bookModel.bookName,
         actions: <Widget>[
           IconButton(
             icon: const Icon(

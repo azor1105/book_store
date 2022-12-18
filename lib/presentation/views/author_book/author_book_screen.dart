@@ -56,9 +56,7 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                     expandedHeight: 200.h,
                     title: Text(
                       widget.author.authorFullName,
-                      style: MyFonts.w600.copyWith(
-                        fontSize: 20.sp,
-                      ),
+                      style: MyFonts.w600,
                     ),
                     pinned: true,
                     centerTitle: true,

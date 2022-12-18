@@ -1,16 +1,14 @@
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/data/models/category/category_model.dart';
+import 'package:book_store/presentation/widgets/simple_app_bar.dart';
 import 'package:book_store/providers/book_provider.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/views/category_book/widgets/category_book_img_item.dart';
 import 'package:book_store/presentation/widgets/no_books_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import '../../utils/constants/route_names.dart';
-import '../../utils/my_icons.dart';
 import '../../widgets/book_info_item.dart';
 
 class CategoryBookScreen extends StatefulWidget {
@@ -30,7 +28,7 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
   bool animateOpacity = false;
   late final AnimationController _animationController = AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds:700),
+    duration: const Duration(milliseconds: 700),
   )
     ..forward()
     ..addListener(() {
@@ -50,26 +48,8 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
         if (snapshot.hasData) {
           return Scaffold(
             backgroundColor: MyColors.white,
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text(
-                widget.categoryModel.categoryName,
-                style: MyFonts.w600,
-              ),
-              elevation: 0.0,
-              backgroundColor: MyColors.white,
-              leading: Center(
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: SvgPicture.asset(
-                    MyIcons.arrowBackIcon,
-                    color: MyColors.black,
-                    height: 15.h,
-                  ),
-                ),
-              ),
+            appBar: SimpleAppBar(
+              title: widget.categoryModel.categoryName,
             ),
             body: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
@@ -97,8 +77,7 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
                         physics: const ClampingScrollPhysics(),
                         itemCount: snapshot.data!.length,
                         padding: EdgeInsets.all(25.sp),
-                        gridDelegate:
-                             SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           mainAxisSpacing: 20.h,
                           crossAxisSpacing: 25.w,
