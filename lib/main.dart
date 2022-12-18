@@ -1,5 +1,6 @@
 import 'package:book_store/cubits/connectivity/connectivity_cubit.dart';
 import 'package:book_store/cubits/download/download_cubit.dart';
+import 'package:book_store/data/service/models/downloaded_book/downloaded_book_model.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/providers/auth_provider.dart';
@@ -21,17 +22,21 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'presentation/utils/constants/hive_constants.dart';
 import 'presentation/utils/constants/shared_pref_keys.dart';
 import 'presentation/views/auth/auth_screen.dart';
 import 'presentation/views/on_boarding/main_on_boarding_screen.dart';
 import 'presentation/views/tab_box/tab_box_screen.dart';
+import 'package:hive_flutter/adapters.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(DownloadedBookModelAdapter());
+  await Hive.openBox<DownloadedBookModel>(HiveConstants.downloadedBookBox);
   await StorageRepository.getInstance();
   await Firebase.initializeApp();
-  FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.instance;
-  firebaseAppCheck.activate();
+  await FirebaseAppCheck.instance.activate();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
