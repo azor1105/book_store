@@ -3,8 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../../utils/my_colors.dart';
-import '../../../../../../../utils/my_fonts.dart';
+import '../../../../../../utils/my_colors.dart';
+import '../../../../../../utils/my_fonts.dart';
 
 class SuggestionItem extends StatelessWidget {
   const SuggestionItem({

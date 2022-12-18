@@ -1,8 +1,8 @@
-import 'package:book_store/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../utils/my_fonts.dart';
+import '../../../../../utils/my_fonts.dart';
 
 class SeeAllItem extends StatelessWidget {
   const SeeAllItem({

@@ -1,7 +1,7 @@
-import 'package:book_store/utils/constants/route_names.dart';
+import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:book_store/utils/my_colors.dart';
-import 'package:book_store/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_info_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/save_button.dart';
@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import '../../../utils/my_icons.dart';
+import '../../utils/my_icons.dart';
 
 class BookDetailScreen extends StatefulWidget {
   const BookDetailScreen({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import '../../../../utils/my_fonts.dart';
-import '../../../../utils/my_icons.dart';
+import '../../../utils/my_fonts.dart';
+import '../../../utils/my_icons.dart';
 
 class NoBookItem extends StatelessWidget {
   const NoBookItem({super.key});

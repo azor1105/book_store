@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:book_store/data/local_data/local_data.dart';
-import 'package:book_store/utils/constants/shared_pref_keys.dart';
+import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../utils/utility_functions.dart';
+import '../presentation/utils/utility_functions.dart';
 
 class AuthProvider {
   final FirebaseAuth _auth;

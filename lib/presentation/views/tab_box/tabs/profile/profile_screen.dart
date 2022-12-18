@@ -1,8 +1,8 @@
-import 'package:book_store/utils/constants/shared_pref_keys.dart';
+import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
 import 'package:book_store/data/local_data/local_data.dart';
-import 'package:book_store/utils/my_colors.dart';
-import 'package:book_store/utils/my_fonts.dart';
-import 'package:book_store/utils/my_icons.dart';
+import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/change_passwod/change_password_dialog.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/change_picture/change_picture_bottom_sheet.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/change_user_name/change_user_name_dialog.dart';

@@ -1,5 +1,5 @@
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:book_store/utils/constants/route_names.dart';
+import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/author/author_model.dart';
 import 'package:book_store/data/models/category/category_model.dart';
 import 'package:book_store/main.dart';

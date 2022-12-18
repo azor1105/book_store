@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../../../../utils/my_colors.dart';
-import '../../../../../../utils/my_fonts.dart';
-import '../../../../../../utils/my_icons.dart';
+import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/my_fonts.dart';
+import '../../../../../utils/my_icons.dart';
 
 class ProfileItemButton extends StatelessWidget {
   const ProfileItemButton({

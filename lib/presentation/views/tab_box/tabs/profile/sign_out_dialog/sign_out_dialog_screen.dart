@@ -3,8 +3,8 @@ import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/wi
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../../../utils/my_colors.dart';
-import '../../../../../../../../utils/my_fonts.dart';
+import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/my_fonts.dart';
 import '../widgets/outlined_text_button.dart';
 
 class SignOutDialog extends StatelessWidget {

@@ -1,5 +1,5 @@
-import 'package:book_store/utils/my_fonts.dart';
-import 'package:book_store/utils/my_icons.dart';
+import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

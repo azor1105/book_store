@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../../data/models/saved_book/saved_book_model.dart';
 import '../../../../providers/saved_book_provider.dart';
-import '../../../../utils/my_colors.dart';
-import '../../../../utils/my_icons.dart';
+import '../../../utils/my_colors.dart';
+import '../../../utils/my_icons.dart';
 
 class SaveBookButton extends StatelessWidget {
   const SaveBookButton({

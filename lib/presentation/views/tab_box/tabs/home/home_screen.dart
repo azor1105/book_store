@@ -1,9 +1,9 @@
-import 'package:book_store/utils/constants/route_names.dart';
+import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/author/author_model.dart';
 import 'package:book_store/data/models/category/category_model.dart';
 import 'package:book_store/providers/author_provider.dart';
 import 'package:book_store/providers/category_provider.dart';
-import 'package:book_store/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/search_delegate/search_delegate_screen.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/widgets/author_name_item.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/widgets/carousel_item.dart';

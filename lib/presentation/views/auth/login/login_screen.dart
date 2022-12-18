@@ -1,15 +1,15 @@
-import 'package:book_store/utils/constants/shared_pref_keys.dart';
+import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
 import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/providers/auth_provider.dart';
-import 'package:book_store/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/views/auth/widgets/rich_text_auth_button.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../utils/my_fonts.dart';
-import '../../../../utils/my_icons.dart';
+import '../../../utils/my_fonts.dart';
+import '../../../utils/my_icons.dart';
 import '../widgets/custom_rectangle_text_button.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/or_line_item.dart';

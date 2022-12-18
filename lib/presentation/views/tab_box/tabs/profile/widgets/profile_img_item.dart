@@ -1,4 +1,4 @@
-import 'package:book_store/utils/my_icons.dart';
+import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/widgets/rectangle_shimmer_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

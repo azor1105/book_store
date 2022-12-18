@@ -1,6 +1,6 @@
-import 'package:book_store/utils/my_colors.dart';
-import 'package:book_store/utils/my_fonts.dart';
-import 'package:book_store/utils/my_icons.dart';
+import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/home_screen.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/profile_screen.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/saved/saved_books_screen.dart';

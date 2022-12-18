@@ -1,7 +1,7 @@
 import 'package:book_store/data/models/saved_book/saved_book_model.dart';
 import 'package:book_store/providers/saved_book_provider.dart';
-import 'package:book_store/utils/my_colors.dart';
-import 'package:book_store/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/views/category_book/widgets/no_books_item.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/saved/widgets/saved_book_item.dart';
 import 'package:firebase_auth/firebase_auth.dart';

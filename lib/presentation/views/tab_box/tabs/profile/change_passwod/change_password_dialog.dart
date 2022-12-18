@@ -1,12 +1,12 @@
 import 'package:book_store/providers/auth_provider.dart';
-import 'package:book_store/utils/utility_functions.dart';
+import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/widgets/text_button_with_background.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../../../utils/my_colors.dart';
-import '../../../../../../../../utils/my_fonts.dart';
+import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/my_fonts.dart';
 import '../widgets/outlined_text_button.dart';
 
 class ChangePasswordDialog extends StatefulWidget {

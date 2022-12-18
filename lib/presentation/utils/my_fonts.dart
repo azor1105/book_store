@@ -1,4 +1,4 @@
-import 'package:book_store/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

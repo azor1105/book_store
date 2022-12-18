@@ -1,4 +1,4 @@
-import 'package:book_store/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/views/auth/auth_screen.dart';
 import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/first_on_boarding_screen.dart';
 import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/second_on_boarding_screen.dart';
