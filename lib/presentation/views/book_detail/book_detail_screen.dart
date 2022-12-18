@@ -5,6 +5,7 @@ import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_info_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/save_button.dart';
+import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
 import 'package:book_store/presentation/widgets/buttons/simple_text_button.dart';
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -86,36 +87,61 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                     ),
                     BookDetailInfoItem(bookItem: widget.bookModel),
                     SizedBox(height: 20.h),
-                    SizedBox(
-                      height: 70.h,
-                      width: double.infinity,
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25.r),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomRectangleTextButton(
+                            height: 50.h,
+                            radius: 12.r,
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                RouteNames.pdfView,
+                                arguments: widget.bookModel,
+                              );
+                            },
+                            title: 'Read book',
                           ),
-                          backgroundColor: MyColors.c8687E7,
                         ),
-                        onPressed: () async {
-                          // MyUtils.showLoader(context);
-                          // final pdf = await ApiServices.loadFirebase(
-                          //     widget.bookModel.bookPdfPath);
-                          // Navigator.of(context).pop();
-                          Navigator.pushNamed(
-                            context,
-                            RouteNames.pdfView,
-                            arguments: widget.bookModel,
-                          );
-                        },
-                        child: Center(
-                          child: Text(
-                            "Read book",
-                            style: MyFonts.w600.copyWith(
-                              color: MyColors.white,
+                        SizedBox(width: 20.w),
+                        Container(
+                          height: 50.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.r),
+                            boxShadow: [
+                              BoxShadow(
+                                spreadRadius: 1,
+                                blurRadius: 3,
+                                offset: const Offset(1, 3),
+                                color: Colors.grey.shade300,
+                              ),
+                            ],
+                          ),
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: MyColors.c8687E7,
+                              backgroundColor: MyColors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.r),
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                const Icon(Icons.download),
+                                SizedBox(width: 10.w),
+                                Text(
+                                  'Download',
+                                  style: MyFonts.w400.copyWith(
+                                    fontSize: 14.sp,
+                                    color: MyColors.blackWithOpacity087,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),

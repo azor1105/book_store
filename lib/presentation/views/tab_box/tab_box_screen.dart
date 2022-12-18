@@ -40,8 +40,8 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
           ),
           boxShadow: [
             BoxShadow(
-              spreadRadius: 5,
-              blurRadius: 5,
+              spreadRadius: 3,
+              blurRadius: 3,
               color: Colors.grey.shade300,
               offset: const Offset(1, 3),
             ),

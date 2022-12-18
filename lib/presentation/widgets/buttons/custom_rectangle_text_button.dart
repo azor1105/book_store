@@ -8,18 +8,20 @@ class CustomRectangleTextButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.title,
+    this.height,
+    this.radius,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 56.h,
+      height: height ?? 56.h,
       width: double.infinity,
       child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: MyColors.c8687E7,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(radius ?? 8.r),
           ),
         ),
         onPressed: onPressed,
@@ -38,4 +40,6 @@ class CustomRectangleTextButton extends StatelessWidget {
 
   final VoidCallback onPressed;
   final String title;
+  final double? height;
+  final double? radius;
 }
