@@ -7,8 +7,8 @@ import 'package:book_store/providers/book_provider.dart';
 import 'package:book_store/providers/category_provider.dart';
 import 'package:book_store/providers/saved_book_provider.dart';
 import 'package:book_store/utils/my_colors.dart';
-import 'package:book_store/views/no_internet/no_internet_screen.dart';
-import 'package:book_store/views/router/router.dart';
+import 'package:book_store/presentation/views/no_internet/no_internet_screen.dart';
+import 'package:book_store/presentation/router/router.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
@@ -20,9 +20,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'utils/constants/shared_pref_keys.dart';
-import 'views/auth/auth_screen.dart';
-import 'views/on_boarding/main_on_boarding_screen.dart';
-import 'views/tab_box/tab_box_screen.dart';
+import 'presentation/views/auth/auth_screen.dart';
+import 'presentation/views/on_boarding/main_on_boarding_screen.dart';
+import 'presentation/views/tab_box/tab_box_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
