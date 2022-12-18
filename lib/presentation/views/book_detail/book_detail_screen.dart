@@ -1,3 +1,4 @@
+import 'package:book_store/cubits/download/download_cubit.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
@@ -125,7 +126,11 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                                 borderRadius: BorderRadius.circular(12.r),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              context
+                                  .read<DownloadCubit>()
+                                  .downloadFile(bookModel: widget.bookModel);
+                            },
                             child: Row(
                               children: [
                                 const Icon(Icons.download),

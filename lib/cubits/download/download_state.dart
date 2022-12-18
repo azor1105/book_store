@@ -1,10 +1,8 @@
 part of 'download_cubit.dart';
 
-class DownloadState extends Equatable {
+class DownloadState {
   const DownloadState({required this.downloadTasks});
   final List<DownloadTaskModel> downloadTasks;
-  @override
-  List<Object> get props => [downloadTasks];
 }
 
 class DownloadTaskModel {
