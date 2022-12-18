@@ -11,6 +11,7 @@ import 'package:book_store/presentation/widgets/buttons/simple_text_button.dart'
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -131,18 +132,29 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                                   .read<DownloadCubit>()
                                   .downloadFile(bookModel: widget.bookModel);
                             },
-                            child: Row(
-                              children: [
-                                const Icon(Icons.download),
-                                SizedBox(width: 10.w),
-                                Text(
-                                  'Download',
-                                  style: MyFonts.w400.copyWith(
-                                    fontSize: 14.sp,
-                                    color: MyColors.blackWithOpacity087,
-                                  ),
-                                ),
-                              ],
+                            child: BlocBuilder<DownloadCubit, DownloadState>(
+                              builder: (context, state) {
+                                var task = state.downloadTasks
+                                    .where((task) =>
+                                        task.bookModel.bookName ==
+                                        widget.bookModel.bookName)
+                                    .toList();
+                                return Row(
+                                  children: [
+                                    const Icon(Icons.download),
+                                    SizedBox(width: 10.w),
+                                    Text(
+                                      task.isEmpty
+                                          ? 'Download'
+                                          : task[0].progress == 100 ? 'Saved' : "% ${task[0].progress.toStringAsFixed(0)}",
+                                      style: MyFonts.w400.copyWith(
+                                        fontSize: 14.sp,
+                                        color: MyColors.blackWithOpacity087,
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
                             ),
                           ),
                         ),

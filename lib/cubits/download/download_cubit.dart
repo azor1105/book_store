@@ -10,6 +10,7 @@ class DownloadCubit extends Cubit<DownloadState> {
   DownloadCubit({required Dio dio})
       : _dio = dio,
         super(DownloadState(downloadTasks: []));
+        // Do not make const
 
   final Dio _dio;
 
@@ -23,7 +24,6 @@ class DownloadCubit extends Cubit<DownloadState> {
       await _dio.download(bookModel.bookPdfPath, path,
           onReceiveProgress: (received, total) {
         double percent = received / total * 100;
-        print("PERCENT $percent");
         var tasks = state.downloadTasks;
         tasks.removeWhere(
           (task) => task.bookModel.bookName == bookModel.bookName,
