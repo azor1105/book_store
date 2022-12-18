@@ -2,8 +2,8 @@ import 'package:book_store/data/models/book/book_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../on_boarding/on_boarding_screens/widgets/text_button_with_background.dart';
-import '../../widgets/rectangle_shimmer_item.dart';
+import '../../../../../../widgets/buttons/text_button_with_background.dart';
+import '../../../../../../widgets/rectangle_shimmer_item.dart';
 
 class ResultBookItem extends StatelessWidget {
   const ResultBookItem(

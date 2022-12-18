@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 import '../../../utils/my_fonts.dart';
 import '../../../utils/my_icons.dart';
-import '../widgets/custom_rectangle_text_button.dart';
+import '../../../widgets/buttons/custom_rectangle_text_button.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/or_line_item.dart';
 import '../widgets/sign_in_with_item.dart';

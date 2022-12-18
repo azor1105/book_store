@@ -1,4 +1,4 @@
-import 'package:book_store/presentation/views/tab_box/tabs/home/widgets/rectangle_shimmer_item.dart';
+import 'package:book_store/presentation/widgets/rectangle_shimmer_item.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../../utils/my_colors.dart';

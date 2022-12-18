@@ -1,7 +1,7 @@
 import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
-import 'package:book_store/presentation/views/auth/widgets/custom_rectangle_text_button.dart';
+import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';

@@ -5,7 +5,7 @@ import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_info_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/save_button.dart';
-import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/widgets/simple_text_button.dart';
+import 'package:book_store/presentation/widgets/buttons/simple_text_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

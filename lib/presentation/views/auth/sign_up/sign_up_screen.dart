@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import '../../../utils/constants/shared_pref_keys.dart';
 import '../../../../data/local_data/local_data.dart';
 import '../../../utils/my_fonts.dart';
-import '../widgets/custom_rectangle_text_button.dart';
+import '../../../widgets/buttons/custom_rectangle_text_button.dart';
 import '../widgets/custom_text_field.dart';
 
 class SignUpScreen extends StatefulWidget {

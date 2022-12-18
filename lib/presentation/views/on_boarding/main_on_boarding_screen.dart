@@ -4,8 +4,8 @@ import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/fi
 import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/second_on_boarding_screen.dart';
 import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/third_on_boarding_screen.dart';
 import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/widgets/movement_animation_on_boarding.dart';
-import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/widgets/simple_text_button.dart';
-import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/widgets/text_button_with_background.dart';
+import 'package:book_store/presentation/widgets/buttons/simple_text_button.dart';
+import 'package:book_store/presentation/widgets/buttons/text_button_with_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
