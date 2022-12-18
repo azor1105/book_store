@@ -6,7 +6,7 @@ class HiveService {
   Box<DownloadedBookModel> getBooks() =>
       Hive.box<DownloadedBookModel>(HiveConstants.downloadedBookBox);
 
-  void addAddress({required DownloadedBookModel downloadedBookModel}) {
+  void addBook({required DownloadedBookModel downloadedBookModel}) {
     final downloadedBooksBox = getBooks();
     downloadedBooksBox.add(downloadedBookModel);
   }
@@ -14,5 +14,16 @@ class HiveService {
   Future clearDownloadedBooksBox() async {
     final addressBox = getBooks();
     await addressBox.clear();
+  }
+
+  bool isExist({required String bookId}) {
+    final downloadedBooksBox = getBooks();
+    var books = downloadedBooksBox.values.toList();
+    for (var book in books) {
+      if (bookId == book.id) {
+        return true;
+      }
+    }
+    return false;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:book_store/cubits/connectivity/connectivity_cubit.dart';
 import 'package:book_store/cubits/download/download_cubit.dart';
+import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/data/service/models/downloaded_book/downloaded_book_model.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/local_data/local_data.dart';
@@ -57,7 +58,12 @@ class MyApp extends StatelessWidget {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => DownloadCubit(dio: Dio())),
+        BlocProvider(
+          create: (context) => DownloadCubit(
+            dio: Dio(),
+            hiveService: HiveService(),
+          ),
+        ),
       ],
       child: MultiProvider(
         providers: [

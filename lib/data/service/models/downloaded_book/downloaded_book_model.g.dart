@@ -16,18 +16,52 @@ class DownloadedBookModelAdapter extends TypeAdapter<DownloadedBookModel> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return DownloadedBookModel()
-      ..bookModel = fields[0] as BookModel
-      ..bookPath = fields[1] as String;
+    return DownloadedBookModel(
+      authorId: fields[0] as String,
+      authorName: fields[10] as String,
+      bookName: fields[4] as String,
+      bookPath: fields[12] as String,
+      bookPdfPath: fields[5] as String,
+      categoryId: fields[6] as String,
+      categoryName: fields[11] as String,
+      description: fields[1] as String,
+      id: fields[7] as String,
+      image: fields[2] as String,
+      language: fields[3] as String,
+      pagesCount: fields[8] as int,
+      publishedDate: fields[9] as String,
+    );
   }
 
   @override
   void write(BinaryWriter writer, DownloadedBookModel obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(13)
       ..writeByte(0)
-      ..write(obj.bookModel)
+      ..write(obj.authorId)
       ..writeByte(1)
+      ..write(obj.description)
+      ..writeByte(2)
+      ..write(obj.image)
+      ..writeByte(3)
+      ..write(obj.language)
+      ..writeByte(4)
+      ..write(obj.bookName)
+      ..writeByte(5)
+      ..write(obj.bookPdfPath)
+      ..writeByte(6)
+      ..write(obj.categoryId)
+      ..writeByte(7)
+      ..write(obj.id)
+      ..writeByte(8)
+      ..write(obj.pagesCount)
+      ..writeByte(9)
+      ..write(obj.publishedDate)
+      ..writeByte(10)
+      ..write(obj.authorName)
+      ..writeByte(11)
+      ..write(obj.categoryName)
+      ..writeByte(12)
       ..write(obj.bookPath);
   }
 

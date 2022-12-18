@@ -13,14 +13,4 @@ class DownloadTaskModel {
     required this.bookModel,
     this.progress = 0.0,
   });
-
-  DownloadTaskModel copyWith({
-    BookModel? bookModel,
-    double? progress,
-  }) {
-    return DownloadTaskModel(
-      bookModel: bookModel ?? this.bookModel,
-      progress: progress ?? this.progress,
-    );
-  }
 }

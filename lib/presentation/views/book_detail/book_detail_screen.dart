@@ -5,6 +5,7 @@ import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_info_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_item.dart';
+import 'package:book_store/presentation/views/book_detail/widgets/download_button.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/save_button.dart';
 import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
 import 'package:book_store/presentation/widgets/buttons/simple_text_button.dart';
@@ -13,7 +14,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
 class BookDetailScreen extends StatefulWidget {
   const BookDetailScreen({
@@ -106,58 +106,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                           ),
                         ),
                         SizedBox(width: 20.w),
-                        Container(
-                          height: 50.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.r),
-                            boxShadow: [
-                              BoxShadow(
-                                spreadRadius: 1,
-                                blurRadius: 3,
-                                offset: const Offset(1, 3),
-                                color: Colors.grey.shade300,
-                              ),
-                            ],
-                          ),
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                              foregroundColor: MyColors.c8687E7,
-                              backgroundColor: MyColors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12.r),
-                              ),
-                            ),
-                            onPressed: () {
-                              context
-                                  .read<DownloadCubit>()
-                                  .downloadFile(bookModel: widget.bookModel);
-                            },
-                            child: BlocBuilder<DownloadCubit, DownloadState>(
-                              builder: (context, state) {
-                                var task = state.downloadTasks
-                                    .where((task) =>
-                                        task.bookModel.bookName ==
-                                        widget.bookModel.bookName)
-                                    .toList();
-                                return Row(
-                                  children: [
-                                    const Icon(Icons.download),
-                                    SizedBox(width: 10.w),
-                                    Text(
-                                      task.isEmpty
-                                          ? 'Download'
-                                          : task[0].progress == 100 ? 'Saved' : "% ${task[0].progress.toStringAsFixed(0)}",
-                                      style: MyFonts.w400.copyWith(
-                                        fontSize: 14.sp,
-                                        color: MyColors.blackWithOpacity087,
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
-                        ),
+                        DownloadButton(bookModel: widget.bookModel),
                       ],
                     ),
                   ],
