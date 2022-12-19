@@ -91,4 +91,3 @@ class DownloadButton extends StatelessWidget {
 
   final BookModel bookModel;
 }
-// "% ${task[0].progress.toStringAsFixed(0)}"

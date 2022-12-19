@@ -1,8 +1,8 @@
+import 'package:book_store/app/app.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/author/author_model.dart';
 import 'package:book_store/data/models/category/category_model.dart';
-import 'package:book_store/main.dart';
 import 'package:book_store/presentation/views/auth/auth_screen.dart';
 import 'package:book_store/presentation/views/author_book/author_book_screen.dart';
 import 'package:book_store/presentation/views/book_detail/book_detail_screen.dart';
