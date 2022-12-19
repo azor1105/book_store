@@ -40,7 +40,7 @@ class NoInternetScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, RouteNames.downloadedBooks);
                 },
-                title: 'Read saved books',
+                title: 'Read downloaded books',
               ),
             ),
             SizedBox(height: 20.h),
