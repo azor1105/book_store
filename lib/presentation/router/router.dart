@@ -44,8 +44,13 @@ class Routes {
         );
       case RouteNames.bookDetail:
         return MaterialPageRoute(
-          builder: (_) =>
-              BookDetailScreen(bookModel: settings.arguments as BookModel),
+          builder: (_) {
+            var args = settings.arguments as List<dynamic>;
+            return BookDetailScreen(
+              bookModel: args[0] as BookModel?,
+              downloadedBookModel: args[1] as DownloadedBookModel?,
+            );
+          },
         );
       case RouteNames.categoryBook:
         return MaterialPageRoute(

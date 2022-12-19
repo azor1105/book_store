@@ -1,16 +1,17 @@
 import 'package:book_store/data/models/book/book_model.dart';
+import 'package:book_store/data/service/models/downloaded_book/downloaded_book_model.dart';
 import 'package:book_store/presentation/widgets/shimmers/rectangle_shimmer_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../utils/my_colors.dart';
 import '../../../utils/my_fonts.dart';
 
 class BookDetailItem extends StatelessWidget {
   const BookDetailItem({
     super.key,
-    required this.bookItem,
+    this.bookItem,
+    this.downloadedBookModel,
   });
 
   @override
@@ -31,14 +32,14 @@ class BookDetailItem extends StatelessWidget {
             ],
           ),
           child: Hero(
-            tag: bookItem.id,
+            tag: downloadedBookModel?.id ?? bookItem!.id,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
               child: CachedNetworkImage(
-                  imageUrl: bookItem.image,
+                  imageUrl: downloadedBookModel?.image ?? bookItem!.image,
                   height: 200.h,
                   placeholder: (context, url) {
-                    return  RectangleShimmerItem(
+                    return RectangleShimmerItem(
                       height: 200.h,
                       width: 180.w,
                     );
@@ -51,7 +52,7 @@ class BookDetailItem extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
             child: Text(
-              bookItem.bookName,
+              downloadedBookModel?.bookName ?? bookItem!.bookName,
               style: MyFonts.w600,
               textAlign: TextAlign.center,
               maxLines: 3,
@@ -61,7 +62,7 @@ class BookDetailItem extends StatelessWidget {
         SizedBox(height: 4.h),
         Center(
           child: Text(
-            bookItem.authorName,
+            downloadedBookModel?.authorName ?? bookItem!.authorName,
             style: MyFonts.w300.copyWith(
               fontSize: 21.sp,
               color: MyColors.blackWithOpacity063,
@@ -72,5 +73,6 @@ class BookDetailItem extends StatelessWidget {
     );
   }
 
-  final BookModel bookItem;
+  final BookModel? bookItem;
+  final DownloadedBookModel? downloadedBookModel;
 }

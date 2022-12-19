@@ -1,3 +1,4 @@
+import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/providers/book_provider.dart';
@@ -54,10 +55,15 @@ class SearchDelegateScreen extends SearchDelegate {
             resultBookItem: resultBookItem!,
             onTap: () {
               close(context, null);
+              var downloadedBook =
+                  HiveService.getBookById(bookId: resultBookItem!.id);
               Navigator.pushNamed(
                 context,
                 RouteNames.bookDetail,
-                arguments: resultBookItem,
+                arguments: [
+                  downloadedBook == null ? resultBookItem : null,
+                  downloadedBook
+                ],
               );
             },
           )

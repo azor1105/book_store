@@ -1,5 +1,4 @@
-import 'package:book_store/cubits/download/download_cubit.dart';
-import 'package:book_store/data/service/hive/hive_service.dart';
+import 'package:book_store/data/service/models/downloaded_book/downloaded_book_model.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
@@ -19,13 +18,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class BookDetailScreen extends StatefulWidget {
   const BookDetailScreen({
     super.key,
-    required this.bookModel,
+    this.bookModel,
+    this.downloadedBookModel,
   });
 
   @override
   State<BookDetailScreen> createState() => _BookDetailScreenState();
 
-  final BookModel bookModel;
+  final BookModel? bookModel;
+  final DownloadedBookModel? downloadedBookModel;
 }
 
 class _BookDetailScreenState extends State<BookDetailScreen> {
@@ -35,17 +36,19 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
     return Scaffold(
       appBar: SimpleAppBar(
         title: '',
-        actions: [
-          Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: SaveBookButton(
-                bookItem: widget.bookModel,
-                userId: context.read<User?>()!.uid,
-              ),
-            ),
-          ),
-        ],
+        actions: widget.bookModel != null
+            ? [
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.w),
+                    child: SaveBookButton(
+                      bookItem: widget.bookModel!,
+                      userId: context.read<User?>()!.uid,
+                    ),
+                  ),
+                ),
+              ]
+            : null,
       ),
       backgroundColor: MyColors.white,
       body: SingleChildScrollView(
@@ -58,6 +61,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
               Center(
                 child: BookDetailItem(
                   bookItem: widget.bookModel,
+                  downloadedBookModel: widget.downloadedBookModel,
                 ),
               ),
               SizedBox(height: 18.h),
@@ -69,7 +73,8 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                     SizedBox(
                       height: readMore ? 60.h : null,
                       child: Text(
-                        widget.bookModel.description,
+                        widget.downloadedBookModel?.description ??
+                            widget.bookModel!.description,
                         style: MyFonts.w300.copyWith(
                           fontSize: 18.sp,
                           color: MyColors.blackWithOpacity087,
@@ -97,16 +102,12 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                             height: 50.h,
                             radius: 12.r,
                             onPressed: () {
-                              var downloadedBook = HiveService.getBookById(
-                                  bookId: widget.bookModel.id);
                               Navigator.pushNamed(
                                 context,
                                 RouteNames.pdfView,
                                 arguments: [
-                                  downloadedBook == null
-                                      ? widget.bookModel
-                                      : null,
-                                  downloadedBook
+                                  widget.bookModel,
+                                  widget.downloadedBookModel,
                                 ],
                               );
                             },
@@ -114,7 +115,9 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                           ),
                         ),
                         SizedBox(width: 20.w),
-                        DownloadButton(bookModel: widget.bookModel),
+                        widget.downloadedBookModel != null
+                            ? DownloadButton(bookModel: widget.bookModel!)
+                            : const SizedBox(),
                       ],
                     ),
                   ],

@@ -1,3 +1,4 @@
+import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/author/author_model.dart';
 import 'package:book_store/data/models/category/category_model.dart';
@@ -61,10 +62,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index, realIndex) {
                       return CarouselItem(
                         onTap: () {
+                          var downloadedBook =
+                              HiveService.getBookById(bookId: books[index].id);
                           Navigator.pushNamed(
                             context,
                             RouteNames.bookDetail,
-                            arguments: books[index],
+                            arguments: [
+                              downloadedBook == null ? books[index] : null,
+                              downloadedBook
+                            ],
                           );
                         },
                         bookItem: books[index],
