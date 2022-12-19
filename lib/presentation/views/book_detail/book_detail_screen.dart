@@ -1,4 +1,5 @@
 import 'package:book_store/cubits/download/download_cubit.dart';
+import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
@@ -96,10 +97,12 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                             height: 50.h,
                             radius: 12.r,
                             onPressed: () {
+                              var downloadedBook = HiveService.getBookById(
+                                  bookId: widget.bookModel.id);
                               Navigator.pushNamed(
                                 context,
                                 RouteNames.pdfView,
-                                arguments: widget.bookModel,
+                                arguments: [downloadedBook ?? widget.bookModel, downloadedBook],
                               );
                             },
                             title: 'Read book',

@@ -20,7 +20,7 @@ class BookModel {
   String bookName;
 
   @JsonKey(defaultValue: "", name: "book_pdf")
-  String bookPdfPath;
+  String bookUrl;
 
   @JsonKey(defaultValue: "", name: "category_id")
   String categoryId;
@@ -43,7 +43,7 @@ class BookModel {
   BookModel({
     required this.authorId,
     required this.bookName,
-    required this.bookPdfPath,
+    required this.bookUrl,
     required this.categoryId,
     required this.description,
     required this.id,

@@ -9,7 +9,7 @@ part of 'book_model.dart';
 BookModel _$BookModelFromJson(Map<String, dynamic> json) => BookModel(
       authorId: json['author_id'] as String? ?? '',
       bookName: json['book_name'] as String? ?? '',
-      bookPdfPath: json['book_pdf'] as String? ?? '',
+      bookUrl: json['book_pdf'] as String? ?? '',
       categoryId: json['category_id'] as String? ?? '',
       description: json['book_description'] as String? ?? '',
       id: json['id'] as String? ?? '',
@@ -27,7 +27,7 @@ Map<String, dynamic> _$BookModelToJson(BookModel instance) => <String, dynamic>{
       'book_img': instance.image,
       'book_language': instance.language,
       'book_name': instance.bookName,
-      'book_pdf': instance.bookPdfPath,
+      'book_pdf': instance.bookUrl,
       'category_id': instance.categoryId,
       'id': instance.id,
       'pages_count': instance.pagesCount,

@@ -34,7 +34,6 @@ class App extends StatelessWidget {
         BlocProvider(
           create: (context) => DownloadCubit(
             dio: Dio(),
-            hiveService: HiveService(),
           ),
         ),
       ],

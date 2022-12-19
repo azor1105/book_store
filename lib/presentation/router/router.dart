@@ -1,5 +1,6 @@
 import 'package:book_store/app/app.dart';
 import 'package:book_store/data/models/book/book_model.dart';
+import 'package:book_store/data/service/models/downloaded_book/downloaded_book_model.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/author/author_model.dart';
 import 'package:book_store/data/models/category/category_model.dart';
@@ -59,9 +60,13 @@ class Routes {
         );
       case RouteNames.pdfView:
         return MaterialPageRoute(
-          builder: (_) => PdfViewerScreen(
-            bookModel: settings.arguments as BookModel,
-          ),
+          builder: (_) {
+            List<dynamic> args = settings.arguments as List<dynamic>;
+            return PdfViewerScreen(
+              bookModel: args[0] as BookModel?,
+              downloadedBookModel: args[1] as DownloadedBookModel?,
+            );
+          },
         );
       default:
         return MaterialPageRoute(

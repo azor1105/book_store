@@ -1,7 +1,9 @@
 import 'package:book_store/cubits/download/download_cubit.dart';
 import 'package:book_store/data/models/book/book_model.dart';
+import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,8 +15,7 @@ class DownloadButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DownloadCubit, DownloadState>(
       builder: (context, state) {
-        bool isDownloaded =
-            context.read<DownloadCubit>().isExistBoook(bookId: bookModel.id);
+        bool isDownloaded = HiveService.isExist(bookId: bookModel.id);
         var downloadTask = state.downloadTasks
             .where(
               (task) => task.bookModel.id == bookModel.id,
@@ -48,6 +49,7 @@ class DownloadButton extends StatelessWidget {
               ),
               onPressed: () {
                 if (!isDownloaded) {
+                  MyUtils.getMyToast(message: 'Downloading started');
                   context
                       .read<DownloadCubit>()
                       .downloadFile(bookModel: bookModel);
@@ -73,7 +75,7 @@ class DownloadButton extends StatelessWidget {
                       ],
                     )
                   : Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "Downloading %${downloadTask[0].progress.toStringAsFixed(0)}",

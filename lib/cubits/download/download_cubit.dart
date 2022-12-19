@@ -9,14 +9,12 @@ import 'package:permission_handler/permission_handler.dart';
 part 'download_state.dart';
 
 class DownloadCubit extends Cubit<DownloadState> {
-  DownloadCubit({required Dio dio, required HiveService hiveService})
-      : _hiveService = hiveService,
-        _dio = dio,
+  DownloadCubit({required Dio dio})
+      : _dio = dio,
         super(DownloadState(downloadTasks: []));
   // Do not make const
 
   final Dio _dio;
-  final HiveService _hiveService;
 
   Future<void> downloadFile({required BookModel bookModel}) async {
     await Permission.storage.request();
@@ -25,24 +23,18 @@ class DownloadCubit extends Cubit<DownloadState> {
     var documentDir = await getApplicationDocumentsDirectory();
     String path = '${documentDir.path}/${bookModel.id}.pdf';
     try {
-      await _dio.download(bookModel.bookPdfPath, path,
+      int maxPercent = 0;
+      await _dio.download(bookModel.bookUrl, path,
           onReceiveProgress: (received, total) {
         double percent = received / total * 100;
-        var tasks = state.downloadTasks;
-        tasks.removeWhere(
-          (task) => task.bookModel.bookName == bookModel.bookName,
-        );
-        tasks.add(
-          DownloadTaskModel(bookModel: bookModel, progress: percent),
-        );
         if (percent == 100) {
-          _hiveService.addBook(
+          HiveService.addBook(
             downloadedBookModel: DownloadedBookModel(
               authorId: bookModel.authorId,
               authorName: bookModel.authorName,
               bookName: bookModel.bookName,
               bookPath: path,
-              bookPdfPath: bookModel.bookPdfPath,
+              bookPdfPath: bookModel.bookUrl,
               categoryId: bookModel.categoryId,
               categoryName: bookModel.categoryName,
               description: bookModel.description,
@@ -54,13 +46,20 @@ class DownloadCubit extends Cubit<DownloadState> {
             ),
           );
         }
-        emit(DownloadState(downloadTasks: tasks));
+        if (maxPercent < percent.toInt()) {
+          var tasks = state.downloadTasks;
+          tasks.removeWhere(
+            (task) => task.bookModel.bookName == bookModel.bookName,
+          );
+          tasks.add(
+            DownloadTaskModel(bookModel: bookModel, progress: percent),
+          );
+          maxPercent = percent.toInt();
+          emit(DownloadState(downloadTasks: tasks));
+        }
       });
     } catch (e) {
       throw Exception(e);
     }
   }
-
-  bool isExistBoook({required String bookId}) =>
-      _hiveService.isExist(bookId: bookId);
 }
