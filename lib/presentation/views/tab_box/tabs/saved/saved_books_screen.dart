@@ -29,42 +29,40 @@ class SavedBooksScreen extends StatelessWidget {
                 if (snapshot.hasData) {
                   List<SavedBookModel> savedBooks = snapshot.data!;
                   if (savedBooks.isEmpty) {
-                    return const Expanded(child: NoBookItem());
+                    return const NoBookItem();
                   } else {
-                    return Expanded(
-                      child: SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 10.h),
-                            Padding(
-                              padding: EdgeInsets.only(left: 20.w),
-                              child: Text(
-                                "${savedBooks.length} ${savedBooks.length > 1 ? "books" : "book"}",
-                                style: MyFonts.w600,
-                              ),
+                    return SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 10.h),
+                          Padding(
+                            padding: EdgeInsets.only(left: 20.w),
+                            child: Text(
+                              "${savedBooks.length} ${savedBooks.length > 1 ? "books" : "book"}",
+                              style: MyFonts.w600,
                             ),
-                            ListView.builder(
-                              shrinkWrap: true,
-                              physics: const ClampingScrollPhysics(),
-                              itemCount: savedBooks.length,
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 20.h, horizontal: 15.w),
-                              itemBuilder: (context, index) {
-                                return SavedBookItem(
-                                  bookId: savedBooks[index].bookId,
-                                  onDeleteTap: () async {
-                                    await context
-                                        .read<SavedBookProvider>()
-                                        .deleteSavedBook(
-                                            docId: savedBooks[index].id);
-                                  },
-                                );
-                              },
-                            ),
-                          ],
-                        ),
+                          ),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                            itemCount: savedBooks.length,
+                            padding: EdgeInsets.symmetric(
+                                vertical: 20.h, horizontal: 15.w),
+                            itemBuilder: (context, index) {
+                              return SavedBookItem(
+                                bookId: savedBooks[index].bookId,
+                                onDeleteTap: () async {
+                                  await context
+                                      .read<SavedBookProvider>()
+                                      .deleteSavedBook(
+                                          docId: savedBooks[index].id);
+                                },
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     );
                   }
@@ -76,7 +74,7 @@ class SavedBooksScreen extends StatelessWidget {
               },
             ),
           ),
-           Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             child: CustomRectangleTextButton(
               onPressed: () {
