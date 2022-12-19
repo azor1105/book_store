@@ -9,4 +9,5 @@ class RouteNames {
   static const String categoryBook = "/category_book";
   static const String pdfView = "/pdf_view";
   static const String noInternet = '/no_internet';
+  static const String downloadedBooks = '/downloaded_books';
 }

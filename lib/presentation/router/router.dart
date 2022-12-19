@@ -7,6 +7,7 @@ import 'package:book_store/presentation/views/auth/auth_screen.dart';
 import 'package:book_store/presentation/views/author_book/author_book_screen.dart';
 import 'package:book_store/presentation/views/book_detail/book_detail_screen.dart';
 import 'package:book_store/presentation/views/category_book/category_book_screen.dart';
+import 'package:book_store/presentation/views/downloaded_books/downloaded_books_screen.dart';
 import 'package:book_store/presentation/views/no_internet/no_internet_screen.dart';
 import 'package:book_store/presentation/views/on_boarding/main_on_boarding_screen.dart';
 import 'package:book_store/presentation/views/pdf_viewer/pdf_viewer_screen.dart';
@@ -17,6 +18,10 @@ import 'package:flutter/material.dart';
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case RouteNames.downloadedBooks:
+        return MaterialPageRoute(
+          builder: (_) => const DownloadedBooksScreen(),
+        );
       case RouteNames.noInternet:
         return MaterialPageRoute(
           builder: (_) => const NoInternetScreen(),

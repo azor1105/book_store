@@ -1,4 +1,5 @@
 import 'package:book_store/data/models/saved_book/saved_book_model.dart';
+import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/providers/saved_book_provider.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
@@ -39,7 +40,9 @@ class SavedBooksScreen extends StatelessWidget {
                   ),
                   foregroundColor: MyColors.c8687E7,
                   backgroundColor: MyColors.white),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, RouteNames.downloadedBooks);
+              },
               child: Row(
                 children: [
                   const Icon(Icons.check),
