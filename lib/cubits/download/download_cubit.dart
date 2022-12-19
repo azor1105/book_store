@@ -34,7 +34,7 @@ class DownloadCubit extends Cubit<DownloadState> {
               authorName: bookModel.authorName,
               bookName: bookModel.bookName,
               bookPath: path,
-              bookPdfPath: bookModel.bookUrl,
+              bookUrl: bookModel.bookUrl,
               categoryId: bookModel.categoryId,
               categoryName: bookModel.categoryName,
               description: bookModel.description,

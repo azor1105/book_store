@@ -10,7 +10,7 @@ class DownloadedBookModel extends HiveObject {
     required this.authorName,
     required this.bookName,
     required this.bookPath,
-    required this.bookPdfPath,
+    required this.bookUrl,
     required this.categoryId,
     required this.categoryName,
     required this.description,
@@ -36,7 +36,7 @@ class DownloadedBookModel extends HiveObject {
   String bookName;
 
   @HiveField(5)
-  String bookPdfPath;
+  String bookUrl;
 
   @HiveField(6)
   String categoryId;

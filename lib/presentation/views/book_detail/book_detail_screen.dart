@@ -102,7 +102,12 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                               Navigator.pushNamed(
                                 context,
                                 RouteNames.pdfView,
-                                arguments: [downloadedBook ?? widget.bookModel, downloadedBook],
+                                arguments: [
+                                  downloadedBook == null
+                                      ? widget.bookModel
+                                      : null,
+                                  downloadedBook
+                                ],
                               );
                             },
                             title: 'Read book',

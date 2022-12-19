@@ -21,7 +21,7 @@ class DownloadedBookModelAdapter extends TypeAdapter<DownloadedBookModel> {
       authorName: fields[10] as String,
       bookName: fields[4] as String,
       bookPath: fields[12] as String,
-      bookPdfPath: fields[5] as String,
+      bookUrl: fields[5] as String,
       categoryId: fields[6] as String,
       categoryName: fields[11] as String,
       description: fields[1] as String,
@@ -48,7 +48,7 @@ class DownloadedBookModelAdapter extends TypeAdapter<DownloadedBookModel> {
       ..writeByte(4)
       ..write(obj.bookName)
       ..writeByte(5)
-      ..write(obj.bookPdfPath)
+      ..write(obj.bookUrl)
       ..writeByte(6)
       ..write(obj.categoryId)
       ..writeByte(7)

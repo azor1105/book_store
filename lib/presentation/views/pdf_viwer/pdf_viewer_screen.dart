@@ -36,7 +36,7 @@ class PdfViewerScreen extends StatelessWidget {
               pageLayoutMode: PdfPageLayoutMode.single,
             )
           : SfPdfViewer.file(
-              File(downloadedBookModel!.bookPdfPath),
+              File(downloadedBookModel!.bookPath),
               key: _pdfViewerKey,
               pageLayoutMode: PdfPageLayoutMode.single,
             ),
