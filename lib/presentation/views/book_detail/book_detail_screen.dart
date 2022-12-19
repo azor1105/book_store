@@ -1,3 +1,4 @@
+import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
@@ -98,7 +99,12 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                               Navigator.pushNamed(
                                 context,
                                 RouteNames.pdfView,
-                                arguments: widget.bookModel,
+                                arguments: [
+                                  widget.bookModel,
+                                  HiveService.getBookPath(
+                                    bookId: widget.bookModel.id,
+                                  ),
+                                ],
                               );
                             },
                             title: 'Read book',

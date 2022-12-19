@@ -1,6 +1,5 @@
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/data/models/category/category_model.dart';
-import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
 import 'package:book_store/providers/book_provider.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';

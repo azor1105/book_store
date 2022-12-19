@@ -1,5 +1,4 @@
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/presentation/widgets/shimmers/rectangle_shimmer_item.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/saved/widgets/shimmer_saved_book_item.dart';

@@ -1,7 +1,6 @@
 import 'package:book_store/cubits/connectivity/connectivity_cubit.dart';
 import 'package:book_store/cubits/download/download_cubit.dart';
 import 'package:book_store/data/local_data/local_data.dart';
-import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/router/router.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
