@@ -1,3 +1,4 @@
+import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
@@ -36,7 +37,9 @@ class NoInternetScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: CustomRectangleTextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, RouteNames.downloadedBooks);
+                },
                 title: 'Read saved books',
               ),
             ),
