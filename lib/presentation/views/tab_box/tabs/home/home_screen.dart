@@ -62,15 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index, realIndex) {
                       return CarouselItem(
                         onTap: () {
-                          var downloadedBook =
-                              HiveService.getBookById(bookId: books[index].id);
                           Navigator.pushNamed(
                             context,
                             RouteNames.bookDetail,
-                            arguments: [
-                              downloadedBook == null ? books[index] : null,
-                              downloadedBook
-                            ],
+                            arguments: books[index]
                           );
                         },
                         bookItem: books[index],

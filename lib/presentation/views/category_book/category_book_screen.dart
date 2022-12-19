@@ -89,15 +89,11 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
                           return BookInfoItem(
                             bookItem: bookItem,
                             onTap: () {
-                              var downloadedBook =
-                                  HiveService.getBookById(bookId: bookItem.id);
+                              
                               Navigator.pushNamed(
                                 context,
                                 RouteNames.bookDetail,
-                                arguments: [
-                                  downloadedBook == null ? bookItem : null,
-                                  downloadedBook
-                                ],
+                                arguments: bookItem,
                               );
                             },
                           );

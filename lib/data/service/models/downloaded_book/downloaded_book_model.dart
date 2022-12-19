@@ -58,5 +58,22 @@ class DownloadedBookModel extends HiveObject {
 
   @HiveField(12)
   String bookPath;
+
+  BookModel toBookModel() {
+    return BookModel(
+      authorId: authorId,
+      bookName: bookName,
+      bookUrl: bookUrl,
+      categoryId: categoryId,
+      description: description,
+      id: id,
+      image: image,
+      language: language,
+      pagesCount: pagesCount,
+      publishedDate: publishedDate,
+      authorName: authorName,
+      categoryName: categoryName,
+    );
+  }
 }
 // flutter packages pub run build_runner build --delete-conflicting-outputs  

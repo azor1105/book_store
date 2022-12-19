@@ -55,15 +55,11 @@ class SearchDelegateScreen extends SearchDelegate {
             resultBookItem: resultBookItem!,
             onTap: () {
               close(context, null);
-              var downloadedBook =
-                  HiveService.getBookById(bookId: resultBookItem!.id);
+              
               Navigator.pushNamed(
                 context,
                 RouteNames.bookDetail,
-                arguments: [
-                  downloadedBook == null ? resultBookItem : null,
-                  downloadedBook
-                ],
+                arguments: resultBookItem,
               );
             },
           )

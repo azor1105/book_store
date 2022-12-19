@@ -36,6 +36,9 @@ class App extends StatelessWidget {
             dio: Dio(),
           ),
         ),
+        BlocProvider(
+          create: (context) => ConnectivityCubit(),
+        ),
       ],
       child: MultiProvider(
         providers: [
@@ -86,25 +89,22 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User?>();
-    return BlocProvider(
-      create: (context) => ConnectivityCubit(),
-      child: BlocBuilder<ConnectivityCubit, ConnectivityState>(
-        buildWhen: (previous, current) =>
-            previous.connectivityResult != current.connectivityResult ||
-            firebaseUser?.uid == null,
-        builder: (context, state) {
-          if (state.connectivityResult == ConnectivityResult.none) {
-            return const NoInternetScreen();
-          } else if (StorageRepository.getBool(
-                  keyOfValue: SharedPrefKeys.showOnBoarding) ==
-              null) {
-            return const MainOnBoardingScreen();
-          } else if (firebaseUser?.uid != null) {
-            return const TabBoxScreen();
-          }
-          return const AuthScreen();
-        },
-      ),
+    return BlocBuilder<ConnectivityCubit, ConnectivityState>(
+      buildWhen: (previous, current) =>
+          previous.connectivityResult != current.connectivityResult ||
+          firebaseUser?.uid == null,
+      builder: (context, state) {
+        if (state.connectivityResult == ConnectivityResult.none) {
+          return const NoInternetScreen();
+        } else if (StorageRepository.getBool(
+                keyOfValue: SharedPrefKeys.showOnBoarding) ==
+            null) {
+          return const MainOnBoardingScreen();
+        } else if (firebaseUser?.uid != null) {
+          return const TabBoxScreen();
+        }
+        return const AuthScreen();
+      },
     );
   }
 }

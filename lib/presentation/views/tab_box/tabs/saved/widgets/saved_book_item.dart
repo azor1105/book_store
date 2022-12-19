@@ -29,15 +29,11 @@ class SavedBookItem extends StatelessWidget {
           BookModel bookItem = futureSnapshot.data!;
           return GestureDetector(
             onTap: () {
-             var downloadedBook =
-                              HiveService.getBookById(bookId: bookItem.id);
+             
                           Navigator.pushNamed(
                             context,
                             RouteNames.bookDetail,
-                            arguments: [
-                              downloadedBook == null ? bookItem : null,
-                              downloadedBook
-                            ],
+                            arguments: bookItem,
                           );
             },
             child: Container(

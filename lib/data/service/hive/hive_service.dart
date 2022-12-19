@@ -37,4 +37,15 @@ class HiveService {
     }
     return null;
   }
+
+  static String? getBookPath({required String bookId}) {
+    final downloadedBooksBox = getBooks();
+    var books = downloadedBooksBox.values.toList();
+    for (var book in books) {
+      if (bookId == book.id) {
+        return book.bookPath;
+      }
+    }
+    return null;
+  }
 }

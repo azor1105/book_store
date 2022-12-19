@@ -99,15 +99,11 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                           return BookInfoItem(
                             bookItem: bookItem,
                             onTap: () {
-                              var downloadedBook =
-                                  HiveService.getBookById(bookId: bookItem.id);
+                            
                               Navigator.pushNamed(
                                 context,
                                 RouteNames.bookDetail,
-                                arguments: [
-                                  downloadedBook == null ? bookItem : null,
-                                  downloadedBook
-                                ],
+                                arguments: bookItem,
                               );
                             },
                           );
