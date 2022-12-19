@@ -1,3 +1,4 @@
+import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/data/service/models/downloaded_book/downloaded_book_model.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
@@ -93,7 +94,10 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                         },
                       ),
                     ),
-                    BookDetailInfoItem(bookItem: widget.bookModel),
+                    BookDetailInfoItem(
+                      bookItem: widget.bookModel,
+                      downloadedBookModel: widget.downloadedBookModel,
+                    ),
                     SizedBox(height: 20.h),
                     Row(
                       children: [
@@ -115,7 +119,9 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                           ),
                         ),
                         SizedBox(width: 20.w),
-                        widget.downloadedBookModel != null
+                        !HiveService.isExist(
+                                bookId: widget.downloadedBookModel?.id ??
+                                    widget.bookModel!.id)
                             ? DownloadButton(bookModel: widget.bookModel!)
                             : const SizedBox(),
                       ],
