@@ -32,12 +32,16 @@ class DownloadedBooksScreen extends StatelessWidget {
             backgroundColor: MyColors.white,
             appBar: SimpleAppBar(
               title: 'Downloaded books',
-              backButton: !(state.connectivityResult == ConnectivityResult.none),
+              backButton:
+                  !(state.connectivityResult == ConnectivityResult.none),
             ),
-            body: downloadedBooks.isEmpty
-                ? const NoBookItem()
-                : ListView(
-                    children: List.generate(
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  if (downloadedBooks.isEmpty)
+                    const NoBookItem()
+                  else
+                    ...List.generate(
                       downloadedBooks.length,
                       (index) => Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -52,8 +56,10 @@ class DownloadedBooksScreen extends StatelessWidget {
                           bookItem: downloadedBooks[index],
                         ),
                       ),
-                    ),
-                  ),
+                    )
+                ],
+              ),
+            ),
           ),
         );
       },

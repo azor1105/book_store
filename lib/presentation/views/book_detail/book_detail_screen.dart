@@ -1,3 +1,4 @@
+import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
@@ -10,7 +11,6 @@ import 'package:book_store/presentation/views/book_detail/widgets/save_button.da
 import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
 import 'package:book_store/presentation/widgets/buttons/simple_text_button.dart';
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,7 +40,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: SaveBookButton(
                 bookId: widget.bookModel.id,
-                userId: context.read<User?>()!.uid,
+                userId: context.read<AppCubit>().state.user!.uid,
               ),
             ),
           ),
