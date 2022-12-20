@@ -1,6 +1,6 @@
+import 'package:book_store/data/repositories/book_repository.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:book_store/providers/book_provider.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/search_delegate/widget/result_book_item.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/search_delegate/widget/suggestion_item.dart';
@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../../utils/my_colors.dart';
 import '../../../../../utils/my_icons.dart';
 
@@ -75,7 +74,7 @@ class SearchDelegateScreen extends SearchDelegate {
     return query != ""
         ? StreamBuilder<List<BookModel>>(
             stream: context
-                .read<BookProvider>()
+                .read<BookRepository>()
                 .getBooksBySearchText(searchText: query.toLowerCase()),
             builder: (context, snapshot) {
               if (snapshot.hasData) {

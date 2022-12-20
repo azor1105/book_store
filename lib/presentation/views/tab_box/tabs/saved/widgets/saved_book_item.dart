@@ -1,4 +1,5 @@
 import 'package:book_store/data/models/book/book_model.dart';
+import 'package:book_store/data/repositories/book_repository.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/presentation/widgets/shimmers/rectangle_shimmer_item.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/saved/widgets/shimmer_saved_book_item.dart';
@@ -7,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../providers/book_provider.dart';
 import '../../../../../utils/my_colors.dart';
 import '../../../../../utils/my_fonts.dart';
 import '../../../../../utils/my_icons.dart';
@@ -22,18 +22,17 @@ class SavedBookItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<BookModel>(
-      future: context.read<BookProvider>().getBookByIdFuture(bookId: bookId),
+      future: context.read<BookRepository>().getBookByIdFuture(bookId: bookId),
       builder: (context, futureSnapshot) {
         if (futureSnapshot.hasData) {
           BookModel bookItem = futureSnapshot.data!;
           return GestureDetector(
             onTap: () {
-             
-                          Navigator.pushNamed(
-                            context,
-                            RouteNames.bookDetail,
-                            arguments: bookItem,
-                          );
+              Navigator.pushNamed(
+                context,
+                RouteNames.bookDetail,
+                arguments: bookItem,
+              );
             },
             child: Container(
               margin: EdgeInsets.symmetric(vertical: 10.h),
@@ -103,7 +102,10 @@ class SavedBookItem extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: onDeleteTap,
-                              child: SvgPicture.asset(MyIcons.deleteIcon, height: 18.h,),
+                              child: SvgPicture.asset(
+                                MyIcons.deleteIcon,
+                                height: 18.h,
+                              ),
                             ),
                           ],
                         ),

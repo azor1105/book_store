@@ -1,4 +1,5 @@
 import 'package:book_store/cubits/author/author_cubit.dart';
+import 'package:book_store/cubits/book/book_cubit.dart';
 import 'package:book_store/cubits/category/category_cubit.dart';
 import 'package:book_store/data/models/status.dart';
 import 'package:book_store/data/repositories/author_repository.dart';
@@ -16,8 +17,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../data/models/book/book_model.dart';
-import '../../../../../providers/book_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,15 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.white,
-      body: StreamBuilder<List<BookModel>>(
-        stream: context.read<BookProvider>().getAllBooks(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error.toString()),
-            );
-          } else if (snapshot.hasData) {
-            final books = snapshot.data!;
+      body: BlocBuilder<BookCubit, BookState>(
+        builder: (context, state) {
+          if (state.status == Status.success) {
             return SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Column(
@@ -59,14 +52,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   CarouselSlider.builder(
-                    itemCount: books.length,
+                    itemCount: state.allBooks.length,
                     itemBuilder: (context, index, realIndex) {
                       return CarouselItem(
                         onTap: () {
-                          Navigator.pushNamed(context, RouteNames.bookDetail,
-                              arguments: books[index]);
+                          Navigator.pushNamed(
+                            context,
+                            RouteNames.bookDetail,
+                            arguments: state.allBooks[index],
+                          );
                         },
-                        bookItem: books[index],
+                        bookItem: state.allBooks[index],
                         visible: selectedIndexItemOnCarousel == index,
                       );
                     },
@@ -105,6 +101,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 state.categories.length,
                                 (index) => CategoryItem(
                                   onTap: () {
+                                    context.read<BookCubit>().getCategoryBooks(
+                                          categoryId:
+                                              state.categories[index].id,
+                                        );
                                     Navigator.pushNamed(
                                       context,
                                       RouteNames.categoryBook,
@@ -147,6 +147,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   authorName:
                                       state.authors[index].authorFullName,
                                   onTap: () {
+                                    context.read<BookCubit>().getAuthorBooks(
+                                          authorId: state.authors[index].id,
+                                        );
                                     Navigator.pushNamed(
                                       context,
                                       RouteNames.authorBook,

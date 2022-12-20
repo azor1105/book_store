@@ -1,6 +1,8 @@
+import 'package:book_store/cubits/book/book_cubit.dart';
 import 'package:book_store/cubits/connectivity/connectivity_cubit.dart';
 import 'package:book_store/cubits/download/download_cubit.dart';
 import 'package:book_store/data/local_data/local_data.dart';
+import 'package:book_store/data/repositories/book_repository.dart';
 import 'package:book_store/presentation/router/router.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
@@ -9,7 +11,6 @@ import 'package:book_store/presentation/views/no_internet/no_internet_screen.dar
 import 'package:book_store/presentation/views/on_boarding/main_on_boarding_screen.dart';
 import 'package:book_store/presentation/views/tab_box/tab_box_screen.dart';
 import 'package:book_store/providers/auth_provider.dart';
-import 'package:book_store/providers/book_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
@@ -24,46 +25,61 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-    return MultiBlocProvider(
+    return MultiRepositoryProvider(
       providers: [
-        BlocProvider(
-          create: (context) => DownloadCubit(
-            dio: Dio(),
-          ),
+        RepositoryProvider(
+          create: (context) => FirebaseFirestore.instance,
         ),
-        BlocProvider(
-          create: (context) => ConnectivityCubit(),
+        RepositoryProvider(
+          create: (context) => BookRepository(
+            firestore: context.read<FirebaseFirestore>(),
+          ),
         ),
       ],
-      child: MultiProvider(
+      child: MultiBlocProvider(
         providers: [
-          Provider<BookProvider>(
-            create: (context) => BookProvider(firestore: firestore),
+          BlocProvider(
+            create: (context) => DownloadCubit(
+              dio: Dio(),
+            ),
           ),
-          Provider<AuthProvider>(
-            create: (_) => AuthProvider(auth: FirebaseAuth.instance),
+          BlocProvider(
+            create: (context) => ConnectivityCubit(),
           ),
-          StreamProvider(
-            create: (context) => context.read<AuthProvider>().authState,
-            initialData: null,
-          ),
-          StreamProvider(
-            create: (context) => context.read<AuthProvider>().userInfoChanges,
-            initialData: null,
+          BlocProvider(
+            create: (context) => BookCubit(
+              bookRepository: BookRepository(
+                firestore: context.read<FirebaseFirestore>(),
+              ),
+            )..getBooks(),
           ),
         ],
-        child: ScreenUtilInit(
-          splitScreenMode: true,
-          minTextAdapt: true,
-          designSize: const Size(375, 812),
-          builder: (context, child) {
-            return const MaterialApp(
-              debugShowCheckedModeBanner: false,
-              onGenerateRoute: Routes.generateRoute,
-              initialRoute: RouteNames.splash,
-            );
-          },
+        child: MultiProvider(
+          providers: [
+            Provider<AuthProvider>(
+              create: (context) => AuthProvider(auth: FirebaseAuth.instance),
+            ),
+            StreamProvider(
+              create: (context) => context.read<AuthProvider>().authState,
+              initialData: null,
+            ),
+            StreamProvider(
+              create: (context) => context.read<AuthProvider>().userInfoChanges,
+              initialData: null,
+            ),
+          ],
+          child: ScreenUtilInit(
+            splitScreenMode: true,
+            minTextAdapt: true,
+            designSize: const Size(375, 812),
+            builder: (context, child) {
+              return const MaterialApp(
+                debugShowCheckedModeBanner: false,
+                onGenerateRoute: Routes.generateRoute,
+                initialRoute: RouteNames.splash,
+              );
+            },
+          ),
         ),
       ),
     );

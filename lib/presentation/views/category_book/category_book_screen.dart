@@ -1,13 +1,14 @@
+import 'package:book_store/cubits/book/book_cubit.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/data/models/category/category_model.dart';
+import 'package:book_store/data/models/status.dart';
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
-import 'package:book_store/providers/book_provider.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/views/category_book/widgets/category_book_img_item.dart';
 import 'package:book_store/presentation/widgets/no_books_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 import '../../utils/constants/route_names.dart';
 import '../../widgets/book_info_item.dart';
 
@@ -40,12 +41,9 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
     });
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<BookModel>>(
-      stream: context
-          .read<BookProvider>()
-          .getBooksByCategoryId(categoryId: widget.categoryModel.id),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
+    return BlocBuilder<BookCubit, BookState>(
+      builder: (context, state) {
+        if (state.status == Status.success) {
           return Scaffold(
             backgroundColor: MyColors.white,
             appBar: SimpleAppBar(
@@ -68,14 +66,14 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
                     ),
                   ),
                   Visibility(
-                    visible: snapshot.data!.isNotEmpty,
+                    visible: state.categoryBooks.isNotEmpty,
                     child: AnimatedOpacity(
                       opacity: animateOpacity ? 1.0 : 0.0,
                       duration: const Duration(milliseconds: 500),
                       child: GridView.builder(
                         shrinkWrap: true,
                         physics: const ClampingScrollPhysics(),
-                        itemCount: snapshot.data!.length,
+                        itemCount: state.categoryBooks.length,
                         padding: EdgeInsets.all(25.sp),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
@@ -84,7 +82,7 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
                           childAspectRatio: 0.45.h,
                         ),
                         itemBuilder: (context, index) {
-                          BookModel bookItem = snapshot.data![index];
+                          BookModel bookItem =  state.categoryBooks[index];
                           return BookInfoItem(
                             bookItem: bookItem,
                             onTap: () {
@@ -101,7 +99,7 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
                     ),
                   ),
                   Visibility(
-                    visible: snapshot.data!.isEmpty,
+                    visible:  state.categoryBooks.isEmpty,
                     child: AnimatedOpacity(
                       opacity: animateOpacity ? 1.0 : 0.0,
                       duration: const Duration(seconds: 2),

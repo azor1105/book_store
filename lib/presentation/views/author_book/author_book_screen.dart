@@ -1,17 +1,18 @@
+import 'package:book_store/cubits/book/book_cubit.dart';
+import 'package:book_store/data/models/status.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/author/author_model.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/widgets/shimmers/circle_shimmer_item.dart';
-import 'package:book_store/providers/book_provider.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/widgets/book_info_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 
 class AuhtorBookScreen extends StatefulWidget {
   const AuhtorBookScreen({
@@ -28,13 +29,9 @@ class AuhtorBookScreen extends StatefulWidget {
 class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<BookModel>>(
-      stream: context
-          .read<BookProvider>()
-          .getBooksByAuhtorId(authorId: widget.author.id),
-      initialData: null,
-      builder: (BuildContext context, snapshot) {
-        if (snapshot.hasData) {
+    return BlocBuilder<BookCubit, BookState>(
+      builder: (BuildContext context, state) {
+        if (state.status == Status.success) {
           return Scaffold(
             backgroundColor: MyColors.white,
             body: SafeArea(
@@ -77,7 +74,7 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                             ),
                             SizedBox(height: 10.h),
                             Text(
-                              "${snapshot.data!.length} books",
+                              "${state.authorBooks.length} books",
                               style: MyFonts.w400.copyWith(
                                 fontSize: 13.sp,
                                 color: Colors.grey,
@@ -94,7 +91,7 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                     sliver: SliverGrid(
                       delegate: SliverChildBuilderDelegate(
                         (context, index) {
-                          BookModel bookItem = snapshot.data![index];
+                          BookModel bookItem = state.authorBooks[index];
                           return BookInfoItem(
                             bookItem: bookItem,
                             onTap: () {
@@ -107,7 +104,7 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                             },
                           );
                         },
-                        childCount: snapshot.data!.length,
+                        childCount: state.authorBooks.length,
                       ),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
