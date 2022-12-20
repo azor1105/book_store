@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/data/service/hive/hive_service.dart';
-import 'package:book_store/data/service/models/downloaded_book/downloaded_book_model.dart';
+import 'package:book_store/data/service/hive/models/downloaded_book/downloaded_book_model.dart';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';

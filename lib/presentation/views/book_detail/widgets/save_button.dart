@@ -1,15 +1,16 @@
 import 'package:book_store/cubits/connectivity/connectivity_cubit.dart';
+import 'package:book_store/data/repositories/saved_book_repository.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../data/models/saved_book/saved_book_model.dart';
-import '../../../../providers/saved_book_provider.dart';
 import '../../../utils/my_colors.dart';
 import '../../../utils/my_icons.dart';
 
 class SaveBookButton extends StatelessWidget {
-  const         SaveBookButton({
+  const SaveBookButton({
     super.key,
     required this.bookId,
     required this.userId,
@@ -17,6 +18,9 @@ class SaveBookButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var savedBookRepository = SavedBookRepository(
+      firestore: FirebaseFirestore.instance,
+    );
     return BlocBuilder<ConnectivityCubit, ConnectivityState>(
       buildWhen: (previous, current) {
         return previous.connectivityResult != current.connectivityResult;
@@ -26,17 +30,15 @@ class SaveBookButton extends StatelessWidget {
           return const SizedBox();
         } else {
           return StreamBuilder<List<SavedBookModel>>(
-            stream: context
-                .read<SavedBookProvider>()
-                .isExistBook(bookId: bookId, userId: userId),
+            stream:
+                savedBookRepository.isExistBook(bookId: bookId, userId: userId),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
                   return IconButton(
                     onPressed: () async {
-                      context
-                          .read<SavedBookProvider>()
-                          .addBookToSavedBooks(userId: userId, bookId: bookId);
+                      savedBookRepository.addBookToSavedBooks(
+                          userId: userId, bookId: bookId);
                     },
                     icon: Image.asset(
                       MyIcons.unselectedSaveIcon,
@@ -47,9 +49,8 @@ class SaveBookButton extends StatelessWidget {
                 } else {
                   return IconButton(
                     onPressed: () async {
-                      context
-                          .read<SavedBookProvider>()
-                          .deleteSavedBook(docId: snapshot.data![0].id);
+                      savedBookRepository.deleteSavedBook(
+                          docId: snapshot.data![0].id);
                     },
                     icon: Image.asset(
                       MyIcons.selectedSaveIcon,

@@ -1,5 +1,4 @@
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:book_store/data/service/models/downloaded_book/downloaded_book_model.dart';
 import 'package:book_store/presentation/widgets/shimmers/rectangle_shimmer_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +9,7 @@ import '../../../utils/my_fonts.dart';
 class BookDetailItem extends StatelessWidget {
   const BookDetailItem({
     super.key,
-    this.bookItem,
-    this.downloadedBookModel,
+    required this.bookItem,
   });
 
   @override
@@ -32,11 +30,11 @@ class BookDetailItem extends StatelessWidget {
             ],
           ),
           child: Hero(
-            tag: downloadedBookModel?.id ?? bookItem!.id,
+            tag: bookItem.id,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
               child: CachedNetworkImage(
-                  imageUrl: downloadedBookModel?.image ?? bookItem!.image,
+                  imageUrl: bookItem.image,
                   height: 200.h,
                   placeholder: (context, url) {
                     return RectangleShimmerItem(
@@ -52,7 +50,7 @@ class BookDetailItem extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
             child: Text(
-              downloadedBookModel?.bookName ?? bookItem!.bookName,
+              bookItem.bookName,
               style: MyFonts.w600,
               textAlign: TextAlign.center,
               maxLines: 3,
@@ -62,7 +60,7 @@ class BookDetailItem extends StatelessWidget {
         SizedBox(height: 4.h),
         Center(
           child: Text(
-            downloadedBookModel?.authorName ?? bookItem!.authorName,
+            bookItem.authorName,
             style: MyFonts.w300.copyWith(
               fontSize: 21.sp,
               color: MyColors.blackWithOpacity063,
@@ -73,6 +71,5 @@ class BookDetailItem extends StatelessWidget {
     );
   }
 
-  final BookModel? bookItem;
-  final DownloadedBookModel? downloadedBookModel;
+  final BookModel bookItem;
 }

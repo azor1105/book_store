@@ -9,10 +9,7 @@ import 'package:book_store/presentation/views/no_internet/no_internet_screen.dar
 import 'package:book_store/presentation/views/on_boarding/main_on_boarding_screen.dart';
 import 'package:book_store/presentation/views/tab_box/tab_box_screen.dart';
 import 'package:book_store/providers/auth_provider.dart';
-import 'package:book_store/providers/author_provider.dart';
 import 'package:book_store/providers/book_provider.dart';
-import 'package:book_store/providers/category_provider.dart';
-import 'package:book_store/providers/saved_book_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
@@ -41,15 +38,6 @@ class App extends StatelessWidget {
       ],
       child: MultiProvider(
         providers: [
-          Provider<SavedBookProvider>(
-            create: (context) => SavedBookProvider(firestore: firestore),
-          ),
-          Provider<CategoryProvider>(
-            create: (context) => CategoryProvider(firestore: firestore),
-          ),
-          Provider<AuthorProvider>(
-            create: (context) => AuthorProvider(firebaseFirestore: firestore),
-          ),
           Provider<BookProvider>(
             create: (context) => BookProvider(firestore: firestore),
           ),
