@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:book_store/data/service/hive/models/downloaded_book/downloaded_book_model.dart';
 import 'package:book_store/presentation/utils/constants/hive_constants.dart';
 import 'package:hive/hive.dart';
@@ -47,5 +49,15 @@ class HiveService {
       }
     }
     return null;
+  }
+
+  static Future<void> deleteBook({required String bookId}) async {
+    var book = getBookById(bookId: bookId)!;
+    try {
+      File(book.bookPath).delete();
+    } catch (e) {
+      throw Exception(e);
+    }
+    book.delete();
   }
 }

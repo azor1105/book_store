@@ -4,21 +4,30 @@ import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
+import 'package:book_store/presentation/widgets/buttons/outlined_text_button.dart';
+import 'package:book_store/presentation/widgets/buttons/text_button_with_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DownloadButton extends StatelessWidget {
+class DownloadButton extends StatefulWidget {
   const DownloadButton({super.key, required this.bookModel});
 
+  @override
+  State<DownloadButton> createState() => _DownloadButtonState();
+
+  final BookModel bookModel;
+}
+
+class _DownloadButtonState extends State<DownloadButton> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DownloadCubit, DownloadState>(
       builder: (context, state) {
-        bool isDownloaded = HiveService.isExist(bookId: bookModel.id);
+        bool isDownloaded = HiveService.isExist(bookId: widget.bookModel.id);
         var downloadTask = state.downloadTasks
             .where(
-              (task) => task.bookModel.id == bookModel.id,
+              (task) => task.bookModel.id == widget.bookModel.id,
             )
             .toList();
         return Container(
@@ -52,7 +61,51 @@ class DownloadButton extends StatelessWidget {
                   MyUtils.getMyToast(message: 'Downloading started');
                   context
                       .read<DownloadCubit>()
-                      .downloadFile(bookModel: bookModel);
+                      .downloadFile(bookModel: widget.bookModel);
+                } else {
+                  showDialog(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text(
+                        'Are you sure to delete this book?',
+                        style: MyFonts.w500.copyWith(fontSize: 16.sp),
+                      ),
+                      actions: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: MyOutlinedButton(
+                                width: double.infinity,
+                                title: Text(
+                                  "cancel",
+                                  style: MyFonts.w400
+                                      .copyWith(color: MyColors.c8687E7),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                height: 40.h,
+                              ),
+                            ),
+                            SizedBox(width: 20.w),
+                            Expanded(
+                              child: TextButtonWithBackground(
+                                height: 40.h,
+                                onPressed: () async {
+                                  HiveService.deleteBook(
+                                      bookId: widget.bookModel.id);
+                                  Navigator.of(context).pop();
+                                  setState(() {});
+                                },
+                                title: "delete",
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  );
                 }
               },
               child: downloadTask.isEmpty ||
@@ -90,6 +143,4 @@ class DownloadButton extends StatelessWidget {
       },
     );
   }
-
-  final BookModel bookModel;
 }
