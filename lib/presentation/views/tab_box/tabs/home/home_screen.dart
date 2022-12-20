@@ -33,6 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: MyColors.white,
       body: BlocBuilder<BookCubit, BookState>(
+        buildWhen: (previous, current) {
+          return previous.allBooks.length != current.allBooks.length;
+        },
         builder: (context, state) {
           if (state.status == Status.success) {
             return SingleChildScrollView(
@@ -89,6 +92,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     )..getCategories(),
                     child: BlocBuilder<CategoryCubit, CategoryState>(
+                      buildWhen: (previous, current) {
+                        return previous.categories.length !=
+                            current.categories.length;
+                      },
                       builder: (context, state) {
                         if (state.status == Status.success) {
                           return SizedBox(
@@ -133,6 +140,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     )..getAuthors(),
                     child: BlocBuilder<AuthorCubit, AuthorState>(
+                      buildWhen: (previous, current) {
+                        return previous.authors.length !=
+                            current.authors.length;
+                      },
                       builder: (context, state) {
                         if (state.status == Status.success) {
                           return SizedBox(

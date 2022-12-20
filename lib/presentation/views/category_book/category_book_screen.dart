@@ -42,6 +42,9 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BookCubit, BookState>(
+      buildWhen: (previous, current) {
+        return previous.categoryBooks.length != current.categoryBooks.length;
+      },
       builder: (context, state) {
         if (state.status == Status.success) {
           return Scaffold(
@@ -82,11 +85,10 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
                           childAspectRatio: 0.45.h,
                         ),
                         itemBuilder: (context, index) {
-                          BookModel bookItem =  state.categoryBooks[index];
+                          BookModel bookItem = state.categoryBooks[index];
                           return BookInfoItem(
                             bookItem: bookItem,
                             onTap: () {
-                              
                               Navigator.pushNamed(
                                 context,
                                 RouteNames.bookDetail,
@@ -99,7 +101,7 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
                     ),
                   ),
                   Visibility(
-                    visible:  state.categoryBooks.isEmpty,
+                    visible: state.categoryBooks.isEmpty,
                     child: AnimatedOpacity(
                       opacity: animateOpacity ? 1.0 : 0.0,
                       duration: const Duration(seconds: 2),
