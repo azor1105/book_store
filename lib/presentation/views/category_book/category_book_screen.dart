@@ -42,9 +42,6 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BookCubit, BookState>(
-      buildWhen: (previous, current) {
-        return previous.categoryBooks.length != current.categoryBooks.length;
-      },
       builder: (context, state) {
         if (state.status == Status.success) {
           return Scaffold(

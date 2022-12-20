@@ -32,10 +32,6 @@ class SavedBooksScreen extends StatelessWidget {
           children: [
             Expanded(
               child: BlocBuilder<SavedBookCubit, SavedBookState>(
-                buildWhen: (previous, current) {
-                  return previous.savedBooks.length !=
-                      current.savedBooks.length;
-                },
                 builder: (context, state) {
                   if (state.status == Status.loading) {
                     return const Center(

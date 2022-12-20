@@ -30,9 +30,6 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BookCubit, BookState>(
-      buildWhen: (previous, current) {
-        return previous.authorBooks.length != current.authorBooks.length;
-      },
       builder: (BuildContext context, state) {
         if (state.status == Status.success) {
           return Scaffold(
