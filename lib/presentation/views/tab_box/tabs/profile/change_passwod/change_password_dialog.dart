@@ -1,4 +1,4 @@
-import 'package:book_store/providers/auth_provider.dart';
+import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/widgets/buttons/text_button_with_background.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/custom_text_field.dart';
@@ -134,11 +134,11 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                         );
                       } else {
                         Navigator.of(context).pop();
-                        await context.read<AuthProvider>().updatePassword(
+                        await context.read<AuthRepository>().updatePassword(
                               context: context,
                               password: newPasswordController.text.trim(),
                             );
-                        await context.read<AuthProvider>().signOut(context);
+                        await context.read<AuthRepository>().signOut(context);
                         MyUtils.getMyToast(message: "You need to sign in");
                       }
                     },

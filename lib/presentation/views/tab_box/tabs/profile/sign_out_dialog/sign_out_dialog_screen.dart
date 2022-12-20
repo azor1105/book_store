@@ -1,4 +1,4 @@
-import 'package:book_store/providers/auth_provider.dart';
+import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/widgets/buttons/text_button_with_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,7 +63,7 @@ class SignOutDialog extends StatelessWidget {
                     height: 40.h,
                     onPressed: () async {
                       Navigator.of(context).pop();
-                      await context.read<AuthProvider>().signOut(context);
+                      await context.read<AuthRepository>().signOut(context);
                     },
                     title: "Log out",
                   ),

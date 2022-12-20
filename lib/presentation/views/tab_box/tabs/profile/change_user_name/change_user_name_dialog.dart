@@ -1,4 +1,4 @@
-import 'package:book_store/providers/auth_provider.dart';
+import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/widgets/buttons/text_button_with_background.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/custom_text_field.dart';
@@ -103,7 +103,7 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
                         } else if (!userNameIsValid) {
                           MyUtils.getMyToast(message: 'Name is wrong');
                         } else {
-                          await context.read<AuthProvider>().updateDisplayName(
+                          await context.read<AuthRepository>().updateDisplayName(
                                 context: context,
                                 displayName: userNameController.text.trim(),
                               );

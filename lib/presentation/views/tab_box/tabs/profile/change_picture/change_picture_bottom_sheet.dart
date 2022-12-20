@@ -1,4 +1,4 @@
-import 'package:book_store/providers/auth_provider.dart';
+import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
@@ -62,7 +62,7 @@ void changePictureBottomSheet(BuildContext context) {
                   var file = await getFromCamera(() {});
                   if (file != null) {
                     String imageUrl = await context
-                        .read<AuthProvider>()
+                        .read<AuthRepository>()
                         .uploadImage(file, context);
                     var user = context.read<User?>();
                     await user!.updatePhotoURL(imageUrl);
@@ -84,7 +84,7 @@ void changePictureBottomSheet(BuildContext context) {
                   var file = await getFromGallery(() {});
                   if (file != null) {
                     String imageUrl = await context
-                        .read<AuthProvider>()
+                        .read<AuthRepository>()
                         .uploadImage(file, context);
                     var user = context.read<User?>();
                     await user!.updatePhotoURL(imageUrl);

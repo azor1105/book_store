@@ -1,3 +1,4 @@
+import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/cubits/saved_book/saved_book_cubit.dart';
 import 'package:book_store/data/models/status.dart';
 import 'package:book_store/data/repositories/saved_book_repository.dart';
@@ -8,11 +9,9 @@ import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/widgets/no_books_item.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/saved/widgets/saved_book_item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
 class SavedBooksScreen extends StatelessWidget {
   const SavedBooksScreen({super.key});
@@ -25,7 +24,7 @@ class SavedBooksScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => SavedBookCubit(
         savedBookRepository: savedBookRepository,
-      )..getSavedBooks(userId: Provider.of<User?>(context, listen: false)!.uid),
+      )..getSavedBooks(userId: context.read<AppCubit>().state.user?.uid),
       child: Scaffold(
         backgroundColor: MyColors.white,
         body: Column(

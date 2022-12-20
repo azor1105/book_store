@@ -1,4 +1,4 @@
-import 'package:book_store/providers/auth_provider.dart';
+import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/auth/widgets/rich_text_auth_button.dart';
@@ -121,12 +121,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: CustomRectangleTextButton(
                     onPressed: () async {
-                      await context.read<AuthProvider>().signUp(
+                      await context.read<AuthRepository>().signUp(
                             email: emailController.text,
                             password: passwordController.text,
                             context: context,
                           );
-                      await context.read<AuthProvider>().updateDisplayName(
+                      await context.read<AuthRepository>().updateDisplayName(
                             context: context,
                             displayName: nameController.text.trim(),
                           );
