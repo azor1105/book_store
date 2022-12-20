@@ -1,9 +1,9 @@
+import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/pick_img.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -64,8 +64,11 @@ void changePictureBottomSheet(BuildContext context) {
                     String imageUrl = await context
                         .read<AuthRepository>()
                         .uploadImage(file, context);
-                    var user = context.read<User?>();
-                    await user!.updatePhotoURL(imageUrl);
+                    await context
+                        .read<AppCubit>()
+                        .state
+                        .user!
+                        .updatePhotoURL(imageUrl);
                   } else {
                     MyUtils.getMyToast(message: 'Image is not picked');
                   }
@@ -86,8 +89,11 @@ void changePictureBottomSheet(BuildContext context) {
                     String imageUrl = await context
                         .read<AuthRepository>()
                         .uploadImage(file, context);
-                    var user = context.read<User?>();
-                    await user!.updatePhotoURL(imageUrl);
+                    await context
+                        .read<AppCubit>()
+                        .state
+                        .user!
+                        .updatePhotoURL(imageUrl);
                   } else {
                     MyUtils.getMyToast(message: 'Image is not picked');
                   }
