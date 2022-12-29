@@ -1,4 +1,4 @@
-import 'package:book_store/cubits/connectivity/connectivity_cubit.dart';
+import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/cubits/downloaded_books/downloaded_books_cubit.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
@@ -19,19 +19,19 @@ class DownloadedBooksScreen extends StatelessWidget {
       create: (context) => DownloadedBooksCubit()..getBooks(),
       child: BlocBuilder<DownloadedBooksCubit, DownloadedBooksState>(
         builder: (context, bookState) {
-          return BlocBuilder<ConnectivityCubit, ConnectivityState>(
+          return BlocBuilder<AppCubit, AppState>(
             buildWhen: (previous, current) {
               return previous.connectivityResult != current.connectivityResult;
             },
-            builder: (context, connectState) {
+            builder: (context, appState) {
               return WillPopScope(
-                onWillPop: () async => !(connectState.connectivityResult ==
+                onWillPop: () async => !(appState.connectivityResult ==
                     ConnectivityResult.none),
                 child: Scaffold(
                   backgroundColor: MyColors.white,
                   appBar: SimpleAppBar(
                     title: 'Downloaded books',
-                    backButton: !(connectState.connectivityResult ==
+                    backButton: !(appState.connectivityResult ==
                         ConnectivityResult.none),
                   ),
                   body: bookState.books.isEmpty

@@ -1,4 +1,4 @@
-import 'package:book_store/cubits/connectivity/connectivity_cubit.dart';
+import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/data/repositories/saved_book_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -21,7 +21,7 @@ class SaveBookButton extends StatelessWidget {
     var savedBookRepository = SavedBookRepository(
       firestore: FirebaseFirestore.instance,
     );
-    return BlocBuilder<ConnectivityCubit, ConnectivityState>(
+    return BlocBuilder<AppCubit, AppState>(
       buildWhen: (previous, current) {
         return previous.connectivityResult != current.connectivityResult;
       },
