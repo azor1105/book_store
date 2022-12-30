@@ -66,45 +66,44 @@ class DownloadButton extends StatelessWidget {
                         style: MyFonts.w500.copyWith(fontSize: 16.sp),
                       ),
                       actions: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: MyOutlinedButton(
-                                width: double.infinity,
-                                title: Text(
-                                  "cancel",
-                                  style: MyFonts.w400
-                                      .copyWith(color: MyColors.c8687E7),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.w),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: MyOutlinedButton(
+                                  width: double.infinity,
+                                  title: 'cancel',
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  height: 40.h,
                                 ),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                height: 40.h,
                               ),
-                            ),
-                            SizedBox(width: 20.w),
-                            Expanded(
-                              child: TextButtonWithBackground(
-                                height: 40.h,
-                                onPressed: () async {
-                                  if (!isDownloaded &&
-                                      downloadTask.isNotEmpty) {
-                                    context
-                                        .read<DownloadedBooksCubit>()
-                                        .cancelDownloading(bookModel);
-                                  } else {
-                                    context
-                                        .read<DownloadedBooksCubit>()
-                                        .deleteBook(
-                                          bookId: bookModel.id,
-                                        );
-                                  }
-                                  Navigator.of(context).pop();
-                                },
-                                title: "delete",
+                              SizedBox(width: 20.w),
+                              Expanded(
+                                child: TextButtonWithBackground(
+                                  height: 40.h,
+                                  onPressed: () async {
+                                    if (!isDownloaded &&
+                                        downloadTask.isNotEmpty) {
+                                      context
+                                          .read<DownloadedBooksCubit>()
+                                          .cancelDownloading(bookModel);
+                                    } else {
+                                      context
+                                          .read<DownloadedBooksCubit>()
+                                          .deleteBook(
+                                            bookId: bookModel.id,
+                                          );
+                                    }
+                                    Navigator.of(context).pop();
+                                  },
+                                  title: "delete",
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         )
                       ],
                     ),

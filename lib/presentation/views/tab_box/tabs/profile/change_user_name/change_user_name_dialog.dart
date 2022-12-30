@@ -76,10 +76,7 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
                   Expanded(
                     child: MyOutlinedButton(
                       width: double.infinity,
-                      title: Text(
-                        "cancel",
-                        style: MyFonts.w400.copyWith(color: MyColors.c8687E7),
-                      ),
+                      title: 'cancel',
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
@@ -103,7 +100,9 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
                         } else if (!userNameIsValid) {
                           MyUtils.getMyToast(message: 'Name is wrong');
                         } else {
-                          await context.read<AuthRepository>().updateDisplayName(
+                          await context
+                              .read<AuthRepository>()
+                              .updateDisplayName(
                                 context: context,
                                 displayName: userNameController.text.trim(),
                               );

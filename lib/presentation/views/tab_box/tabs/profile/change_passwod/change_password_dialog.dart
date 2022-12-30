@@ -111,10 +111,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                 Expanded(
                   child: MyOutlinedButton(
                     width: double.infinity,
-                    title: Text(
-                      "cancel",
-                      style: MyFonts.w400.copyWith(color: MyColors.c8687E7),
-                    ),
+                    title: 'cancel',
                     onPressed: () {
                       Navigator.of(context).pop();
                     },

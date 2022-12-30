@@ -74,7 +74,7 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
             ),
           );
         }
-        if (maxPercent < percent.toInt()) {
+        if (maxPercent < percent.floor()) {
           var tasks = state.downloadTasks;
           tasks.removeWhere(
             (task) => task.bookModel.bookName == bookModel.bookName,

@@ -1,3 +1,4 @@
+import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../utils/my_colors.dart';
@@ -6,9 +7,9 @@ class MyOutlinedButton extends StatelessWidget {
   const MyOutlinedButton({
     Key? key,
     required this.width,
-    required this.title,
     required this.onPressed,
     required this.height,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -26,7 +27,11 @@ class MyOutlinedButton extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        child: title,
+        child: Text(
+          title,
+          style:
+              MyFonts.w400.copyWith(color: MyColors.c8687E7, fontSize: 16.sp),
+        ),
       ),
     );
   }
@@ -34,5 +39,5 @@ class MyOutlinedButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double height;
   final double width;
-  final Widget title;
+  final String title;
 }

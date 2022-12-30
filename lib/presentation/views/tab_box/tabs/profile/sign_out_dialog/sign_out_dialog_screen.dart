@@ -47,10 +47,7 @@ class SignOutDialog extends StatelessWidget {
                 Expanded(
                   child: MyOutlinedButton(
                     width: double.infinity,
-                    title: Text(
-                      "Cancel",
-                      style: MyFonts.w400.copyWith(color: MyColors.c8687E7),
-                    ),
+                    title: 'cancel',
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
