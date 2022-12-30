@@ -7,10 +7,8 @@ import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/pick_
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {

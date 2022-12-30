@@ -2,8 +2,8 @@ import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
 import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/views/auth/widgets/rich_text_auth_button.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -65,10 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: CustomTextField(
                   controller: emailController,
-                  validator: (email) =>
-                      email != null && !EmailValidator.validate(email)
-                          ? "Enter a valid email"
-                          : null,
+                  validator: MyUtils.validateEmail,
                   isObsecure: false,
                   hintText: "Email Address",
                 ),

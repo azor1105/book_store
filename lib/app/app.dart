@@ -13,7 +13,6 @@ import 'package:book_store/presentation/views/on_boarding/main_on_boarding_scree
 import 'package:book_store/presentation/views/tab_box/tab_box_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

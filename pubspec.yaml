@@ -31,7 +31,6 @@ dependencies:
   carousel_slider: ^4.1.1
   cupertino_icons: ^1.0.2
   easy_localization: ^3.0.1
-  email_validator: ^2.1.17
   shimmer: ^2.0.0
 
   #Business logic needs
