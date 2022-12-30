@@ -1,9 +1,6 @@
 import 'package:book_store/app/app_cubit/app_cubit.dart';
-import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
-import 'package:book_store/presentation/utils/utility_functions.dart';
-import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/pick_img.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -59,19 +56,7 @@ void changePictureBottomSheet(BuildContext context) {
               TextButton(
                 onPressed: () async {
                   Navigator.of(context).pop();
-                  var file = await getFromCamera(() {});
-                  if (file != null) {
-                    String imageUrl = await context
-                        .read<AuthRepository>()
-                        .uploadImage(file, context);
-                    await context
-                        .read<AppCubit>()
-                        .state
-                        .user!
-                        .updatePhotoURL(imageUrl);
-                  } else {
-                    MyUtils.getMyToast(message: 'Image is not picked');
-                  }
+                  context.read<AppCubit>().uploadImg();
                 },
                 child: Text(
                   "Take picture",
@@ -84,19 +69,7 @@ void changePictureBottomSheet(BuildContext context) {
               TextButton(
                 onPressed: () async {
                   Navigator.of(context).pop();
-                  var file = await getFromGallery(() {});
-                  if (file != null) {
-                    String imageUrl = await context
-                        .read<AuthRepository>()
-                        .uploadImage(file, context);
-                    await context
-                        .read<AppCubit>()
-                        .state
-                        .user!
-                        .updatePhotoURL(imageUrl);
-                  } else {
-                    MyUtils.getMyToast(message: 'Image is not picked');
-                  }
+                  context.read<AppCubit>().uploadImg(fromCamera: false);
                 },
                 child: Text(
                   "Import from gallery",

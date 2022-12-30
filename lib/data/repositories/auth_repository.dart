@@ -95,9 +95,8 @@ class AuthRepository {
 
   Stream<User?> get userInfoChanges => _auth.userChanges();
 
-  Future<String> uploadImage(
-    XFile file,
-    BuildContext context,
+  Future<void> uploadImage(
+    XFile file
   ) async {
     try {
       //1- qadam eski rasmni ochirib tashlash
@@ -118,7 +117,7 @@ class AuthRepository {
         key: SharedPrefKeys.userImgStorage,
         value: file.name,
       );
-      return downloadUrl;
+      await _auth.currentUser!.updatePhotoURL(downloadUrl);
     } on FirebaseException catch (error) {
       MyUtils.getMyToast(message: error.message.toString());
       throw Exception();

@@ -1,10 +1,15 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:book_store/data/models/status.dart';
 import 'package:book_store/data/repositories/auth_repository.dart';
+import 'package:book_store/presentation/utils/utility_functions.dart';
+import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/pick_img.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 
 part 'app_state.dart';
 
@@ -52,6 +57,22 @@ class AppCubit extends Cubit<AppState> {
         );
       },
     );
+  }
+
+  Future<void> uploadImg({bool fromCamera = true}) async {
+    late XFile? file;
+    if (fromCamera) {
+      file = await getFromCamera();
+    } else {
+      file = await getFromGallery();
+    }
+    if (file != null) {
+      emit(state.copyWith(status: Status.loading));
+      await _authRepository.uploadImage(file);
+      emit(state.copyWith(status: Status.success));
+    } else {
+      MyUtils.getMyToast(message: 'Image is not picked');
+    }
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:book_store/app/app_cubit/app_cubit.dart';
+import 'package:book_store/data/models/status.dart';
 import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
 import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
@@ -11,6 +12,7 @@ import 'package:book_store/presentation/views/tab_box/tabs/profile/sign_out_dial
 import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/log_out_button.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/profile_img_item.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/profile_option_button.dart';
+import 'package:book_store/presentation/widgets/shimmers/circle_shimmer_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,9 +43,11 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 24.h),
                   Center(
-                    child: ProfileImgItem(
-                      photoURL: state.user?.photoURL,
-                    ),
+                    child: state.status == Status.loading
+                        ? const CircleShimmerItem()
+                        : ProfileImgItem(
+                            photoURL: state.user?.photoURL,
+                          ),
                   ),
                   SizedBox(height: 10.h),
                   Center(

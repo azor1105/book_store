@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-Future<XFile?> getFromGallery(VoidCallback update) async {
+Future<XFile?> getFromGallery() async {
   final ImagePicker picker = ImagePicker();
   XFile? imageFile;
   imageFile = await picker.pickImage(
@@ -12,7 +11,7 @@ Future<XFile?> getFromGallery(VoidCallback update) async {
   return imageFile;
 }
 
-Future<XFile?> getFromCamera(VoidCallback update) async {
+Future<XFile?> getFromCamera() async {
   final ImagePicker picker = ImagePicker();
   XFile? imageFile;
   imageFile = await picker.pickImage(
