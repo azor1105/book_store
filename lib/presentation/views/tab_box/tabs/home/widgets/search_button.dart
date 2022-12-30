@@ -17,20 +17,22 @@ class SearchButton extends StatelessWidget {
         foregroundColor: MyColors.c8687E7,
       ),
       onPressed: searchOnPressed,
-      child: Row(children: [
-        Image.asset(
-          MyIcons.searchIcon,
-          height: 24.h,
-        ),
-        SizedBox(width: 30.w),
-        Text(
-          "Search",
-          style: MyFonts.w500.copyWith(
-            fontSize: 18.sp,
-            color: MyColors.blackWithOpacity063,
+      child: Row(
+        children: [
+          Image.asset(
+            MyIcons.searchIcon,
+            height: 24.h,
           ),
-        )
-      ]),
+          SizedBox(width: 30.w),
+          Text(
+            "Search",
+            style: MyFonts.w500.copyWith(
+              fontSize: 18.sp,
+              color: MyColors.blackWithOpacity063,
+            ),
+          )
+        ],
+      ),
     );
   }
 

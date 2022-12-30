@@ -1,9 +1,35 @@
 part of 'downloaded_books_cubit.dart';
 
-class DownloadedBooksState extends Equatable {
-  const DownloadedBooksState({required this.books});
-  final List<BookModel> books;
+class DownloadedBooksState {
+  const DownloadedBooksState({
+    required this.books,
+    required this.downloadTasks,
+    this.stopDowloading = false,
+  });
 
-  @override
-  List<Object> get props => [books];
+  final List<BookModel> books;
+  final List<DownloadTaskModel> downloadTasks;
+  final bool stopDowloading;
+
+  DownloadedBooksState copyWith({
+    List<BookModel>? books,
+    List<DownloadTaskModel>? downloadTasks,
+    bool? stopDowloading,
+  }) {
+    return DownloadedBooksState(
+      books: books ?? this.books,
+      downloadTasks: downloadTasks ?? this.downloadTasks,
+      stopDowloading: stopDowloading ?? this.stopDowloading,
+    );
+  }
+}
+
+class DownloadTaskModel {
+  final double progress;
+  final BookModel bookModel;
+
+  DownloadTaskModel({
+    required this.bookModel,
+    this.progress = 0.0,
+  });
 }

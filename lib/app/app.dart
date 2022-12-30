@@ -1,6 +1,6 @@
 import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/cubits/book/book_cubit.dart';
-import 'package:book_store/cubits/download/download_cubit.dart';
+import 'package:book_store/cubits/downloaded_books/downloaded_books_cubit.dart';
 import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/data/repositories/book_repository.dart';
@@ -43,13 +43,11 @@ class App extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => AppCubit(
-              authRepository: context.read<AuthRepository>(),
-            ),
+            create: (context) => DownloadedBooksCubit()..getBooks(),
           ),
           BlocProvider(
-            create: (context) => DownloadCubit(
-              dio: Dio(),
+            create: (context) => AppCubit(
+              authRepository: context.read<AuthRepository>(),
             ),
           ),
           BlocProvider(

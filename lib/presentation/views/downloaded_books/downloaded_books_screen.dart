@@ -15,51 +15,48 @@ class DownloadedBooksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => DownloadedBooksCubit()..getBooks(),
-      child: BlocBuilder<DownloadedBooksCubit, DownloadedBooksState>(
-        builder: (context, bookState) {
-          return BlocBuilder<AppCubit, AppState>(
-            buildWhen: (previous, current) {
-              return previous.connectivityResult != current.connectivityResult;
-            },
-            builder: (context, appState) {
-              return WillPopScope(
-                onWillPop: () async => !(appState.connectivityResult ==
-                    ConnectivityResult.none),
-                child: Scaffold(
-                  backgroundColor: MyColors.white,
-                  appBar: SimpleAppBar(
-                    title: 'Downloaded books',
-                    backButton: !(appState.connectivityResult ==
-                        ConnectivityResult.none),
-                  ),
-                  body: bookState.books.isEmpty
-                      ? const NoBookItem()
-                      : ListView(
-                          children: List.generate(
-                            bookState.books.length,
-                            (index) => Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20.w),
-                              child: SuggestionItem(
-                                onSuggestionTap: () {
-                                  Navigator.pushNamed(
-                                    context,
-                                    RouteNames.bookDetail,
-                                    arguments: bookState.books[index],
-                                  );
-                                },
-                                bookItem: bookState.books[index],
-                              ),
+    return BlocBuilder<DownloadedBooksCubit, DownloadedBooksState>(
+      builder: (context, bookState) {
+        return BlocBuilder<AppCubit, AppState>(
+          buildWhen: (previous, current) {
+            return previous.connectivityResult != current.connectivityResult;
+          },
+          builder: (context, appState) {
+            return WillPopScope(
+              onWillPop: () async =>
+                  !(appState.connectivityResult == ConnectivityResult.none),
+              child: Scaffold(
+                backgroundColor: MyColors.white,
+                appBar: SimpleAppBar(
+                  title: 'Downloaded books',
+                  backButton:
+                      !(appState.connectivityResult == ConnectivityResult.none),
+                ),
+                body: bookState.books.isEmpty
+                    ? const NoBookItem()
+                    : ListView(
+                        children: List.generate(
+                          bookState.books.length,
+                          (index) => Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
+                            child: SuggestionItem(
+                              onSuggestionTap: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  RouteNames.bookDetail,
+                                  arguments: bookState.books[index],
+                                );
+                              },
+                              bookItem: bookState.books[index],
                             ),
                           ),
                         ),
-                ),
-              );
-            },
-          );
-        },
-      ),
+                      ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

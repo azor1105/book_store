@@ -8,14 +8,25 @@ class HiveService {
   static Box<DownloadedBookModel> getBooks() =>
       Hive.box<DownloadedBookModel>(HiveConstants.downloadedBookBox);
 
-  static void addBook({required DownloadedBookModel downloadedBookModel}) {
+  static DownloadedBookModel addBook(
+      {required DownloadedBookModel downloadedBookModel}) {
     final downloadedBooksBox = getBooks();
     downloadedBooksBox.add(downloadedBookModel);
+    return downloadedBookModel;
   }
 
   static Future clearDownloadedBooksBox() async {
-    final addressBox = getBooks();
-    await addressBox.clear();
+    final downloadedBooksBox = getBooks();
+    await downloadedBooksBox.clear();
+  }
+
+  static void updateAt(DownloadedBookModel downloadedBookModel) {
+    final downloadedBooksBox = getBooks();
+    for (int i = 0; i < downloadedBooksBox.values.length; i++) {
+      if (downloadedBooksBox.values.toList()[i].id == downloadedBookModel.id) {
+        downloadedBooksBox.putAt(i, downloadedBookModel);
+      }
+    }
   }
 
   static bool isExist({required String bookId}) {

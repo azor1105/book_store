@@ -1,4 +1,4 @@
-import 'package:book_store/cubits/download/download_cubit.dart';
+import 'package:book_store/cubits/downloaded_books/downloaded_books_cubit.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/utils/my_colors.dart';
@@ -10,24 +10,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DownloadButton extends StatefulWidget {
+class DownloadButton extends StatelessWidget {
   const DownloadButton({super.key, required this.bookModel});
-
-  @override
-  State<DownloadButton> createState() => _DownloadButtonState();
-
   final BookModel bookModel;
-}
 
-class _DownloadButtonState extends State<DownloadButton> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DownloadCubit, DownloadState>(
+    return BlocBuilder<DownloadedBooksCubit, DownloadedBooksState>(
       builder: (context, state) {
-        bool isDownloaded = HiveService.isExist(bookId: widget.bookModel.id);
+        bool isDownloaded = HiveService.isExist(bookId: bookModel.id);
         var downloadTask = state.downloadTasks
             .where(
-              (task) => task.bookModel.id == widget.bookModel.id,
+              (task) => task.bookModel.id == bookModel.id,
             )
             .toList();
         return Container(
@@ -57,11 +51,11 @@ class _DownloadButtonState extends State<DownloadButton> {
                 ),
               ),
               onPressed: () {
-                if (!isDownloaded) {
+                if (!isDownloaded && downloadTask.isEmpty) {
                   MyUtils.getMyToast(message: 'Downloading started');
                   context
-                      .read<DownloadCubit>()
-                      .downloadFile(bookModel: widget.bookModel);
+                      .read<DownloadedBooksCubit>()
+                      .downloadFile(bookModel: bookModel);
                 } else {
                   showDialog(
                     barrierDismissible: false,
@@ -93,10 +87,14 @@ class _DownloadButtonState extends State<DownloadButton> {
                               child: TextButtonWithBackground(
                                 height: 40.h,
                                 onPressed: () async {
-                                  HiveService.deleteBook(
-                                      bookId: widget.bookModel.id);
+                                  context
+                                      .read<DownloadedBooksCubit>()
+                                      .deleteBook(
+                                        bookId: bookModel.id,
+                                        stopDownloading: !isDownloaded &&
+                                            downloadTask.isNotEmpty,
+                                      );
                                   Navigator.of(context).pop();
-                                  setState(() {});
                                 },
                                 title: "delete",
                               ),
