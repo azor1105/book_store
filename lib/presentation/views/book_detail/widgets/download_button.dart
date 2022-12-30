@@ -87,13 +87,18 @@ class DownloadButton extends StatelessWidget {
                               child: TextButtonWithBackground(
                                 height: 40.h,
                                 onPressed: () async {
-                                  context
-                                      .read<DownloadedBooksCubit>()
-                                      .deleteBook(
-                                        bookId: bookModel.id,
-                                        stopDownloading: !isDownloaded &&
-                                            downloadTask.isNotEmpty,
-                                      );
+                                  if (!isDownloaded &&
+                                      downloadTask.isNotEmpty) {
+                                    context
+                                        .read<DownloadedBooksCubit>()
+                                        .cancelDownloading(bookModel);
+                                  } else {
+                                    context
+                                        .read<DownloadedBooksCubit>()
+                                        .deleteBook(
+                                          bookId: bookModel.id,
+                                        );
+                                  }
                                   Navigator.of(context).pop();
                                 },
                                 title: "delete",

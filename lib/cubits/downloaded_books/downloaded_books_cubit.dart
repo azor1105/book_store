@@ -11,6 +11,8 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
   DownloadedBooksCubit()
       : super(DownloadedBooksState(books: [], downloadTasks: []));
 
+  CancelToken cancelToken = CancelToken();
+
   void getBooks() {
     var books = HiveService.getBooks()
         .values
@@ -19,9 +21,18 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
     emit(state.copyWith(books: books));
   }
 
+  void cancelDownloading(BookModel bookModel) {
+    var tasks = state.downloadTasks;
+    tasks.removeWhere(
+      (task) => task.bookModel.bookName == bookModel.bookName,
+    );
+    cancelToken.cancel('Xato bermasngchi. Ha maylin sokish yozmiman.');
+    cancelToken = CancelToken();
+    emit(state.copyWith(downloadTasks: tasks));
+  }
+
   void deleteBook({
     required String bookId,
-    bool stopDownloading = false,
   }) async {
     await HiveService.deleteBook(bookId: bookId);
     getBooks();
@@ -41,10 +52,9 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
     String path = '${documentDir.path}/${bookModel.id}.pdf';
     try {
       int maxPercent = 0;
-      await Dio().download(bookModel.bookUrl, path,
+      await Dio().download(bookModel.bookUrl, path, cancelToken: cancelToken,
           onReceiveProgress: (received, total) {
         double percent = received / total * 100;
-        print(maxPercent);
         if (percent == 100) {
           HiveService.addBook(
             downloadedBookModel: DownloadedBookModel(
@@ -78,7 +88,7 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
       });
       getBooks();
     } catch (e) {
-      throw Exception(e);
+      return;
     }
   }
 }

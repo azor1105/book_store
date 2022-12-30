@@ -4,12 +4,10 @@ class DownloadedBooksState {
   const DownloadedBooksState({
     required this.books,
     required this.downloadTasks,
-    this.stopDowloading = false,
   });
 
   final List<BookModel> books;
   final List<DownloadTaskModel> downloadTasks;
-  final bool stopDowloading;
 
   DownloadedBooksState copyWith({
     List<BookModel>? books,
@@ -19,7 +17,6 @@ class DownloadedBooksState {
     return DownloadedBooksState(
       books: books ?? this.books,
       downloadTasks: downloadTasks ?? this.downloadTasks,
-      stopDowloading: stopDowloading ?? this.stopDowloading,
     );
   }
 }
