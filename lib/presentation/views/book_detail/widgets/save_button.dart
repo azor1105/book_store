@@ -1,4 +1,5 @@
 import 'package:book_store/app/app_cubit/app_cubit.dart';
+import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/data/repositories/saved_book_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -12,7 +13,7 @@ import '../../../utils/my_icons.dart';
 class SaveBookButton extends StatelessWidget {
   const SaveBookButton({
     super.key,
-    required this.bookId,
+    required this.bookModel,
     required this.userId,
   });
 
@@ -30,15 +31,15 @@ class SaveBookButton extends StatelessWidget {
           return const SizedBox();
         } else {
           return StreamBuilder<List<SavedBookModel>>(
-            stream:
-                savedBookRepository.isExistBook(bookId: bookId, userId: userId),
+            stream: savedBookRepository.isExistBook(
+                bookId: bookModel.id, userId: userId),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
                   return IconButton(
                     onPressed: () async {
                       savedBookRepository.addBookToSavedBooks(
-                          userId: userId, bookId: bookId);
+                          userId: userId, bookModel: bookModel);
                     },
                     icon: Image.asset(
                       MyIcons.unselectedSaveIcon,
@@ -75,6 +76,6 @@ class SaveBookButton extends StatelessWidget {
     );
   }
 
-  final String bookId;
+  final BookModel bookModel;
   final String userId;
 }

@@ -39,7 +39,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: SaveBookButton(
-                bookId: widget.bookModel.id,
+                bookModel: widget.bookModel,
                 userId: context.read<AppCubit>().state.user!.uid,
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:book_store/data/models/saved_book/saved_book_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'book_model.g.dart';
@@ -54,6 +55,21 @@ class BookModel {
     required this.authorName,
     required this.categoryName,
   });
+
+  static BookModel fromSavedBook(SavedBookModel savedBookModel) => BookModel(
+        authorId: savedBookModel.authorId,
+        bookName: savedBookModel.bookName,
+        bookUrl: savedBookModel.bookUrl,
+        categoryId: savedBookModel.categoryId,
+        description: savedBookModel.description,
+        id: savedBookModel.bookId,
+        image: savedBookModel.image,
+        language: savedBookModel.language,
+        pagesCount: savedBookModel.pagesCount,
+        publishedDate: savedBookModel.publishedDate,
+        authorName: savedBookModel.authorName,
+        categoryName: savedBookModel.categoryName,
+      );
 
   factory BookModel.fromJson(Map<String, dynamic> json) =>
       _$BookModelFromJson(json);
