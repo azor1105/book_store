@@ -11,14 +11,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+       
   #Firebase
   cloud_firestore: ^3.4.7
   firebase_app_check: ^0.0.7+1
   firebase_auth: ^3.8.0
   firebase_core: ^1.22.0
   firebase_storage: ^10.3.8
- 
+
   #UI needs
   flutter_screenutil: ^5.5.4
   syncfusion_flutter_pdfviewer: ^20.3.59
@@ -31,6 +31,7 @@ dependencies:
   carousel_slider: ^4.1.1
   cupertino_icons: ^1.0.2
   shimmer: ^2.0.0
+  flutter_native_splash: ^2.2.16
 
   #Business logic needs
   json_serializable: ^6.3.1
@@ -53,6 +54,11 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+
+flutter_native_splash:
+  image: assets/images/splash_logo.png
+  color: "#FFFFFF"
+  android_disable_fullscreen: true
 
 flutter:
 
