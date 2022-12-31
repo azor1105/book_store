@@ -11,7 +11,6 @@ import 'package:book_store/presentation/views/downloaded_books/downloaded_books_
 import 'package:book_store/presentation/views/no_internet/no_internet_screen.dart';
 import 'package:book_store/presentation/views/on_boarding/main_on_boarding_screen.dart';
 import 'package:book_store/presentation/views/pdf_viewer/pdf_viewer_screen.dart';
-import 'package:book_store/presentation/views/splash/splash_screen.dart';
 import 'package:book_store/presentation/views/tab_box/tab_box_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -25,10 +24,6 @@ class Routes {
       case RouteNames.noInternet:
         return MaterialPageRoute(
           builder: (_) => const NoInternetScreen(),
-        );
-      case RouteNames.splash:
-        return MaterialPageRoute(
-          builder: (_) => const SplashScreen(),
         );
       case RouteNames.main:
         return MaterialPageRoute(

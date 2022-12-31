@@ -1,5 +1,4 @@
 class RouteNames {
-  static const String splash = "/";
   static const String auth = "/auth";
   static const String main = "/main";
   static const String tabBox = "/tab_box";

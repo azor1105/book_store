@@ -5,7 +5,6 @@ import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/data/repositories/book_repository.dart';
 import 'package:book_store/presentation/router/router.dart';
-import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
 import 'package:book_store/presentation/views/auth/auth_screen.dart';
 import 'package:book_store/presentation/views/no_internet/no_internet_screen.dart';
@@ -66,7 +65,7 @@ class App extends StatelessWidget {
               restorationScopeId: "root",
               debugShowCheckedModeBanner: false,
               onGenerateRoute: Routes.generateRoute,
-              initialRoute: RouteNames.splash,
+              home: MainScreen(),
             );
           },
         ),
