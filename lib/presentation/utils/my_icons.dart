@@ -1,6 +1,5 @@
 class MyIcons {
   // .json (lottie)
-  static const String splashLottie = "assets/lottie/splash_lottie.json";
   static const String signUpLottie = "assets/lottie/login_animation.json";
   static const String noBookLottie = "assets/lottie/no_book_lottie.json";
   static const String noInternetLottie = "assets/lottie/no_internet.json";
