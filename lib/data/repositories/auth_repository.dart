@@ -67,17 +67,6 @@ class AuthRepository {
     }
   }
 
-  Future<void> updateEmail({
-    required BuildContext context,
-    required String email,
-  }) async {
-    try {
-      await _auth.currentUser!.updateEmail(email);
-    } on FirebaseAuthException catch (e) {
-      MyUtils.showSnackBar(context, e.message);
-    }
-  }
-
   Future<void> updatePassword({
     required BuildContext context,
     required String password,
@@ -95,9 +84,7 @@ class AuthRepository {
 
   Stream<User?> get userInfoChanges => _auth.userChanges();
 
-  Future<void> uploadImage(
-    XFile file
-  ) async {
+  Future<void> uploadImage(XFile file) async {
     try {
       //1- qadam eski rasmni ochirib tashlash
       String? userImgStorage = StorageRepository.getString(
