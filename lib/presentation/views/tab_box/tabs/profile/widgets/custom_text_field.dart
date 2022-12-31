@@ -1,5 +1,5 @@
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,13 +23,13 @@ class UniversalTextField extends StatelessWidget {
       focusNode: focusNode,
       maxLength: maxLength,
       style: textStyle ??
-          MyFonts.w400.copyWith(
+          PoppinsFont.w400.copyWith(
             color: ColorConst.blackWithOpacity087,
           ),
       controller: controller,
       onSubmitted: onSubmitted,
       decoration: InputDecoration(
-        counterStyle: MyFonts.w400.copyWith(fontSize: 12.sp),
+        counterStyle: PoppinsFont.w400.copyWith(fontSize: 12.sp),
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             width: 0.8,

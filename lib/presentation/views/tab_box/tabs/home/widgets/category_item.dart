@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../utils/constants/color_const.dart';
-import '../../../../../utils/my_fonts.dart';
+import '../../../../../utils/constants/poppins_font.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({
@@ -42,7 +42,7 @@ class CategoryItem extends StatelessWidget {
               width: 80.w,
               child: Text(
                 categoryItem.categoryName,
-                style: MyFonts.w600.copyWith(
+                style: PoppinsFont.w600.copyWith(
                   fontSize: 14.sp,
                   color: ColorConst.blackWithOpacity087,
                 ),

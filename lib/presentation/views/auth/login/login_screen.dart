@@ -7,7 +7,7 @@ import 'package:book_store/presentation/views/auth/widgets/rich_text_auth_button
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../../../utils/my_fonts.dart';
+import '../../../utils/constants/poppins_font.dart';
 import '../../../utils/my_icons.dart';
 import '../../../widgets/buttons/custom_rectangle_text_button.dart';
 import '../widgets/custom_text_field.dart';
@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Center(
                   child: Text(
                     "Log in",
-                    style: MyFonts.w500.copyWith(
+                    style: PoppinsFont.w500.copyWith(
                       fontSize: 18.sp,
                     ),
                   ),
@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: EdgeInsets.only(top: 17.h, left: 24.w, bottom: 42.h),
                 child: Text(
                   "Forgot Password?",
-                  style: MyFonts.w500.copyWith(
+                  style: PoppinsFont.w500.copyWith(
                     fontSize: 15.sp,
                     color: ColorConst.c8687E7,
                   ),

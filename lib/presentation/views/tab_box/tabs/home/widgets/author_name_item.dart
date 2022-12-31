@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../utils/constants/color_const.dart';
-import '../../../../../utils/my_fonts.dart';
+import '../../../../../utils/constants/poppins_font.dart';
 
 class AuthorNameItem extends StatelessWidget {
   const AuthorNameItem({
@@ -24,7 +24,7 @@ class AuthorNameItem extends StatelessWidget {
             border: Border.all(width: 1.w, color: Colors.grey)),
         child: Text(
           authorName,
-          style: MyFonts.w600.copyWith(
+          style: PoppinsFont.w600.copyWith(
             fontSize: 13.sp,
             color: ColorConst.blackWithOpacity087,
           ),

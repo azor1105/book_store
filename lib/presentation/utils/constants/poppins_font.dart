@@ -2,7 +2,7 @@ import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyFonts {
+class PoppinsFont {
   static final w200 = TextStyle(
     fontFamily: "Poppins",
     fontWeight: FontWeight.w200,

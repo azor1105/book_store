@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import '../../../../../utils/constants/color_const.dart';
-import '../../../../../utils/my_fonts.dart';
+import '../../../../../utils/constants/poppins_font.dart';
 import '../../../../../utils/my_icons.dart';
 
 class SavedBookItem extends StatelessWidget {
@@ -75,7 +75,7 @@ class SavedBookItem extends StatelessWidget {
                         Text(
                           bookItem.bookName,
                           maxLines: 2,
-                          style: MyFonts.w400.copyWith(
+                          style: PoppinsFont.w400.copyWith(
                             fontSize: 15.sp,
                             color: ColorConst.blackWithOpacity063,
                             overflow: TextOverflow.ellipsis,
@@ -84,7 +84,7 @@ class SavedBookItem extends StatelessWidget {
                         SizedBox(height: 10.h),
                         Text(
                           bookItem.categoryName,
-                          style: MyFonts.w500.copyWith(
+                          style: PoppinsFont.w500.copyWith(
                             fontSize: 15.sp,
                             color: ColorConst.c8687E7,
                           ),
@@ -95,7 +95,7 @@ class SavedBookItem extends StatelessWidget {
                           children: [
                             Text(
                               bookItem.language,
-                              style: MyFonts.w300.copyWith(
+                              style: PoppinsFont.w300.copyWith(
                                 fontSize: 15.sp,
                                 color: ColorConst.blackWithOpacity063,
                               ),

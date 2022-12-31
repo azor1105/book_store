@@ -1,4 +1,4 @@
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +19,7 @@ class SecondOnBoardingScreen extends StatelessWidget {
         Center(
           child: Text(
             "Find the right book",
-            style: MyFonts.w700.copyWith(fontSize: 25.sp),
+            style: PoppinsFont.w700.copyWith(fontSize: 25.sp),
           ),
         ),
         SizedBox(height: 40.h),
@@ -27,7 +27,7 @@ class SecondOnBoardingScreen extends StatelessWidget {
           child: Text(
             "In AzorBook you can find books\non your favourite genre",
             textAlign: TextAlign.center,
-            style: MyFonts.w400.copyWith(fontSize: 14.sp),
+            style: PoppinsFont.w400.copyWith(fontSize: 14.sp),
           ),
         )
       ],

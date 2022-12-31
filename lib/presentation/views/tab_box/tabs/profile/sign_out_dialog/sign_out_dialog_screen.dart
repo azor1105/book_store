@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../../../utils/constants/color_const.dart';
-import '../../../../../utils/my_fonts.dart';
+import '../../../../../utils/constants/poppins_font.dart';
 import '../../../../../widgets/buttons/outlined_text_button.dart';
 
 class SignOutDialog extends StatelessWidget {
@@ -26,7 +26,7 @@ class SignOutDialog extends StatelessWidget {
           children: [
             Text(
               "Log out",
-              style: MyFonts.w700.copyWith(
+              style: PoppinsFont.w700.copyWith(
                 fontSize: 16.sp,
                 color: ColorConst.blackWithOpacity087,
               ),
@@ -36,7 +36,7 @@ class SignOutDialog extends StatelessWidget {
             SizedBox(height: 24.w),
             Text(
               "Are you sure?",
-              style: MyFonts.w500.copyWith(
+              style: PoppinsFont.w500.copyWith(
                 fontSize: 15.sp,
                 color: ColorConst.blackWithOpacity087,
               ),

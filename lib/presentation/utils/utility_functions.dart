@@ -1,5 +1,5 @@
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -30,7 +30,7 @@ class MyUtils {
       SnackBar(
         content: Text(
           text ?? "",
-          style: MyFonts.w500.copyWith(
+          style: PoppinsFont.w500.copyWith(
             fontSize: 16.sp,
             color: ColorConst.white,
           ),

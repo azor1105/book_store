@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../utils/constants/color_const.dart';
-import '../../../utils/my_fonts.dart';
+import '../../../utils/constants/poppins_font.dart';
 
 class OrLineItem extends StatelessWidget {
   const OrLineItem({super.key});
@@ -23,7 +23,7 @@ class OrLineItem extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 13.w),
             child: Text(
               "OR",
-              style: MyFonts.w500.copyWith(
+              style: PoppinsFont.w500.copyWith(
                 fontSize: 18.sp,
               ),
             ),

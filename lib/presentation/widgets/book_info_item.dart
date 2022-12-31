@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/constants/color_const.dart';
-import '../utils/my_fonts.dart';
+import '../utils/constants/poppins_font.dart';
 
 class BookInfoItem extends StatelessWidget {
   const BookInfoItem({
@@ -65,7 +65,7 @@ class BookInfoItem extends StatelessWidget {
                   children: [
                     Text(
                       bookItem.bookName,
-                      style: MyFonts.w600.copyWith(
+                      style: PoppinsFont.w600.copyWith(
                         fontSize: 13.sp,
                         color: ColorConst.black,
                         overflow: TextOverflow.ellipsis,
@@ -73,7 +73,7 @@ class BookInfoItem extends StatelessWidget {
                     ),
                     Text(
                       bookItem.authorName,
-                      style: MyFonts.w500.copyWith(
+                      style: PoppinsFont.w500.copyWith(
                         fontSize: 12.sp,
                         color: ColorConst.black,
                         overflow: TextOverflow.ellipsis,
@@ -81,14 +81,14 @@ class BookInfoItem extends StatelessWidget {
                     ),
                     Text(
                       bookItem.categoryName,
-                      style: MyFonts.w500.copyWith(
+                      style: PoppinsFont.w500.copyWith(
                         fontSize: 12.sp,
                         color: ColorConst.blackWithOpacity087,
                       ),
                     ),
                     Text(
                       "${bookItem.pagesCount} pages",
-                      style: MyFonts.w500.copyWith(
+                      style: PoppinsFont.w500.copyWith(
                         fontSize: 12.sp,
                         color: ColorConst.blackWithOpacity087,
                       ),

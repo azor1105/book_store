@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../utils/constants/color_const.dart';
-import '../../../../../utils/my_fonts.dart';
+import '../../../../../utils/constants/poppins_font.dart';
 
 class CarouselItem extends StatelessWidget {
   const CarouselItem({
@@ -57,7 +57,7 @@ class CarouselItem extends StatelessWidget {
                   SizedBox(height: 15.h),
                   Text(
                     bookItem.bookName,
-                    style: MyFonts.w600.copyWith(
+                    style: PoppinsFont.w600.copyWith(
                       fontSize: 13.sp,
                       color: ColorConst.black,
                     ),
@@ -67,7 +67,7 @@ class CarouselItem extends StatelessWidget {
                   SizedBox(height: 5.h),
                   Text(
                     bookItem.authorName,
-                    style: MyFonts.w400.copyWith(
+                    style: PoppinsFont.w400.copyWith(
                       fontSize: 12.sp,
                       color: Colors.grey.shade500,
                     ),

@@ -3,7 +3,7 @@ import 'package:book_store/cubits/downloaded_books/downloaded_books_cubit.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/widgets/buttons/outlined_text_button.dart';
 import 'package:book_store/presentation/widgets/buttons/text_button_with_background.dart';
@@ -76,7 +76,7 @@ class DownloadButton extends StatelessWidget {
                         builder: (context) => AlertDialog(
                           title: Text(
                             'Are you sure to delete this book?',
-                            style: MyFonts.w500.copyWith(fontSize: 16.sp),
+                            style: PoppinsFont.w500.copyWith(fontSize: 16.sp),
                           ),
                           actions: [
                             Padding(
@@ -136,7 +136,7 @@ class DownloadButton extends StatelessWidget {
                             SizedBox(width: 10.w),
                             Text(
                               !isDownloaded ? 'Download' : 'Saved',
-                              style: MyFonts.w400.copyWith(
+                              style: PoppinsFont.w400.copyWith(
                                 fontSize: 14.sp,
                                 color: ColorConst.blackWithOpacity087,
                               ),
@@ -148,7 +148,7 @@ class DownloadButton extends StatelessWidget {
                           children: [
                             Text(
                               "Downloading %${downloadTask[0].progress.toStringAsFixed(0)}",
-                              style: MyFonts.w400.copyWith(
+                              style: PoppinsFont.w400.copyWith(
                                 fontSize: 14.sp,
                                 color: ColorConst.blackWithOpacity087,
                               ),

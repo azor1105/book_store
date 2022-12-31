@@ -2,7 +2,7 @@ import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../utils/my_fonts.dart';
+import '../../../../../utils/constants/poppins_font.dart';
 
 class SeeAllItem extends StatelessWidget {
   const SeeAllItem({
@@ -20,7 +20,7 @@ class SeeAllItem extends StatelessWidget {
         children: [
           Text(
             title,
-            style: MyFonts.w600.copyWith(
+            style: PoppinsFont.w600.copyWith(
               fontSize: 14.sp,
             ),
           ),
@@ -31,7 +31,7 @@ class SeeAllItem extends StatelessWidget {
             onPressed: seeAllOnPressed,
             child: Text(
               "See all>",
-              style: MyFonts.w500.copyWith(
+              style: PoppinsFont.w500.copyWith(
                 fontSize: 12.sp,
                 color: Colors.grey.shade500,
               ),

@@ -1,6 +1,6 @@
 import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -44,7 +44,7 @@ void changePictureBottomSheet(BuildContext context) {
               Center(
                 child: Text(
                   "Change account Image",
-                  style: MyFonts.w700.copyWith(
+                  style: PoppinsFont.w700.copyWith(
                     fontSize: 16.sp,
                     color: ColorConst.blackWithOpacity087,
                   ),
@@ -60,7 +60,7 @@ void changePictureBottomSheet(BuildContext context) {
                 },
                 child: Text(
                   "Take picture",
-                  style: MyFonts.w400.copyWith(
+                  style: PoppinsFont.w400.copyWith(
                     color: ColorConst.blackWithOpacity087,
                     fontSize: 16.sp,
                   ),
@@ -73,7 +73,7 @@ void changePictureBottomSheet(BuildContext context) {
                 },
                 child: Text(
                   "Import from gallery",
-                  style: MyFonts.w400.copyWith(
+                  style: PoppinsFont.w400.copyWith(
                     color: ColorConst.blackWithOpacity087,
                     fontSize: 16.sp,
                   ),

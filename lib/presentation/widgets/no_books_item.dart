@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import '../utils/my_fonts.dart';
+import '../utils/constants/poppins_font.dart';
 import '../utils/my_icons.dart';
 
 class NoBookItem extends StatelessWidget {
@@ -16,7 +16,7 @@ class NoBookItem extends StatelessWidget {
           Lottie.asset(MyIcons.noBookLottie, reverse: true),
           Text(
             "Sorry but no books",
-            style: MyFonts.w600,
+            style: PoppinsFont.w600,
           ),
         ],
       ),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../utils/my_fonts.dart';
+import '../../../utils/constants/poppins_font.dart';
 import '../../../utils/my_icons.dart';
-
 
 class ThirdOnBoardingScreen extends StatelessWidget {
   const ThirdOnBoardingScreen({super.key});
@@ -21,7 +20,7 @@ class ThirdOnBoardingScreen extends StatelessWidget {
         Center(
           child: Text(
             "Read best seeller books",
-            style: MyFonts.w700.copyWith(fontSize: 25.sp),
+            style: PoppinsFont.w700.copyWith(fontSize: 25.sp),
           ),
         ),
         SizedBox(height: 40.h),
@@ -29,7 +28,7 @@ class ThirdOnBoardingScreen extends StatelessWidget {
           child: Text(
             "Azorbook gives to chance to read best seller\nbooks around the world for free",
             textAlign: TextAlign.center,
-            style: MyFonts.w400.copyWith(fontSize: 14.sp),
+            style: PoppinsFont.w400.copyWith(fontSize: 14.sp),
           ),
         )
       ],

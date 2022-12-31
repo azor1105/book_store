@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../utils/constants/color_const.dart';
-import '../../../../../utils/my_fonts.dart';
+import '../../../../../utils/constants/poppins_font.dart';
 import '../../../../../utils/my_icons.dart';
 
 class SearchButton extends StatelessWidget {
@@ -26,7 +26,7 @@ class SearchButton extends StatelessWidget {
           SizedBox(width: 30.w),
           Text(
             "Search",
-            style: MyFonts.w500.copyWith(
+            style: PoppinsFont.w500.copyWith(
               fontSize: 18.sp,
               color: ColorConst.blackWithOpacity063,
             ),

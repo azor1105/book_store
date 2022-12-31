@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../../../utils/constants/color_const.dart';
-import '../../../../../utils/my_fonts.dart';
+import '../../../../../utils/constants/poppins_font.dart';
 import '../../../../../widgets/buttons/outlined_text_button.dart';
 
 class ChangeUserNameDialog extends StatefulWidget {
@@ -57,7 +57,7 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
               Center(
                 child: Text(
                   "Change profile name",
-                  style: MyFonts.w700.copyWith(
+                  style: PoppinsFont.w700.copyWith(
                     fontSize: 16.sp,
                     color: ColorConst.blackWithOpacity087,
                   ),

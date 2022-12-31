@@ -1,7 +1,7 @@
 import 'package:book_store/data/repositories/book_repository.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/search_delegate/widget/result_book_item.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/search_delegate/widget/suggestion_item.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +64,7 @@ class SearchDelegateScreen extends SearchDelegate {
         : Center(
             child: Text(
               "No selected book",
-              style: MyFonts.w500,
+              style: PoppinsFont.w500,
             ),
           );
   }

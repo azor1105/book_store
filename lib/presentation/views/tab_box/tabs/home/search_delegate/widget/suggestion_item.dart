@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../utils/constants/color_const.dart';
-import '../../../../../../utils/my_fonts.dart';
+import '../../../../../../utils/constants/poppins_font.dart';
 
 class SuggestionItem extends StatelessWidget {
   const SuggestionItem({
@@ -54,14 +54,14 @@ class SuggestionItem extends StatelessWidget {
                     Text(
                       bookItem.bookName,
                       maxLines: 2,
-                      style: MyFonts.w400.copyWith(
+                      style: PoppinsFont.w400.copyWith(
                         fontSize: 14.sp,
                         color: ColorConst.blackWithOpacity063,
                       ),
                     ),
                     Text(
                       bookItem.authorName,
-                      style: MyFonts.w400.copyWith(
+                      style: PoppinsFont.w400.copyWith(
                         fontSize: 12.sp,
                         color: ColorConst.blackWithOpacity063,
                       ),
@@ -71,14 +71,14 @@ class SuggestionItem extends StatelessWidget {
                       children: [
                         Text(
                           bookItem.categoryName,
-                          style: MyFonts.w400.copyWith(
+                          style: PoppinsFont.w400.copyWith(
                             fontSize: 12.sp,
                             color: ColorConst.c8687E7,
                           ),
                         ),
                         Text(
                           "${bookItem.pagesCount} pages",
-                          style: MyFonts.w400.copyWith(
+                          style: PoppinsFont.w400.copyWith(
                             fontSize: 12.sp,
                             color: ColorConst.blackWithOpacity087,
                           ),

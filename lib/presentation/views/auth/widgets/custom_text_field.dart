@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../utils/constants/color_const.dart';
-import '../../../utils/my_fonts.dart';
+import '../../../utils/constants/poppins_font.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -20,13 +20,13 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       textInputAction: TextInputAction.next,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      style: MyFonts.w400.copyWith(
+      style: PoppinsFont.w400.copyWith(
         fontSize: 15.sp,
       ),
       validator: validator,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: MyFonts.w400.copyWith(
+        hintStyle: PoppinsFont.w400.copyWith(
           fontSize: 15.sp,
         ),
         fillColor: ColorConst.cF1F4FA,

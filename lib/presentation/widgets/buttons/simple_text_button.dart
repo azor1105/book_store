@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../utils/constants/color_const.dart';
-import '../../utils/my_fonts.dart';
+import '../../utils/constants/poppins_font.dart';
 
 class SimpleTextButton extends StatelessWidget {
   const SimpleTextButton({
@@ -19,7 +19,7 @@ class SimpleTextButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         title,
-        style: MyFonts.w400.copyWith(
+        style: PoppinsFont.w400.copyWith(
           fontSize: 16.sp,
           color: ColorConst.blackWithOpacity044,
         ),

@@ -1,4 +1,4 @@
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../utils/constants/color_const.dart';
@@ -29,8 +29,8 @@ class MyOutlinedButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           title,
-          style:
-              MyFonts.w400.copyWith(color: ColorConst.c8687E7, fontSize: 16.sp),
+          style: PoppinsFont.w400
+              .copyWith(color: ColorConst.c8687E7, fontSize: 16.sp),
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/home_screen.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/profile_screen.dart';
@@ -55,10 +55,10 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
             type: BottomNavigationBarType.fixed,
             backgroundColor: ColorConst.white,
             currentIndex: currentIndex,
-            selectedLabelStyle: MyFonts.w400.copyWith(
+            selectedLabelStyle: PoppinsFont.w400.copyWith(
               fontSize: 12.sp,
             ),
-            unselectedLabelStyle: MyFonts.w400.copyWith(
+            unselectedLabelStyle: PoppinsFont.w400.copyWith(
               fontSize: 12.sp,
             ),
             selectedItemColor: ColorConst.c8687E7,

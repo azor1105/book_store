@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../utils/constants/color_const.dart';
-import '../../utils/my_fonts.dart';
+import '../../utils/constants/poppins_font.dart';
 
 class CustomRectangleTextButton extends StatelessWidget {
   const CustomRectangleTextButton({
@@ -28,7 +28,7 @@ class CustomRectangleTextButton extends StatelessWidget {
         child: Center(
           child: Text(
             title,
-            style: MyFonts.w500.copyWith(
+            style: PoppinsFont.w500.copyWith(
               fontSize: 16.sp,
               color: ColorConst.white,
             ),

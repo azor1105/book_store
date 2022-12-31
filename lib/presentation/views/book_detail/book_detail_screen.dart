@@ -3,7 +3,7 @@ import 'package:book_store/data/service/hive/hive_service.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_info_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/download_button.dart';
@@ -69,7 +69,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                       height: readMore ? 60.h : null,
                       child: Text(
                         widget.bookModel.description,
-                        style: MyFonts.w300.copyWith(
+                        style: PoppinsFont.w300.copyWith(
                           fontSize: 18.sp,
                           color: ColorConst.blackWithOpacity087,
                           overflow: readMore ? TextOverflow.ellipsis : null,

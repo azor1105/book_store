@@ -5,7 +5,7 @@ import 'package:book_store/data/models/author/author_model.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/widgets/shimmers/circle_shimmer_item.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/widgets/book_info_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -53,7 +53,7 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                     expandedHeight: 200.h,
                     title: Text(
                       widget.author.authorFullName,
-                      style: MyFonts.w600,
+                      style: PoppinsFont.w600,
                     ),
                     pinned: true,
                     centerTitle: true,
@@ -75,7 +75,7 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                             SizedBox(height: 10.h),
                             Text(
                               "${state.authorBooks.length} books",
-                              style: MyFonts.w400.copyWith(
+                              style: PoppinsFont.w400.copyWith(
                                 fontSize: 13.sp,
                                 color: Colors.grey,
                               ),

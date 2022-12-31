@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../../../../utils/constants/color_const.dart';
-import '../../../../../utils/my_fonts.dart';
+import '../../../../../utils/constants/poppins_font.dart';
 import '../../../../../widgets/buttons/outlined_text_button.dart';
 
 class ChangePasswordDialog extends StatefulWidget {
@@ -52,7 +52,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
             Center(
               child: Text(
                 "Change password",
-                style: MyFonts.w700.copyWith(
+                style: PoppinsFont.w700.copyWith(
                   fontSize: 16.sp,
                   color: ColorConst.blackWithOpacity087,
                 ),
@@ -63,7 +63,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
             SizedBox(height: 10.h),
             Text(
               "Enter old password",
-              style: MyFonts.w400.copyWith(
+              style: PoppinsFont.w400.copyWith(
                 fontSize: 14.sp,
                 color: ColorConst.blackWithOpacity087,
               ),
@@ -74,7 +74,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
               focusNode: oldPasswordFocusNode,
               maxLength: 12,
               obscureText: true,
-              textStyle: MyFonts.w400.copyWith(
+              textStyle: PoppinsFont.w400.copyWith(
                 color: ColorConst.blackWithOpacity087,
                 letterSpacing: 8.0,
               ),
@@ -86,7 +86,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
             SizedBox(height: 10.h),
             Text(
               "Enter new password",
-              style: MyFonts.w400.copyWith(
+              style: PoppinsFont.w400.copyWith(
                 fontSize: 14.sp,
                 color: ColorConst.blackWithOpacity087,
               ),
@@ -97,7 +97,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
               focusNode: newPasswordFocusNode,
               maxLength: 12,
               obscureText: true,
-              textStyle: MyFonts.w400.copyWith(
+              textStyle: PoppinsFont.w400.copyWith(
                 color: ColorConst.blackWithOpacity087,
                 letterSpacing: 8.0,
               ),

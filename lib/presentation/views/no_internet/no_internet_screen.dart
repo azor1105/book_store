@@ -1,6 +1,6 @@
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class NoInternetScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 70.w),
               child: Text(
                 'Please check the internet connection',
-                style: MyFonts.w600.copyWith(fontSize: 18.sp),
+                style: PoppinsFont.w600.copyWith(fontSize: 18.sp),
                 textAlign: TextAlign.center,
                 maxLines: 2,
               ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../utils/constants/color_const.dart';
-import '../../../utils/my_fonts.dart';
+import '../../../utils/constants/poppins_font.dart';
 
 class SignInWithItem extends StatelessWidget {
   const SignInWithItem({
@@ -39,7 +39,7 @@ class SignInWithItem extends StatelessWidget {
             ),
             Text(
               "Sign in with $title",
-              style: MyFonts.w500.copyWith(
+              style: PoppinsFont.w500.copyWith(
                 fontSize: 16.sp,
                 color: ColorConst.black,
               ),

@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../utils/constants/color_const.dart';
-import '../../../utils/my_fonts.dart';
+import '../../../utils/constants/poppins_font.dart';
 
 class BookDetailItem extends StatelessWidget {
   const BookDetailItem({
@@ -51,7 +51,7 @@ class BookDetailItem extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 30.w),
             child: Text(
               bookItem.bookName,
-              style: MyFonts.w600,
+              style: PoppinsFont.w600,
               textAlign: TextAlign.center,
               maxLines: 3,
             ),
@@ -61,7 +61,7 @@ class BookDetailItem extends StatelessWidget {
         Center(
           child: Text(
             bookItem.authorName,
-            style: MyFonts.w300.copyWith(
+            style: PoppinsFont.w300.copyWith(
               fontSize: 21.sp,
               color: ColorConst.blackWithOpacity063,
             ),

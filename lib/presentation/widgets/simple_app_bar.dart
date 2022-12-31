@@ -1,5 +1,5 @@
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +28,7 @@ class SimpleAppBar extends StatelessWidget implements PreferredSize {
       centerTitle: centerTitle,
       title: Text(
         title,
-        style: MyFonts.w600,
+        style: PoppinsFont.w600,
       ),
       elevation: 0.0,
       backgroundColor: ColorConst.white,

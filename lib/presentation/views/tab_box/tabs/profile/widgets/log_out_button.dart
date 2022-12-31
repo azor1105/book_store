@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../utils/constants/color_const.dart';
-import '../../../../../utils/my_fonts.dart';
+import '../../../../../utils/constants/poppins_font.dart';
 import '../../../../../utils/my_icons.dart';
 
 class LogOutButton extends StatelessWidget {
@@ -37,7 +37,7 @@ class LogOutButton extends StatelessWidget {
               ),
               Text(
                 "Log out",
-                style: MyFonts.w400.copyWith(
+                style: PoppinsFont.w400.copyWith(
                   color: ColorConst.cFF4949,
                   fontSize: 16.sp,
                 ),

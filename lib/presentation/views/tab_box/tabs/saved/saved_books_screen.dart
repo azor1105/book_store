@@ -5,7 +5,7 @@ import 'package:book_store/data/repositories/saved_book_repository.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/widgets/no_books_item.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/saved/widgets/saved_book_item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -50,7 +50,7 @@ class SavedBooksScreen extends StatelessWidget {
                               padding: EdgeInsets.only(left: 20.w),
                               child: Text(
                                 "${state.savedBooks.length} ${state.savedBooks.length > 1 ? "books" : "book"}",
-                                style: MyFonts.w600,
+                                style: PoppinsFont.w600,
                               ),
                             ),
                             ListView.builder(

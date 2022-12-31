@@ -3,7 +3,7 @@ import 'package:book_store/data/models/status.dart';
 import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
 import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/utils/my_fonts.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/change_passwod/change_password_dialog.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/change_picture/change_picture_bottom_sheet.dart';
@@ -36,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
                   Center(
                     child: Text(
                       "Profile",
-                      style: MyFonts.w400.copyWith(
+                      style: PoppinsFont.w400.copyWith(
                         color: ColorConst.blackWithOpacity087,
                       ),
                     ),
@@ -53,7 +53,7 @@ class ProfileScreen extends StatelessWidget {
                   Center(
                     child: Text(
                       state.user!.displayName!,
-                      style: MyFonts.w500.copyWith(
+                      style: PoppinsFont.w500.copyWith(
                         color: ColorConst.blackWithOpacity087,
                       ),
                     ),
@@ -61,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                   SizedBox(height: 20.h),
                   Text(
                     "Settings",
-                    style: MyFonts.w400.copyWith(
+                    style: PoppinsFont.w400.copyWith(
                       fontSize: 14.sp,
                       color: ColorConst.cAFAFAF,
                     ),
@@ -74,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
                   SizedBox(height: 16.h),
                   Text(
                     "Account",
-                    style: MyFonts.w400.copyWith(
+                    style: PoppinsFont.w400.copyWith(
                       fontSize: 14.sp,
                       color: ColorConst.cAFAFAF,
                     ),
@@ -119,7 +119,7 @@ class ProfileScreen extends StatelessWidget {
                   SizedBox(height: 16.h),
                   Text(
                     "AzorBook",
-                    style: MyFonts.w400.copyWith(
+                    style: PoppinsFont.w400.copyWith(
                       fontSize: 14.sp,
                       color: ColorConst.cAFAFAF,
                     ),

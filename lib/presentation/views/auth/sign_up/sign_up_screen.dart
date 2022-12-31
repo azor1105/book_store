@@ -9,7 +9,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import '../../../utils/constants/shared_pref_keys.dart';
 import '../../../../data/local_data/local_data.dart';
-import '../../../utils/my_fonts.dart';
+import '../../../utils/constants/poppins_font.dart';
 import '../../../widgets/buttons/custom_rectangle_text_button.dart';
 import '../widgets/custom_text_field.dart';
 
@@ -60,7 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 Text(
                   "Sing up",
-                  style: MyFonts.w500.copyWith(
+                  style: PoppinsFont.w500.copyWith(
                     fontSize: 18.sp,
                     color: ColorConst.c090A0A,
                   ),

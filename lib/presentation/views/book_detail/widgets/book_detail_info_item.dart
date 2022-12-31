@@ -2,7 +2,7 @@ import 'package:book_store/data/models/book/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import '../../../utils/my_fonts.dart';
+import '../../../utils/constants/poppins_font.dart';
 
 class BookDetailInfoItem extends StatelessWidget {
   const BookDetailInfoItem({
@@ -17,14 +17,14 @@ class BookDetailInfoItem extends StatelessWidget {
       children: [
         Text(
           "Language: ${bookItem.language}",
-          style: MyFonts.w400.copyWith(
+          style: PoppinsFont.w400.copyWith(
             fontSize: 17.sp,
           ),
         ),
         SizedBox(height: 5.h),
         Text(
           "${bookItem.pagesCount} pages",
-          style: MyFonts.w400.copyWith(
+          style: PoppinsFont.w400.copyWith(
             fontSize: 17.sp,
           ),
         ),
@@ -33,14 +33,14 @@ class BookDetailInfoItem extends StatelessWidget {
           "Published date: ${DateFormat.yMMMMd().format(
             DateTime.parse(bookItem.publishedDate),
           )}",
-          style: MyFonts.w400.copyWith(
+          style: PoppinsFont.w400.copyWith(
             fontSize: 17.sp,
           ),
         ),
         SizedBox(height: 5.h),
         Text(
           "Genre: ${bookItem.categoryName}",
-          style: MyFonts.w400.copyWith(
+          style: PoppinsFont.w400.copyWith(
             fontSize: 17.sp,
           ),
         ),
