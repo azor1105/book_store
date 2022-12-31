@@ -1,4 +1,4 @@
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +31,7 @@ class SimpleAppBar extends StatelessWidget implements PreferredSize {
         style: MyFonts.w600,
       ),
       elevation: 0.0,
-      backgroundColor: MyColors.white,
+      backgroundColor: ColorConst.white,
       leading: backButton
           ? Center(
               child: IconButton(
@@ -40,7 +40,7 @@ class SimpleAppBar extends StatelessWidget implements PreferredSize {
                 },
                 icon: SvgPicture.asset(
                   MyIcons.arrowBackIcon,
-                  color: MyColors.black,
+                  color: ColorConst.black,
                   height: 15.h,
                 ),
               ),

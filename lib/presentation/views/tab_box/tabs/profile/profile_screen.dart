@@ -2,7 +2,7 @@ import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/data/models/status.dart';
 import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
 import 'package:book_store/data/local_data/local_data.dart';
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/change_passwod/change_password_dialog.dart';
@@ -23,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.white,
+      backgroundColor: ColorConst.white,
       body: BlocBuilder<AppCubit, AppState>(
         builder: (context, state) {
           return SingleChildScrollView(
@@ -37,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
                     child: Text(
                       "Profile",
                       style: MyFonts.w400.copyWith(
-                        color: MyColors.blackWithOpacity087,
+                        color: ColorConst.blackWithOpacity087,
                       ),
                     ),
                   ),
@@ -54,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
                     child: Text(
                       state.user!.displayName!,
                       style: MyFonts.w500.copyWith(
-                        color: MyColors.blackWithOpacity087,
+                        color: ColorConst.blackWithOpacity087,
                       ),
                     ),
                   ),
@@ -63,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
                     "Settings",
                     style: MyFonts.w400.copyWith(
                       fontSize: 14.sp,
-                      color: MyColors.cAFAFAF,
+                      color: ColorConst.cAFAFAF,
                     ),
                   ),
                   ProfileItemButton(
@@ -76,7 +76,7 @@ class ProfileScreen extends StatelessWidget {
                     "Account",
                     style: MyFonts.w400.copyWith(
                       fontSize: 14.sp,
-                      color: MyColors.cAFAFAF,
+                      color: ColorConst.cAFAFAF,
                     ),
                   ),
                   SizedBox(height: 4.h),
@@ -121,7 +121,7 @@ class ProfileScreen extends StatelessWidget {
                     "AzorBook",
                     style: MyFonts.w400.copyWith(
                       fontSize: 14.sp,
-                      color: MyColors.cAFAFAF,
+                      color: ColorConst.cAFAFAF,
                     ),
                   ),
                   ProfileItemButton(

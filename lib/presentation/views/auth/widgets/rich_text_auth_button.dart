@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../utils/my_colors.dart';
+import '../../../utils/constants/color_const.dart';
 import '../../../utils/my_fonts.dart';
 
 class RichTextAuthButton extends StatelessWidget {
@@ -26,7 +26,7 @@ class RichTextAuthButton extends StatelessWidget {
               text: secondText,
               style: MyFonts.w600.copyWith(
                 fontSize: 15.sp,
-                color: MyColors.c8687E7,
+                color: ColorConst.c8687E7,
               ),
             ),
           ],

@@ -3,7 +3,7 @@ import 'package:book_store/presentation/widgets/shimmers/rectangle_shimmer_item.
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/constants/color_const.dart';
 import '../../../../../utils/my_fonts.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -23,7 +23,7 @@ class CategoryItem extends StatelessWidget {
         padding: EdgeInsets.all(10.sp),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
-          color: MyColors.cE5E5E5,
+          color: ColorConst.cE5E5E5,
         ),
         child: Row(
           children: [
@@ -44,7 +44,7 @@ class CategoryItem extends StatelessWidget {
                 categoryItem.categoryName,
                 style: MyFonts.w600.copyWith(
                   fontSize: 14.sp,
-                  color: MyColors.blackWithOpacity087,
+                  color: ColorConst.blackWithOpacity087,
                 ),
                 maxLines: 3,
                 textAlign: TextAlign.center,

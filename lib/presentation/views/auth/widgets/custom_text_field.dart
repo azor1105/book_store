@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../utils/my_colors.dart';
+import '../../../utils/constants/color_const.dart';
 import '../../../utils/my_fonts.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -29,20 +29,20 @@ class CustomTextField extends StatelessWidget {
         hintStyle: MyFonts.w400.copyWith(
           fontSize: 15.sp,
         ),
-        fillColor: MyColors.cF1F4FA,
+        fillColor: ColorConst.cF1F4FA,
         filled: true,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide(
             width: 1.w,
-            color: MyColors.cF1F4FA,
+            color: ColorConst.cF1F4FA,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide(
             width: 1.w,
-            color: MyColors.cF1F4FA,
+            color: ColorConst.cF1F4FA,
           ),
         ),
       ),

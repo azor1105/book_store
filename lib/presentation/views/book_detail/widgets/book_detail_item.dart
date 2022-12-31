@@ -3,7 +3,7 @@ import 'package:book_store/presentation/widgets/shimmers/rectangle_shimmer_item.
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../utils/my_colors.dart';
+import '../../../utils/constants/color_const.dart';
 import '../../../utils/my_fonts.dart';
 
 class BookDetailItem extends StatelessWidget {
@@ -63,7 +63,7 @@ class BookDetailItem extends StatelessWidget {
             bookItem.authorName,
             style: MyFonts.w300.copyWith(
               fontSize: 21.sp,
-              color: MyColors.blackWithOpacity063,
+              color: ColorConst.blackWithOpacity063,
             ),
           ),
         ),

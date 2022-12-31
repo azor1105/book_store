@@ -1,4 +1,4 @@
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/home_screen.dart';
@@ -31,7 +31,7 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
           children: _screens,
         ),
       ),
-      backgroundColor: MyColors.white,
+      backgroundColor: ColorConst.white,
       bottomNavigationBar: Container(
         height: 70.h,
         decoration: BoxDecoration(
@@ -53,7 +53,7 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
           ),
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            backgroundColor: MyColors.white,
+            backgroundColor: ColorConst.white,
             currentIndex: currentIndex,
             selectedLabelStyle: MyFonts.w400.copyWith(
               fontSize: 12.sp,
@@ -61,7 +61,7 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
             unselectedLabelStyle: MyFonts.w400.copyWith(
               fontSize: 12.sp,
             ),
-            selectedItemColor: MyColors.c8687E7,
+            selectedItemColor: ColorConst.c8687E7,
             unselectedItemColor: Colors.grey,
             onTap: (index) {
               setState(() {
@@ -75,7 +75,7 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
                       ? MyIcons.selectedHomeIcon
                       : MyIcons.unselectedHomeIcon,
                   height: 24.sp,
-                  color: currentIndex == 0 ? MyColors.c8687E7 : Colors.grey,
+                  color: currentIndex == 0 ? ColorConst.c8687E7 : Colors.grey,
                 ),
                 label: "Home",
               ),
@@ -85,7 +85,7 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
                       ? MyIcons.selectedSaveIcon
                       : MyIcons.unselectedSaveIcon,
                   height: 24.sp,
-                  color: currentIndex == 1 ? MyColors.c8687E7 : Colors.grey,
+                  color: currentIndex == 1 ? ColorConst.c8687E7 : Colors.grey,
                 ),
                 label: "Saved",
               ),
@@ -95,7 +95,7 @@ class _TabBoxScreenState extends State<TabBoxScreen> {
                       ? MyIcons.selectedProfileIcon
                       : MyIcons.unselectedProfileIcon,
                   height: 24.sp,
-                  color: currentIndex == 2 ? MyColors.c8687E7 : Colors.grey,
+                  color: currentIndex == 2 ? ColorConst.c8687E7 : Colors.grey,
                 ),
                 label: "Profile",
               ),

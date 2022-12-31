@@ -1,7 +1,7 @@
 import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/cubits/downloaded_books/downloaded_books_cubit.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/search_delegate/widget/suggestion_item.dart';
 import 'package:book_store/presentation/widgets/no_books_item.dart';
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
@@ -26,7 +26,7 @@ class DownloadedBooksScreen extends StatelessWidget {
               onWillPop: () async =>
                   !(appState.connectivityResult == ConnectivityResult.none),
               child: Scaffold(
-                backgroundColor: MyColors.white,
+                backgroundColor: ColorConst.white,
                 appBar: SimpleAppBar(
                   title: 'Downloaded books',
                   backButton:

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../utils/my_colors.dart';
+import '../../../utils/constants/color_const.dart';
 import '../../../utils/my_fonts.dart';
 
 class OrLineItem extends StatelessWidget {
@@ -16,7 +16,7 @@ class OrLineItem extends StatelessWidget {
           Expanded(
             child: Container(
               height: 1,
-              color: MyColors.cDEDEDE,
+              color: ColorConst.cDEDEDE,
             ),
           ),
           Padding(
@@ -31,7 +31,7 @@ class OrLineItem extends StatelessWidget {
           Expanded(
             child: Container(
               height: 1,
-              color: MyColors.cDEDEDE,
+              color: ColorConst.cDEDEDE,
             ),
           )
         ],

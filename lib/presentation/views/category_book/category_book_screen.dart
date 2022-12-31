@@ -3,7 +3,7 @@ import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/data/models/category/category_model.dart';
 import 'package:book_store/data/models/status.dart';
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/views/category_book/widgets/category_book_img_item.dart';
 import 'package:book_store/presentation/widgets/no_books_item.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +45,7 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
       builder: (context, state) {
         if (state.status == Status.success) {
           return Scaffold(
-            backgroundColor: MyColors.white,
+            backgroundColor: ColorConst.white,
             appBar: SimpleAppBar(
               title: widget.categoryModel.categoryName,
             ),

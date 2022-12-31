@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../../utils/my_colors.dart';
+import '../../../../../../utils/constants/color_const.dart';
 import '../../../../../../utils/my_fonts.dart';
 
 class SuggestionItem extends StatelessWidget {
@@ -20,9 +20,9 @@ class SuggestionItem extends StatelessWidget {
       child: Container(
         width: double.infinity,
         margin: EdgeInsets.symmetric(vertical: 10.h),
-        padding:  EdgeInsets.all(15.sp),
+        padding: EdgeInsets.all(15.sp),
         decoration: BoxDecoration(
-          color: MyColors.white,
+          color: ColorConst.white,
           borderRadius: BorderRadius.circular(15.r),
           boxShadow: [
             BoxShadow(
@@ -56,14 +56,14 @@ class SuggestionItem extends StatelessWidget {
                       maxLines: 2,
                       style: MyFonts.w400.copyWith(
                         fontSize: 14.sp,
-                        color: MyColors.blackWithOpacity063,
+                        color: ColorConst.blackWithOpacity063,
                       ),
                     ),
                     Text(
                       bookItem.authorName,
                       style: MyFonts.w400.copyWith(
                         fontSize: 12.sp,
-                        color: MyColors.blackWithOpacity063,
+                        color: ColorConst.blackWithOpacity063,
                       ),
                     ),
                     Row(
@@ -73,14 +73,14 @@ class SuggestionItem extends StatelessWidget {
                           bookItem.categoryName,
                           style: MyFonts.w400.copyWith(
                             fontSize: 12.sp,
-                            color: MyColors.c8687E7,
+                            color: ColorConst.c8687E7,
                           ),
                         ),
                         Text(
                           "${bookItem.pagesCount} pages",
                           style: MyFonts.w400.copyWith(
                             fontSize: 12.sp,
-                            color: MyColors.blackWithOpacity087,
+                            color: ColorConst.blackWithOpacity087,
                           ),
                         ),
                       ],

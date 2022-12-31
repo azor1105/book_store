@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/constants/color_const.dart';
 import '../../../../../utils/my_icons.dart';
 
 class SearchDelegateScreen extends SearchDelegate {
@@ -27,7 +27,7 @@ class SearchDelegateScreen extends SearchDelegate {
         },
         icon: const Icon(
           Icons.clear,
-          color: MyColors.black,
+          color: ColorConst.black,
         ),
       ),
     ];
@@ -41,7 +41,7 @@ class SearchDelegateScreen extends SearchDelegate {
       },
       icon: SvgPicture.asset(
         MyIcons.arrowBackIcon,
-        color: MyColors.black,
+        color: ColorConst.black,
       ),
     );
   }
@@ -53,7 +53,7 @@ class SearchDelegateScreen extends SearchDelegate {
             resultBookItem: resultBookItem!,
             onTap: () {
               close(context, null);
-              
+
               Navigator.pushNamed(
                 context,
                 RouteNames.bookDetail,

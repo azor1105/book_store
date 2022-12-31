@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/constants/color_const.dart';
 import '../../../../../utils/my_fonts.dart';
 import '../../../../../utils/my_icons.dart';
 
@@ -39,7 +39,7 @@ class SavedBookItem extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: MyColors.white,
+                color: ColorConst.white,
                 borderRadius: BorderRadius.circular(15.r),
                 boxShadow: [
                   BoxShadow(
@@ -77,7 +77,7 @@ class SavedBookItem extends StatelessWidget {
                           maxLines: 2,
                           style: MyFonts.w400.copyWith(
                             fontSize: 15.sp,
-                            color: MyColors.blackWithOpacity063,
+                            color: ColorConst.blackWithOpacity063,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -86,7 +86,7 @@ class SavedBookItem extends StatelessWidget {
                           bookItem.categoryName,
                           style: MyFonts.w500.copyWith(
                             fontSize: 15.sp,
-                            color: MyColors.c8687E7,
+                            color: ColorConst.c8687E7,
                           ),
                         ),
                         SizedBox(height: 10.h),
@@ -97,7 +97,7 @@ class SavedBookItem extends StatelessWidget {
                               bookItem.language,
                               style: MyFonts.w300.copyWith(
                                 fontSize: 15.sp,
-                                color: MyColors.blackWithOpacity063,
+                                color: ColorConst.blackWithOpacity063,
                               ),
                             ),
                             GestureDetector(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/constants/color_const.dart';
 import '../../../../../utils/my_fonts.dart';
 import '../../../../../utils/my_icons.dart';
 
@@ -17,7 +17,7 @@ class ProfileItemButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        foregroundColor: MyColors.c8687E7,
+        foregroundColor: ColorConst.c8687E7,
         backgroundColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4.r),
@@ -32,21 +32,21 @@ class ProfileItemButton extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 iconPath,
-                color: MyColors.blackWithOpacity087,
+                color: ColorConst.blackWithOpacity087,
                 height: 18.h,
               ),
               SizedBox(width: 12.w),
               Text(
                 title,
                 style: MyFonts.w400.copyWith(
-                  color: MyColors.blackWithOpacity087,
+                  color: ColorConst.blackWithOpacity087,
                   fontSize: 16.sp,
                 ),
               ),
               const Expanded(child: SizedBox()),
               SvgPicture.asset(
                 MyIcons.intoIcon,
-                color: MyColors.blackWithOpacity087,
+                color: ColorConst.blackWithOpacity087,
                 height: 15.h,
               ),
             ],

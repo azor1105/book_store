@@ -1,4 +1,4 @@
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +24,7 @@ class UniversalTextField extends StatelessWidget {
       maxLength: maxLength,
       style: textStyle ??
           MyFonts.w400.copyWith(
-            color: MyColors.blackWithOpacity087,
+            color: ColorConst.blackWithOpacity087,
           ),
       controller: controller,
       onSubmitted: onSubmitted,
@@ -33,13 +33,13 @@ class UniversalTextField extends StatelessWidget {
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             width: 0.8,
-            color: MyColors.c979797,
+            color: ColorConst.c979797,
           ),
         ),
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             width: 0.8,
-            color: MyColors.c979797,
+            color: ColorConst.c979797,
           ),
         ),
       ),

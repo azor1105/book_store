@@ -1,4 +1,4 @@
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,7 +26,7 @@ class SeeAllItem extends StatelessWidget {
           ),
           TextButton(
             style: TextButton.styleFrom(
-              foregroundColor: MyColors.c8687E7,
+              foregroundColor: ColorConst.c8687E7,
             ),
             onPressed: seeAllOnPressed,
             child: Text(

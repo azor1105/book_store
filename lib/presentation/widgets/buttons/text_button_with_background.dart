@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../utils/my_colors.dart';
+import '../../utils/constants/color_const.dart';
 import '../../utils/my_fonts.dart';
 
 class TextButtonWithBackground extends StatelessWidget {
@@ -20,7 +20,7 @@ class TextButtonWithBackground extends StatelessWidget {
         duration: const Duration(milliseconds: 500),
         child: TextButton(
           style: TextButton.styleFrom(
-            backgroundColor: MyColors.c8687E7,
+            backgroundColor: ColorConst.c8687E7,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4),
             ),
@@ -30,7 +30,7 @@ class TextButtonWithBackground extends StatelessWidget {
             title,
             style: MyFonts.w400.copyWith(
               fontSize: 16.sp,
-              color: MyColors.white,
+              color: ColorConst.white,
             ),
           ),
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../utils/my_colors.dart';
+import '../../../../utils/constants/color_const.dart';
 
 class MovementAnimationOnBoarding extends StatelessWidget {
   const MovementAnimationOnBoarding({
@@ -23,8 +23,8 @@ class MovementAnimationOnBoarding extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(56),
             color: indexOfContainer == 0
-                ? MyColors.c8687E7
-                : MyColors.c8687E7.withOpacity(0.57),
+                ? ColorConst.c8687E7
+                : ColorConst.c8687E7.withOpacity(0.57),
           ),
         ),
         SizedBox(width: 8.w),
@@ -37,8 +37,8 @@ class MovementAnimationOnBoarding extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(56),
             color: indexOfContainer == 1
-                ? MyColors.c8687E7
-                : MyColors.c8687E7.withOpacity(0.57),
+                ? ColorConst.c8687E7
+                : ColorConst.c8687E7.withOpacity(0.57),
           ),
         ),
         SizedBox(width: 8.w),
@@ -51,8 +51,8 @@ class MovementAnimationOnBoarding extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(56),
             color: indexOfContainer == 2
-                ? MyColors.c8687E7
-                : MyColors.c8687E7.withOpacity(0.57),
+                ? ColorConst.c8687E7
+                : ColorConst.c8687E7.withOpacity(0.57),
           ),
         ),
       ],

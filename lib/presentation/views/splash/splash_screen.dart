@@ -1,5 +1,5 @@
 import 'package:book_store/presentation/utils/constants/route_names.dart';
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.white,
+      backgroundColor: ColorConst.white,
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,

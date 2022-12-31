@@ -5,7 +5,7 @@ import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/custo
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/constants/color_const.dart';
 import '../../../../../utils/my_fonts.dart';
 import '../../../../../widgets/buttons/outlined_text_button.dart';
 
@@ -44,7 +44,7 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
         borderRadius: BorderRadius.circular(10.r),
       ),
       elevation: 0.0,
-      backgroundColor: MyColors.cE5E5E5,
+      backgroundColor: ColorConst.cE5E5E5,
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.8,
         height: MediaQuery.of(context).size.height * 0.3,
@@ -59,12 +59,12 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
                   "Change profile name",
                   style: MyFonts.w700.copyWith(
                     fontSize: 16.sp,
-                    color: MyColors.blackWithOpacity087,
+                    color: ColorConst.blackWithOpacity087,
                   ),
                 ),
               ),
               SizedBox(height: 10.h),
-              Divider(height: 1.h, color: MyColors.c979797),
+              Divider(height: 1.h, color: ColorConst.c979797),
               SizedBox(height: 16.h),
               UniversalTextField(
                 controller: userNameController,

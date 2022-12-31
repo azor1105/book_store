@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../data/models/saved_book/saved_book_model.dart';
-import '../../../utils/my_colors.dart';
+import '../../../utils/constants/color_const.dart';
 import '../../../utils/my_icons.dart';
 
 class SaveBookButton extends StatelessWidget {
@@ -55,7 +55,7 @@ class SaveBookButton extends StatelessWidget {
                     icon: Image.asset(
                       MyIcons.selectedSaveIcon,
                       height: 24.h,
-                      color: MyColors.c8687E7,
+                      color: ColorConst.c8687E7,
                     ),
                   );
                 }

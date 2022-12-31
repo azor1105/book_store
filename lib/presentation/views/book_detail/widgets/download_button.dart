@@ -2,7 +2,7 @@ import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/cubits/downloaded_books/downloaded_books_cubit.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/data/service/hive/hive_service.dart';
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/widgets/buttons/outlined_text_button.dart';
@@ -44,15 +44,16 @@ class DownloadButton extends StatelessWidget {
           ),
           child: BlocBuilder<AppCubit, AppState>(
             buildWhen: (previous, current) {
-              return previous.connectivityResult != current.connectivityResult; 
+              return previous.connectivityResult != current.connectivityResult;
             },
             builder: (context, appState) {
               return TextButton(
                   style: TextButton.styleFrom(
-                    foregroundColor:
-                        !isDownloaded ? MyColors.c8687E7 : Colors.grey.shade100,
+                    foregroundColor: !isDownloaded
+                        ? ColorConst.c8687E7
+                        : Colors.grey.shade100,
                     backgroundColor:
-                        !isDownloaded ? MyColors.white : Colors.grey.shade100,
+                        !isDownloaded ? ColorConst.white : Colors.grey.shade100,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.r),
                     ),
@@ -130,14 +131,14 @@ class DownloadButton extends StatelessWidget {
                           children: [
                             Icon(
                               !isDownloaded ? Icons.download : Icons.check,
-                              color: MyColors.c8E7CFF,
+                              color: ColorConst.c8E7CFF,
                             ),
                             SizedBox(width: 10.w),
                             Text(
                               !isDownloaded ? 'Download' : 'Saved',
                               style: MyFonts.w400.copyWith(
                                 fontSize: 14.sp,
-                                color: MyColors.blackWithOpacity087,
+                                color: ColorConst.blackWithOpacity087,
                               ),
                             ),
                           ],
@@ -149,7 +150,7 @@ class DownloadButton extends StatelessWidget {
                               "Downloading %${downloadTask[0].progress.toStringAsFixed(0)}",
                               style: MyFonts.w400.copyWith(
                                 fontSize: 14.sp,
-                                color: MyColors.blackWithOpacity087,
+                                color: ColorConst.blackWithOpacity087,
                               ),
                             ),
                           ],

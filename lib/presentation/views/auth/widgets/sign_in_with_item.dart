@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../utils/my_colors.dart';
+import '../../../utils/constants/color_const.dart';
 import '../../../utils/my_fonts.dart';
 
 class SignInWithItem extends StatelessWidget {
@@ -20,7 +20,7 @@ class SignInWithItem extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 24.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(width: 1, color: MyColors.c090A0A),
+        border: Border.all(width: 1, color: ColorConst.c090A0A),
       ),
       child: TextButton(
         onPressed: onPressed,
@@ -28,7 +28,7 @@ class SignInWithItem extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
-          foregroundColor: MyColors.c8687E7,
+          foregroundColor: ColorConst.c8687E7,
         ),
         child: Row(
           children: [
@@ -41,7 +41,7 @@ class SignInWithItem extends StatelessWidget {
               "Sign in with $title",
               style: MyFonts.w500.copyWith(
                 fontSize: 16.sp,
-                color: MyColors.black,
+                color: ColorConst.black,
               ),
             )
           ],

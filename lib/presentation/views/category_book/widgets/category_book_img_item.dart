@@ -3,7 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../utils/my_colors.dart';
+import '../../../utils/constants/color_const.dart';
 
 class CategoryBookImgItem extends StatelessWidget {
   const CategoryBookImgItem({super.key, required this.imageUrl});
@@ -16,7 +16,7 @@ class CategoryBookImgItem extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.r),
-        color: MyColors.cE5E5E5,
+        color: ColorConst.cE5E5E5,
       ),
       child: CachedNetworkImage(
         imageUrl: imageUrl,

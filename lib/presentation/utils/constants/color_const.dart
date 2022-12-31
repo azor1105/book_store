@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 // static const Color c = Color(0xFF);
 
-class MyColors {
+class ColorConst {
   static const Color c8687E7 = Color(0xFF8687E7);
   static const Color white = Colors.white;
   static const Color black = Colors.black;
-  static final blackWithOpacity087 = MyColors.black.withOpacity(0.87);
-  static final blackWithOpacity044 = MyColors.black.withOpacity(0.44);
-  static final blackWithOpacity063 = MyColors.black.withOpacity(0.63);
-  static final blackWithOpacity025 = MyColors.black.withOpacity(0.25);
+  static final blackWithOpacity087 = ColorConst.black.withOpacity(0.87);
+  static final blackWithOpacity044 = ColorConst.black.withOpacity(0.44);
+  static final blackWithOpacity063 = ColorConst.black.withOpacity(0.63);
+  static final blackWithOpacity025 = ColorConst.black.withOpacity(0.25);
   static const Color cF1F4FA = Color(0xFFF1F4FA);
   static const Color cDEDEDE = Color(0xFFDEDEDE);
   static const Color c090A0A = Color(0xFF090A0A);

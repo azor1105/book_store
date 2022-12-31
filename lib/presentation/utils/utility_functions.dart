@@ -1,4 +1,4 @@
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +10,7 @@ class MyUtils {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM_RIGHT,
         timeInSecForIosWeb: 1,
-        backgroundColor: MyColors.c8687E7,
+        backgroundColor: ColorConst.c8687E7,
         textColor: Colors.white,
         fontSize: 16.sp,
       );
@@ -32,10 +32,10 @@ class MyUtils {
           text ?? "",
           style: MyFonts.w500.copyWith(
             fontSize: 16.sp,
-            color: MyColors.white,
+            color: ColorConst.white,
           ),
         ),
-        backgroundColor: MyColors.c8687E7,
+        backgroundColor: ColorConst.c8687E7,
       ),
     );
   }

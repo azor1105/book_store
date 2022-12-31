@@ -4,7 +4,7 @@ import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/author/author_model.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/widgets/shimmers/circle_shimmer_item.dart';
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/widgets/book_info_item.dart';
@@ -33,19 +33,19 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
       builder: (BuildContext context, state) {
         if (state.status == Status.success) {
           return Scaffold(
-            backgroundColor: MyColors.white,
+            backgroundColor: ColorConst.white,
             body: SafeArea(
               child: CustomScrollView(
                 slivers: [
                   SliverAppBar(
-                    backgroundColor: MyColors.white,
+                    backgroundColor: ColorConst.white,
                     leading: IconButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
                       icon: SvgPicture.asset(
                         MyIcons.arrowBackIcon,
-                        color: MyColors.black,
+                        color: ColorConst.black,
                         height: 15.h,
                       ),
                     ),

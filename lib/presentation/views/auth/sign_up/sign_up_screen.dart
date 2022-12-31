@@ -1,5 +1,5 @@
 import 'package:book_store/data/repositories/auth_repository.dart';
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/views/auth/widgets/rich_text_auth_button.dart';
@@ -44,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.white,
+      backgroundColor: ColorConst.white,
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -62,7 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   "Sing up",
                   style: MyFonts.w500.copyWith(
                     fontSize: 18.sp,
-                    color: MyColors.c090A0A,
+                    color: ColorConst.c090A0A,
                   ),
                 ),
                 SizedBox(height: 22.h),

@@ -1,7 +1,7 @@
 import 'package:book_store/presentation/widgets/shimmers/rectangle_shimmer_item.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/constants/color_const.dart';
 
 class ShimmerSavedBookItem extends StatelessWidget {
   const ShimmerSavedBookItem({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class ShimmerSavedBookItem extends StatelessWidget {
         height: 140,
         width: double.infinity,
         decoration: BoxDecoration(
-          border: Border.all(width: 3, color: MyColors.blackWithOpacity087),
+          border: Border.all(width: 3, color: ColorConst.blackWithOpacity087),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Padding(
@@ -27,7 +27,7 @@ class ShimmerSavedBookItem extends StatelessWidget {
                 height: 110,
                 width: 90,
                 decoration: BoxDecoration(
-                    color: MyColors.white,
+                    color: ColorConst.white,
                     borderRadius: BorderRadius.circular(13)),
               ),
               const SizedBox(

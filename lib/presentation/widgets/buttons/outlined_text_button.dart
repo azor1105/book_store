@@ -1,7 +1,7 @@
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../utils/my_colors.dart';
+import '../../utils/constants/color_const.dart';
 
 class MyOutlinedButton extends StatelessWidget {
   const MyOutlinedButton({
@@ -19,8 +19,8 @@ class MyOutlinedButton extends StatelessWidget {
       width: width,
       child: TextButton(
         style: TextButton.styleFrom(
-          foregroundColor: MyColors.c8875FF,
-          side: const BorderSide(width: 2, color: MyColors.c8E7CFF),
+          foregroundColor: ColorConst.c8875FF,
+          side: const BorderSide(width: 2, color: ColorConst.c8E7CFF),
           backgroundColor: Colors.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(4.r),
@@ -30,7 +30,7 @@ class MyOutlinedButton extends StatelessWidget {
         child: Text(
           title,
           style:
-              MyFonts.w400.copyWith(color: MyColors.c8687E7, fontSize: 16.sp),
+              MyFonts.w400.copyWith(color: ColorConst.c8687E7, fontSize: 16.sp),
         ),
       ),
     );

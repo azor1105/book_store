@@ -1,5 +1,5 @@
 import 'package:book_store/presentation/utils/constants/route_names.dart';
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
@@ -15,7 +15,7 @@ class NoInternetScreen extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        backgroundColor: MyColors.white,
+        backgroundColor: ColorConst.white,
         body: Column(
           children: [
             const Spacer(),

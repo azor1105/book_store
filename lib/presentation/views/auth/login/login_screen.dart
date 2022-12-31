@@ -1,7 +1,7 @@
 import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
 import 'package:book_store/data/local_data/local_data.dart';
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/views/auth/widgets/rich_text_auth_button.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.white,
+      backgroundColor: ColorConst.white,
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   "Forgot Password?",
                   style: MyFonts.w500.copyWith(
                     fontSize: 15.sp,
-                    color: MyColors.c8687E7,
+                    color: ColorConst.c8687E7,
                   ),
                 ),
               ),

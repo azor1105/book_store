@@ -5,7 +5,7 @@ import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/custo
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/constants/color_const.dart';
 import '../../../../../utils/my_fonts.dart';
 import '../../../../../widgets/buttons/outlined_text_button.dart';
 
@@ -41,7 +41,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
         borderRadius: BorderRadius.circular(10.r),
       ),
       elevation: 0.0,
-      backgroundColor: MyColors.white,
+      backgroundColor: ColorConst.white,
       child: Container(
         width: MediaQuery.of(context).size.width * 0.8,
         height: MediaQuery.of(context).size.height * 0.5,
@@ -54,18 +54,18 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                 "Change password",
                 style: MyFonts.w700.copyWith(
                   fontSize: 16.sp,
-                  color: MyColors.blackWithOpacity087,
+                  color: ColorConst.blackWithOpacity087,
                 ),
               ),
             ),
             SizedBox(height: 10.h),
-            Divider(height: 1.h, color: MyColors.c979797),
+            Divider(height: 1.h, color: ColorConst.c979797),
             SizedBox(height: 10.h),
             Text(
               "Enter old password",
               style: MyFonts.w400.copyWith(
                 fontSize: 14.sp,
-                color: MyColors.blackWithOpacity087,
+                color: ColorConst.blackWithOpacity087,
               ),
             ),
             SizedBox(height: 8.h),
@@ -75,7 +75,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
               maxLength: 12,
               obscureText: true,
               textStyle: MyFonts.w400.copyWith(
-                color: MyColors.blackWithOpacity087,
+                color: ColorConst.blackWithOpacity087,
                 letterSpacing: 8.0,
               ),
               onSubmitted: (v) {
@@ -88,7 +88,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
               "Enter new password",
               style: MyFonts.w400.copyWith(
                 fontSize: 14.sp,
-                color: MyColors.blackWithOpacity087,
+                color: ColorConst.blackWithOpacity087,
               ),
             ),
             SizedBox(height: 8.h),
@@ -98,7 +98,7 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
               maxLength: 12,
               obscureText: true,
               textStyle: MyFonts.w400.copyWith(
-                color: MyColors.blackWithOpacity087,
+                color: ColorConst.blackWithOpacity087,
                 letterSpacing: 8.0,
               ),
               onSubmitted: (v) {

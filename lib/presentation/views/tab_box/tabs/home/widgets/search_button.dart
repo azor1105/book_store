@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/constants/color_const.dart';
 import '../../../../../utils/my_fonts.dart';
 import '../../../../../utils/my_icons.dart';
 
@@ -14,7 +14,7 @@ class SearchButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        foregroundColor: MyColors.c8687E7,
+        foregroundColor: ColorConst.c8687E7,
       ),
       onPressed: searchOnPressed,
       child: Row(
@@ -28,7 +28,7 @@ class SearchButton extends StatelessWidget {
             "Search",
             style: MyFonts.w500.copyWith(
               fontSize: 18.sp,
-              color: MyColors.blackWithOpacity063,
+              color: ColorConst.blackWithOpacity063,
             ),
           )
         ],

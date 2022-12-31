@@ -3,7 +3,7 @@ import 'package:book_store/presentation/widgets/shimmers/rectangle_shimmer_item.
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/constants/color_const.dart';
 import '../../../../../utils/my_fonts.dart';
 
 class CarouselItem extends StatelessWidget {
@@ -59,7 +59,7 @@ class CarouselItem extends StatelessWidget {
                     bookItem.bookName,
                     style: MyFonts.w600.copyWith(
                       fontSize: 13.sp,
-                      color: MyColors.black,
+                      color: ColorConst.black,
                     ),
                     maxLines: 2,
                     textAlign: TextAlign.center,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../utils/my_colors.dart';
+import '../../utils/constants/color_const.dart';
 import '../../utils/my_fonts.dart';
 
 class CustomRectangleTextButton extends StatelessWidget {
@@ -19,7 +19,7 @@ class CustomRectangleTextButton extends StatelessWidget {
       width: double.infinity,
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: MyColors.c8687E7,
+          backgroundColor: ColorConst.c8687E7,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(radius ?? 8.r),
           ),
@@ -30,7 +30,7 @@ class CustomRectangleTextButton extends StatelessWidget {
             title,
             style: MyFonts.w500.copyWith(
               fontSize: 16.sp,
-              color: MyColors.white,
+              color: ColorConst.white,
             ),
           ),
         ),

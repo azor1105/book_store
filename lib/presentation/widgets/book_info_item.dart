@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../utils/my_colors.dart';
+import '../utils/constants/color_const.dart';
 import '../utils/my_fonts.dart';
 
 class BookInfoItem extends StatelessWidget {
@@ -21,7 +21,7 @@ class BookInfoItem extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.only(bottom: 5.h),
         decoration: BoxDecoration(
-          color: MyColors.white,
+          color: ColorConst.white,
           borderRadius: BorderRadius.circular(10.r),
           boxShadow: [
             BoxShadow(
@@ -67,7 +67,7 @@ class BookInfoItem extends StatelessWidget {
                       bookItem.bookName,
                       style: MyFonts.w600.copyWith(
                         fontSize: 13.sp,
-                        color: MyColors.black,
+                        color: ColorConst.black,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -75,7 +75,7 @@ class BookInfoItem extends StatelessWidget {
                       bookItem.authorName,
                       style: MyFonts.w500.copyWith(
                         fontSize: 12.sp,
-                        color: MyColors.black,
+                        color: ColorConst.black,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -83,14 +83,14 @@ class BookInfoItem extends StatelessWidget {
                       bookItem.categoryName,
                       style: MyFonts.w500.copyWith(
                         fontSize: 12.sp,
-                        color: MyColors.blackWithOpacity087,
+                        color: ColorConst.blackWithOpacity087,
                       ),
                     ),
                     Text(
                       "${bookItem.pagesCount} pages",
                       style: MyFonts.w500.copyWith(
                         fontSize: 12.sp,
-                        color: MyColors.blackWithOpacity087,
+                        color: ColorConst.blackWithOpacity087,
                       ),
                     ),
                   ],

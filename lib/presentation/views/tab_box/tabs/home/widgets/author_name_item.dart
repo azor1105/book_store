@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../utils/my_colors.dart';
+import '../../../../../utils/constants/color_const.dart';
 import '../../../../../utils/my_fonts.dart';
 
 class AuthorNameItem extends StatelessWidget {
@@ -20,13 +20,13 @@ class AuthorNameItem extends StatelessWidget {
         padding: EdgeInsets.all(5.sp),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),
-            color: MyColors.white,
+            color: ColorConst.white,
             border: Border.all(width: 1.w, color: Colors.grey)),
         child: Text(
           authorName,
           style: MyFonts.w600.copyWith(
             fontSize: 13.sp,
-            color: MyColors.blackWithOpacity087,
+            color: ColorConst.blackWithOpacity087,
           ),
         ),
       ),

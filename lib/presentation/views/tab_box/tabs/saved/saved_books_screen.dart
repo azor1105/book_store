@@ -4,7 +4,7 @@ import 'package:book_store/data/models/status.dart';
 import 'package:book_store/data/repositories/saved_book_repository.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
-import 'package:book_store/presentation/utils/my_colors.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/my_fonts.dart';
 import 'package:book_store/presentation/widgets/no_books_item.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/saved/widgets/saved_book_item.dart';
@@ -26,7 +26,7 @@ class SavedBooksScreen extends StatelessWidget {
         savedBookRepository: savedBookRepository,
       )..getSavedBooks(userId: context.read<AppCubit>().state.user?.uid),
       child: Scaffold(
-        backgroundColor: MyColors.white,
+        backgroundColor: ColorConst.white,
         body: Column(
           children: [
             Expanded(
