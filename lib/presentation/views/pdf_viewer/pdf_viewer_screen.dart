@@ -4,21 +4,34 @@ import 'package:book_store/presentation/widgets/simple_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class PdfViewerScreen extends StatelessWidget {
-  PdfViewerScreen({
+class PdfViewerScreen extends StatefulWidget {
+  const PdfViewerScreen({
     super.key,
     required this.bookModel,
     this.bookPath,
   });
-  final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
   final BookModel bookModel;
   final String? bookPath;
+
+  @override
+  State<PdfViewerScreen> createState() => _PdfViewerScreenState();
+}
+
+class _PdfViewerScreenState extends State<PdfViewerScreen> {
+  late GlobalKey<SfPdfViewerState> _pdfViewerKey;
+  late PdfViewerController _pdfViewerController;
+  @override
+  void initState() {
+    super.initState();
+    _pdfViewerKey = GlobalKey();
+    _pdfViewerController = PdfViewerController();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SimpleAppBar(
-        title: bookModel.bookName,
+        title: widget.bookModel.bookName,
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -32,15 +45,17 @@ class PdfViewerScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: bookPath == null
+      body: widget.bookPath == null
           ? SfPdfViewer.network(
-              bookModel.bookUrl,
+              widget.bookModel.bookUrl,
               key: _pdfViewerKey,
+              controller: _pdfViewerController,
               pageLayoutMode: PdfPageLayoutMode.single,
             )
           : SfPdfViewer.file(
-              File(bookPath!),
+              File(widget.bookPath!),
               key: _pdfViewerKey,
+              controller: _pdfViewerController,
               pageLayoutMode: PdfPageLayoutMode.single,
             ),
     );
