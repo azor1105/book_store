@@ -4,6 +4,7 @@ import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/constants/poppins_font.dart';
+import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_info_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/download_button.dart';
@@ -11,6 +12,7 @@ import 'package:book_store/presentation/views/book_detail/widgets/save_button.da
 import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
 import 'package:book_store/presentation/widgets/buttons/simple_text_button.dart';
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -89,30 +91,51 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                     ),
                     BookDetailInfoItem(bookItem: widget.bookModel),
                     SizedBox(height: 20.h),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CustomRectangleTextButton(
-                            height: 50.h,
-                            radius: 12.r,
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                context,
-                                RouteNames.pdfView,
-                                arguments: [
-                                  widget.bookModel,
-                                  HiveService.getBookPath(
+                    BlocBuilder<AppCubit, AppState>(
+                      buildWhen: (previous, current) {
+                        return previous.connectivityResult !=
+                            current.connectivityResult;
+                      },
+                      builder: (context, state) {
+                        return Row(
+                          children: [
+                            Expanded(
+                              child: CustomRectangleTextButton(
+                                height: 50.h,
+                                radius: 12.r,
+                                onPressed: () {
+                                  String? bookPath = HiveService.getBookPath(
                                     bookId: widget.bookModel.id,
-                                  ),
-                                ],
-                              );
-                            },
-                            title: 'Read book',
-                          ),
-                        ),
-                        SizedBox(width: 20.w),
-                        DownloadButton(bookModel: widget.bookModel),
-                      ],
+                                  );
+                                  if (state.connectivityResult ==
+                                          ConnectivityResult.none &&
+                                      bookPath == null) {
+                                    MyUtils.getMyToast(
+                                      message:
+                                          'Please check internet connection',
+                                    );
+                                  } else {
+                                    Navigator.pushNamed(
+                                      context,
+                                      RouteNames.pdfView,
+                                      arguments: [
+                                        widget.bookModel,
+                                        bookPath,
+                                      ],
+                                    );
+                                  }
+                                },
+                                title: 'Read book',
+                              ),
+                            ),
+                            SizedBox(width: 20.w),
+                            DownloadButton(
+                              bookModel: widget.bookModel,
+                              connectivityResult: state.connectivityResult!,
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ],
                 ),

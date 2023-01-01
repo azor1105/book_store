@@ -7,7 +7,6 @@ import 'package:book_store/data/repositories/book_repository.dart';
 import 'package:book_store/presentation/router/router.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
-import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/auth/auth_screen.dart';
 import 'package:book_store/presentation/views/no_internet/no_internet_screen.dart';
 import 'package:book_store/presentation/views/on_boarding/main_on_boarding_screen.dart';
