@@ -16,7 +16,7 @@ class SavedPageHive {
     for (int i = 0; i < savedPagesBox.values.length; i++) {
       if (savedPagesBox.values.toList()[i].bookId == savedPageModel.bookId) {
         savedPagesBox.putAt(i, savedPageModel);
-        break;
+        return;
       }
     }
     savedPagesBox.add(savedPageModel);
