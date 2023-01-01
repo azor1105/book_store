@@ -14,14 +14,19 @@ import 'package:hive_flutter/adapters.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.remove();
+  // Initializing Hive && Storage Service
   await Hive.initFlutter();
   Hive.registerAdapter(DownloadedBookModelAdapter());
   Hive.registerAdapter(SavedPageModelAdapter());
   await Hive.openBox<SavedPageModel>(HiveConstants.savedPageBox);
   await Hive.openBox<DownloadedBookModel>(HiveConstants.downloadedBookBox);
   await StorageRepository.getInstance();
+
+  // Initializing Firebase 
   await Firebase.initializeApp();
   await FirebaseAppCheck.instance.activate();
+
+  // Setting portrait view on app && white status bar
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -31,5 +36,7 @@ void main() async {
     statusBarIconBrightness: Brightness.dark,
     statusBarBrightness: Brightness.dark,
   ));
+
+  // Running app
   runApp(const App());
 }
