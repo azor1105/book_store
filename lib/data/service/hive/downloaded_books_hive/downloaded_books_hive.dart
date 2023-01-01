@@ -1,10 +1,9 @@
 import 'dart:io';
-
-import 'package:book_store/data/service/hive/models/downloaded_book/downloaded_book_model.dart';
 import 'package:book_store/presentation/utils/constants/hive_constants.dart';
 import 'package:hive/hive.dart';
+import 'models/downloaded_book/downloaded_book_model.dart';
 
-class HiveService {
+class DownloadedBooksHive {
   static Box<DownloadedBookModel> getBooks() =>
       Hive.box<DownloadedBookModel>(HiveConstants.downloadedBookBox);
 

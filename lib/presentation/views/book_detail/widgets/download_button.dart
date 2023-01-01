@@ -1,6 +1,6 @@
 import 'package:book_store/cubits/downloaded_books/downloaded_books_cubit.dart';
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:book_store/data/service/hive/hive_service.dart';
+import 'package:book_store/data/service/hive/downloaded_books_hive/downloaded_books_hive.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
@@ -24,7 +24,7 @@ class DownloadButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DownloadedBooksCubit, DownloadedBooksState>(
       builder: (context, state) {
-        bool isDownloaded = HiveService.isExist(bookId: bookModel.id);
+        bool isDownloaded = DownloadedBooksHive.isExist(bookId: bookModel.id);
         var downloadTask = state.downloadTasks
             .where(
               (task) => task.bookModel.id == bookModel.id,

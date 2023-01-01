@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:book_store/data/models/book/book_model.dart';
-import 'package:book_store/data/service/hive/hive_service.dart';
-import 'package:book_store/data/service/hive/models/downloaded_book/downloaded_book_model.dart';
+import 'package:book_store/data/service/hive/downloaded_books_hive/downloaded_books_hive.dart';
+import 'package:book_store/data/service/hive/downloaded_books_hive/models/downloaded_book/downloaded_book_model.dart';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -14,7 +14,7 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
   CancelToken cancelToken = CancelToken();
 
   void getBooks() {
-    var books = HiveService.getBooks()
+    var books = DownloadedBooksHive.getBooks()
         .values
         .map((downloadedBook) => downloadedBook.toBookModel())
         .toList();
@@ -34,7 +34,7 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
   void deleteBook({
     required String bookId,
   }) async {
-    await HiveService.deleteBook(bookId: bookId);
+    await DownloadedBooksHive.deleteBook(bookId: bookId);
     getBooks();
   }
 
@@ -56,7 +56,7 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
           onReceiveProgress: (received, total) {
         double percent = received / total * 100;
         if (percent == 100) {
-          HiveService.addBook(
+          DownloadedBooksHive.addBook(
             downloadedBookModel: DownloadedBookModel(
               authorId: bookModel.authorId,
               authorName: bookModel.authorName,

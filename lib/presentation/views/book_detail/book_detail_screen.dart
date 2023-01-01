@@ -1,5 +1,5 @@
 import 'package:book_store/app/app_cubit/app_cubit.dart';
-import 'package:book_store/data/service/hive/hive_service.dart';
+import 'package:book_store/data/service/hive/downloaded_books_hive/downloaded_books_hive.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
@@ -104,7 +104,8 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                                 height: 50.h,
                                 radius: 12.r,
                                 onPressed: () {
-                                  String? bookPath = HiveService.getBookPath(
+                                  String? bookPath =
+                                      DownloadedBooksHive.getBookPath(
                                     bookId: widget.bookModel.id,
                                   );
                                   if (state.connectivityResult ==
