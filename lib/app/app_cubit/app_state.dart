@@ -9,12 +9,12 @@ class AppState extends Equatable {
   const AppState({
     this.userStatus = UserStatus.unAuthenticated,
     this.user,
-    this.connectivityResult = ConnectivityResult.none,
+    this.connectivityResult,
     this.status = Status.pure,
   });
 
   final Status status;
-  final ConnectivityResult connectivityResult;
+  final ConnectivityResult? connectivityResult;
   final UserStatus userStatus;
   final User? user;
 

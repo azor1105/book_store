@@ -5,7 +5,9 @@ import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/data/repositories/book_repository.dart';
 import 'package:book_store/presentation/router/router.dart';
+import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
+import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/auth/auth_screen.dart';
 import 'package:book_store/presentation/views/no_internet/no_internet_screen.dart';
 import 'package:book_store/presentation/views/on_boarding/main_on_boarding_screen.dart';
@@ -81,7 +83,9 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
-        if (state.connectivityResult == ConnectivityResult.none) {
+        if (state.connectivityResult == null) {
+          return const Scaffold(backgroundColor: ColorConst.white);
+        } else if (state.connectivityResult == ConnectivityResult.none) {
           return const NoInternetScreen();
         } else if (StorageRepository.getBool(
                 keyOfValue: SharedPrefKeys.showOnBoarding) ==
