@@ -14,7 +14,7 @@ class DownloadedBooksHive {
     return downloadedBookModel;
   }
 
-  static Future clearDownloadedBooksBox() async {
+  static Future clearBox() async {
     final downloadedBooksBox = getBooks();
     await downloadedBooksBox.clear();
   }

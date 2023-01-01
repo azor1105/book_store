@@ -1,5 +1,6 @@
 import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/data/service/hive/downloaded_books_hive/models/downloaded_book/downloaded_book_model.dart';
+import 'package:book_store/data/service/hive/saved_page_hive/models/saved_page_model.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,6 +16,8 @@ void main() async {
   FlutterNativeSplash.remove();
   await Hive.initFlutter();
   Hive.registerAdapter(DownloadedBookModelAdapter());
+  Hive.registerAdapter(SavedPageModelAdapter());
+  await Hive.openBox<SavedPageModel>(HiveConstants.savedPageBox);
   await Hive.openBox<DownloadedBookModel>(HiveConstants.downloadedBookBox);
   await StorageRepository.getInstance();
   await Firebase.initializeApp();
