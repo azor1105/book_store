@@ -2,7 +2,7 @@ import 'package:book_store/data/service/hive/saved_page_hive/models/saved_page_m
 import 'package:book_store/presentation/utils/constants/hive_constants.dart';
 import 'package:hive/hive.dart';
 
-class DownloadedBooksHive {
+class SavedPageHive {
   static Box<SavedPageModel> getSavedPages() =>
       Hive.box<SavedPageModel>(HiveConstants.savedPageBox);
 
