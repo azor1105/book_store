@@ -16,21 +16,21 @@ class BookDetailItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 250.h,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.r),
-            boxShadow: [
-              BoxShadow(
-                spreadRadius: 3,
-                blurRadius: 4,
-                color: Colors.grey.shade300,
-                offset: const Offset(1, 3),
-              ),
-            ],
-          ),
-          child: Hero(
-            tag: bookItem.id,
+        Hero(
+          tag: bookItem.id,
+          child: Container(
+            height: 250.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15.r),
+              boxShadow: [
+                BoxShadow(
+                  spreadRadius: 3,
+                  blurRadius: 4,
+                  color: Colors.grey.shade300,
+                  offset: const Offset(1, 3),
+                ),
+              ],
+            ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
               child: CachedNetworkImage(

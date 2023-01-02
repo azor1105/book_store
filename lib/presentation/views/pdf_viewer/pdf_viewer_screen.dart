@@ -92,7 +92,6 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
               pageLayoutMode: PdfPageLayoutMode.single,
               onPageChanged: (details) {
                 page = details.newPageNumber;
-                print(page);
               },
             ),
     );
