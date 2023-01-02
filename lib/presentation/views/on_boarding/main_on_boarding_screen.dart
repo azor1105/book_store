@@ -9,10 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MainOnBoardingScreen extends StatefulWidget {
-  const MainOnBoardingScreen({super.key});
+  const MainOnBoardingScreen({super.key, required this.saveWatched});
 
   @override
   State<MainOnBoardingScreen> createState() => _MainOnBoardingScreenState();
+  final VoidCallback saveWatched;
 }
 
 class _MainOnBoardingScreenState extends State<MainOnBoardingScreen> {
@@ -29,85 +30,81 @@ class _MainOnBoardingScreenState extends State<MainOnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConst.white,
-      body: currentPageIndex == _screens.length
-          ? const MainOnBoardingScreen()
-          : SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 14.h),
+              child: SimpleTextButton(
+                onPressed: widget.saveWatched,
+                title: "SKIP",
+              ),
+            ),
+            Expanded(
+              child: Stack(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 14.h),
-                    child: SimpleTextButton(
-                      onPressed: () {
-                        setState(() {
-                          currentPageIndex = _screens.length;
-                        });
-                      },
-                      title: "SKIP",
+                  PageView(
+                    controller: pageController,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: _screens,
+                  ),
+                  Positioned(
+                    top: (MediaQuery.of(context).size.height * 0.35 + 40),
+                    left: MediaQuery.of(context).size.width / 2 - 50,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: MovementAnimationOnBoarding(
+                        indexOfContainer: currentPageIndex,
+                      ),
                     ),
                   ),
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        PageView(
-                          controller: pageController,
-                          physics: const NeverScrollableScrollPhysics(),
-                          children: _screens,
-                        ),
-                        Positioned(
-                          top: (MediaQuery.of(context).size.height * 0.35 + 40),
-                          left: MediaQuery.of(context).size.width / 2 - 50,
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: MovementAnimationOnBoarding(
-                              indexOfContainer: currentPageIndex,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SimpleTextButton(
-                          title: "Back",
-                          onPressed: () {
-                            if (currentPageIndex > 0) {
-                              setState(
-                                () {
-                                  currentPageIndex--;
-                                  pageController.jumpToPage(currentPageIndex);
-                                  buttonText = "NEXT";
-                                },
-                              );
-                            }
-                          },
-                        ),
-                        TextButtonWithBackground(
-                          onPressed: () {
-                            setState(() {
-                              currentPageIndex++;
-                              pageController.jumpToPage(currentPageIndex);
-                            });
-
-                            if (currentPageIndex == 2) {
-                              setState(() {
-                                buttonText = "GET STARTED";
-                              });
-                            }
-                          },
-                          title: buttonText,
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 30.h),
                 ],
               ),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SimpleTextButton(
+                    title: "Back",
+                    onPressed: () {
+                      if (currentPageIndex > 0) {
+                        setState(
+                          () {
+                            currentPageIndex--;
+                            pageController.jumpToPage(currentPageIndex);
+                            buttonText = "NEXT";
+                          },
+                        );
+                      }
+                    },
+                  ),
+                  TextButtonWithBackground(
+                    onPressed: () {
+                      setState(() {
+                        currentPageIndex++;
+                        pageController.jumpToPage(currentPageIndex);
+                      });
+                      if (currentPageIndex == 2) {
+                        setState(() {
+                          buttonText = "GET STARTED";
+                        });
+                      }
+                      if (currentPageIndex == 3) {
+                        widget.saveWatched.call();
+                      }
+                    },
+                    title: buttonText,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 30.h),
+          ],
+        ),
+      ),
     );
   }
 }

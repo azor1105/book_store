@@ -37,10 +37,6 @@ class Routes {
         return MaterialPageRoute(
           builder: (_) => const TabBoxScreen(),
         );
-      case RouteNames.mainOnBoarding:
-        return MaterialPageRoute(
-          builder: (_) => const MainOnBoardingScreen(),
-        );
       case RouteNames.bookDetail:
         return MaterialPageRoute(
           builder: (_) {

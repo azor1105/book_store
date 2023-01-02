@@ -87,10 +87,6 @@ class MainScreen extends StatelessWidget {
           return const Scaffold(backgroundColor: ColorConst.white);
         } else if (state.connectivityResult == ConnectivityResult.none) {
           return const NoInternetScreen();
-        } else if (StorageRepository.getBool(
-                keyOfValue: SharedPrefKeys.showOnBoarding) ==
-            null) {
-          return const MainOnBoardingScreen();
         } else if (state.userStatus == UserStatus.authenticated) {
           return const TabBoxScreen();
         }
