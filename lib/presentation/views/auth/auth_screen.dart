@@ -23,10 +23,7 @@ class _AuthScreenState extends State<AuthScreen> {
           );
   }
 
-  void switchAuthPages() => setState(
-        () {
-          isLogged = !isLogged;
-        },
-        
-      );
+  void switchAuthPages() => setState(() {
+        isLogged = !isLogged;
+      });
 }

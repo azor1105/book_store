@@ -1,5 +1,4 @@
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/views/auth/auth_screen.dart';
 import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/first_on_boarding_screen.dart';
 import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/second_on_boarding_screen.dart';
 import 'package:book_store/presentation/views/on_boarding/on_boarding_screens/third_on_boarding_screen.dart';
@@ -31,7 +30,7 @@ class _MainOnBoardingScreenState extends State<MainOnBoardingScreen> {
     return Scaffold(
       backgroundColor: ColorConst.white,
       body: currentPageIndex == _screens.length
-          ? const AuthScreen()
+          ? const MainOnBoardingScreen()
           : SafeArea(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
