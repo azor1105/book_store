@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileImgItem extends StatelessWidget {
-  const ProfileImgItem({super.key, this.photoURL});
+  const ProfileImgItem({super.key,  this.photoURL});
 
   @override
   Widget build(BuildContext context) {
-    return photoURL == null
+    return photoURL == '' || photoURL == null
         ? Image.asset(
             MyIcons.profileDefaultImg,
             height: 100.h,

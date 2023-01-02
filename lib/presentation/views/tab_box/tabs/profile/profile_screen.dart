@@ -1,7 +1,5 @@
 import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/data/models/status.dart';
-import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
-import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
@@ -26,6 +24,11 @@ class ProfileScreen extends StatelessWidget {
       backgroundColor: ColorConst.white,
       body: BlocBuilder<AppCubit, AppState>(
         builder: (context, state) {
+          if (state.user == null) {
+            return const Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          }
           return SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Padding(
@@ -46,13 +49,13 @@ class ProfileScreen extends StatelessWidget {
                     child: state.status == Status.loading
                         ? const CircleShimmerItem()
                         : ProfileImgItem(
-                            photoURL: state.user?.photoURL,
+                            photoURL: state.user?.photoUrl,
                           ),
                   ),
                   SizedBox(height: 10.h),
                   Center(
                     child: Text(
-                      state.user!.displayName!,
+                      state.user?.fullName ?? '',
                       style: PoppinsFont.w500.copyWith(
                         color: ColorConst.blackWithOpacity087,
                       ),
@@ -86,8 +89,7 @@ class ProfileScreen extends StatelessWidget {
                         barrierDismissible: false,
                         context: context,
                         builder: (context) => ChangeUserNameDialog(
-                          userName: state.user!.displayName!,
-                          update: () {},
+                          userName: state.user!.fullName,
                         ),
                       );
                     },
@@ -96,13 +98,11 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   ProfileItemButton(
                     onPressed: () async {
-                      String savedPassword = StorageRepository.getString(
-                          keyOfValue: SharedPrefKeys.userPassword)!;
                       showDialog(
                         barrierDismissible: false,
                         context: context,
                         builder: (context) => ChangePasswordDialog(
-                          oldPassword: savedPassword,
+                          oldPassword: state.user!.password,
                         ),
                       );
                     },
@@ -140,6 +140,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           );
+
         },
       ),
     );

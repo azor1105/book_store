@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:book_store/data/models/status.dart';
+import 'package:book_store/data/models/user/user_model.dart';
 import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/widgets/pick_img.dart';
@@ -16,11 +17,12 @@ class AppCubit extends Cubit<AppState> {
       : _authRepository = authRepository,
         super(const AppState()) {
     checkInternet();
-    userInfoChanges();
+    userAuthStateChanges();
   }
 
   final AuthRepository _authRepository;
-  late StreamSubscription<User?> _streamSubscriptionUser;
+  late StreamSubscription<User?> _streamSubscriptionAuthState;
+  late StreamSubscription<UserModel> _streamSubscriptionUser;
   late StreamSubscription<ConnectivityResult> _streamSubscriptionConnectivity;
 
   final Connectivity _connectivity = Connectivity();
@@ -42,16 +44,32 @@ class AppCubit extends Cubit<AppState> {
     emit(state.copyWith(connectivityResult: result));
   }
 
-  void userInfoChanges() {
-    _streamSubscriptionUser = _authRepository.userInfoChanges.listen(
-      (user) {
+  void userAuthStateChanges() {
+    bool isOpen = true;
+    _streamSubscriptionAuthState = _authRepository.userInfoChanges.listen(
+      (firebaseUser) {
+        if (isOpen) {
+          if (firebaseUser?.uid != null) {
+            isOpen = false;
+            fetchUser(firebaseUser!.uid);
+          }
+        }
         emit(
           state.copyWith(
-            user: user,
-            userStatus: user?.uid == null
+            userStatus: firebaseUser?.uid == null
                 ? UserStatus.unAuthenticated
                 : UserStatus.authenticated,
           ),
+        );
+      },
+    );
+  }
+
+  void fetchUser(String uid) {
+    _streamSubscriptionUser = _authRepository.fetchUser(uid: uid).listen(
+      (user) {
+        emit(
+          state.copyWith(user: user),
         );
       },
     );
@@ -66,7 +84,7 @@ class AppCubit extends Cubit<AppState> {
     }
     if (file != null) {
       emit(state.copyWith(status: Status.loading));
-      await _authRepository.uploadImage(file);
+      await _authRepository.uploadImage(docId: state.user!.docId, file: file);
       emit(state.copyWith(status: Status.success));
     } else {
       MyUtils.getMyToast(message: 'Image is not picked');
@@ -75,8 +93,9 @@ class AppCubit extends Cubit<AppState> {
 
   @override
   Future<void> close() {
-    _streamSubscriptionUser.cancel();
+    _streamSubscriptionAuthState.cancel();
     _streamSubscriptionConnectivity.cancel();
+    _streamSubscriptionUser.cancel();
     return super.close();
   }
 }

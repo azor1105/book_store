@@ -122,16 +122,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             email: emailController.text,
                             password: passwordController.text,
                             context: context,
-                          );
-                      await context.read<AuthRepository>().updateDisplayName(
-                            context: context,
                             displayName: nameController.text.trim(),
                           );
                       await StorageRepository.putBool(
                           key: SharedPrefKeys.showOnBoarding, value: true);
-                      await StorageRepository.putString(
-                          key: SharedPrefKeys.userPassword,
-                          value: passwordController.text);
                     },
                     title: "SIGN UP",
                   ),

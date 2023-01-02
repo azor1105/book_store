@@ -104,9 +104,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         );
                     await StorageRepository.putBool(
                         key: SharedPrefKeys.showOnBoarding, value: true);
-                    await StorageRepository.putString(
-                        key: SharedPrefKeys.userPassword,
-                        value: passwordController.text);
                   },
                   title: "LOG IN",
                 ),

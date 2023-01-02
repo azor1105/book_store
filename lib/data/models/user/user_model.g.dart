@@ -12,12 +12,16 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       password: json['password'] as String? ?? '',
       photoUrl: json['photoUrl'] as String? ?? '',
       uid: json['uid'] as String? ?? '',
+      email: json['email'] as String? ?? '',
+      docId: json['docId'] as String? ?? '',
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
+      'email': instance.email,
       'uid': instance.uid,
       'fullName': instance.fullName,
       'fcmToken': instance.fcmToken,
       'photoUrl': instance.photoUrl,
       'password': instance.password,
+      'docId': instance.docId,
     };

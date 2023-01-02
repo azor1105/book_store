@@ -1,3 +1,4 @@
+import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/widgets/buttons/text_button_with_background.dart';
@@ -131,11 +132,11 @@ class _ChangePasswordDialogState extends State<ChangePasswordDialog> {
                         );
                       } else {
                         Navigator.of(context).pop();
-                        await context.read<AuthRepository>().updatePassword(
+                        context.read<AuthRepository>().updatePassword(
                               context: context,
                               password: newPasswordController.text.trim(),
+                              docId: context.read<AppCubit>().state.user!.docId,
                             );
-                        await context.read<AuthRepository>().signOut(context);
                         MyUtils.getMyToast(message: "You need to sign in");
                       }
                     },

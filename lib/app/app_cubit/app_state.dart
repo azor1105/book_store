@@ -16,10 +16,10 @@ class AppState extends Equatable {
   final Status status;
   final ConnectivityResult? connectivityResult;
   final UserStatus userStatus;
-  final User? user;
+  final UserModel? user;
 
   AppState copyWith({
-    User? user,
+    UserModel? user,
     UserStatus? userStatus,
     ConnectivityResult? connectivityResult,
     Status? status,

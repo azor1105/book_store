@@ -26,12 +26,13 @@ class App extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(
-          create: (context) => AuthRepository(
-            auth: FirebaseAuth.instance,
-          ),
+          create: (context) => FirebaseFirestore.instance,
         ),
         RepositoryProvider(
-          create: (context) => FirebaseFirestore.instance,
+          create: (context) => AuthRepository(
+            auth: FirebaseAuth.instance,
+            firestore: context.read<FirebaseFirestore>(),
+          ),
         ),
         RepositoryProvider(
           create: (context) => BookRepository(

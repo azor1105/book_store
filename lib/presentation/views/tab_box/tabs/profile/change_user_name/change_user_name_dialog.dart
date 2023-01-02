@@ -1,3 +1,4 @@
+import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/data/repositories/auth_repository.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:book_store/presentation/widgets/buttons/text_button_with_background.dart';
@@ -12,13 +13,11 @@ import '../../../../../widgets/buttons/outlined_text_button.dart';
 class ChangeUserNameDialog extends StatefulWidget {
   const ChangeUserNameDialog({
     Key? key,
-    required this.update,
     required this.userName,
   }) : super(key: key);
 
   @override
   State<ChangeUserNameDialog> createState() => _ChangeUserNameDialogState();
-  final VoidCallback update;
   final String userName;
 }
 
@@ -100,13 +99,13 @@ class _ChangeUserNameDialogState extends State<ChangeUserNameDialog> {
                         } else if (!userNameIsValid) {
                           MyUtils.getMyToast(message: 'Name is wrong');
                         } else {
-                          await context
-                              .read<AuthRepository>()
-                              .updateDisplayName(
+                          Navigator.of(context).pop();
+                          context.read<AuthRepository>().updateDisplayName(
                                 context: context,
                                 displayName: userNameController.text.trim(),
+                                docId:
+                                    context.read<AppCubit>().state.user!.docId,
                               );
-                          Navigator.of(context).pop();
                         }
                       },
                       title: "Save",

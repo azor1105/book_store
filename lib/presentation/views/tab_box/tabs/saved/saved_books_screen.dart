@@ -23,83 +23,94 @@ class SavedBooksScreen extends StatelessWidget {
     var savedBookRepository = SavedBookRepository(
       firestore: FirebaseFirestore.instance,
     );
-    return BlocProvider(
-      create: (context) => SavedBookCubit(
-        savedBookRepository: savedBookRepository,
-      )..getSavedBooks(userId: context.read<AppCubit>().state.user?.uid),
-      child: Scaffold(
-        backgroundColor: ColorConst.white,
-        body: Column(
-          children: [
-            Expanded(
-              child: BlocBuilder<SavedBookCubit, SavedBookState>(
-                builder: (context, state) {
-                  if (state.status == Status.loading) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      physics: const ClampingScrollPhysics(),
-                      itemCount: 5,
-                      padding: EdgeInsets.symmetric(
-                          vertical: 20.h, horizontal: 15.w),
-                      itemBuilder: (context, index) {
-                        return const ShimmerSavedBookItem();
-                      },
-                    );
-                  } else if (state.status == Status.success) {
-                    if (state.savedBooks.isEmpty) {
-                      return const NoBookItem();
-                    } else {
-                      return SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 10.h),
-                            Padding(
-                              padding: EdgeInsets.only(left: 20.w),
-                              child: Text(
-                                "${state.savedBooks.length} ${state.savedBooks.length > 1 ? "books" : "book"}",
-                                style: PoppinsFont.w600,
-                              ),
-                            ),
-                            ListView.builder(
-                              shrinkWrap: true,
-                              physics: const ClampingScrollPhysics(),
-                              itemCount: state.savedBooks.length,
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 20.h, horizontal: 15.w),
-                              itemBuilder: (context, index) {
-                                return SavedBookItem(
-                                  bookItem: BookModel.fromSavedBook(
-                                      state.savedBooks[index]),
-                                  onDeleteTap: () async {
-                                    await savedBookRepository.deleteSavedBook(
-                                        docId: state.savedBooks[index].id);
+    return BlocBuilder<AppCubit, AppState>(
+      builder: (context, state) {
+        if (state.user == null) {
+          return savedBooksShimmerList();
+        }
+        return BlocProvider(
+          create: (context) => SavedBookCubit(
+            savedBookRepository: savedBookRepository,
+          )..getSavedBooks(userId: state.user!.uid),
+          child: Scaffold(
+            backgroundColor: ColorConst.white,
+            body: Column(
+              children: [
+                Expanded(
+                  child: BlocBuilder<SavedBookCubit, SavedBookState>(
+                    builder: (context, state) {
+                      if (state.status == Status.loading) {
+                        return savedBooksShimmerList();
+                      } else if (state.status == Status.success) {
+                        if (state.savedBooks.isEmpty) {
+                          return const NoBookItem();
+                        } else {
+                          return SingleChildScrollView(
+                            physics: const BouncingScrollPhysics(),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 10.h),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 20.w),
+                                  child: Text(
+                                    "${state.savedBooks.length} ${state.savedBooks.length > 1 ? "books" : "book"}",
+                                    style: PoppinsFont.w600,
+                                  ),
+                                ),
+                                ListView.builder(
+                                  shrinkWrap: true,
+                                  physics: const ClampingScrollPhysics(),
+                                  itemCount: state.savedBooks.length,
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 20.h, horizontal: 15.w),
+                                  itemBuilder: (context, index) {
+                                    return SavedBookItem(
+                                      bookItem: BookModel.fromSavedBook(
+                                          state.savedBooks[index]),
+                                      onDeleteTap: () async {
+                                        await savedBookRepository
+                                            .deleteSavedBook(
+                                                docId:
+                                                    state.savedBooks[index].id);
+                                      },
+                                    );
                                   },
-                                );
-                              },
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      );
-                    }
-                  }
-                  return const SizedBox();
-                },
-              ),
+                          );
+                        }
+                      }
+                      return const SizedBox();
+                    },
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                  child: CustomRectangleTextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, RouteNames.downloadedBooks);
+                    },
+                    title: 'Read downloaded books',
+                  ),
+                ),
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-              child: CustomRectangleTextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, RouteNames.downloadedBooks);
-                },
-                title: 'Read downloaded books',
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
+
+  Widget savedBooksShimmerList() => ListView.builder(
+        shrinkWrap: true,
+        physics: const ClampingScrollPhysics(),
+        itemCount: 5,
+        padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 15.w),
+        itemBuilder: (context, index) {
+          return const ShimmerSavedBookItem();
+        },
+      );
 }

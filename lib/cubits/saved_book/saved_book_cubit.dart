@@ -15,10 +15,7 @@ class SavedBookCubit extends Cubit<SavedBookState> {
   final SavedBookRepository _savedBookRepository;
   late StreamSubscription<List<SavedBookModel>> _streamSubscription;
 
-  void getSavedBooks({required String? userId}) {
-    if (userId == null) {
-      return;
-    }
+  void getSavedBooks({required String userId}) {
     emit(state.copyWith(status: Status.loading));
     _streamSubscription =
         _savedBookRepository.getAllSavedBooks(userId: userId).listen(
