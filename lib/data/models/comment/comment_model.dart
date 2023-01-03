@@ -10,8 +10,8 @@ class CommentModel {
   @JsonKey(defaultValue: "", name: "createdAt")
   String createdAt;
 
-  @JsonKey(defaultValue: "", name: "uid")
-  String uid;
+  @JsonKey(defaultValue: "", name: "userDocId")
+  String userDocId;
 
   @JsonKey(defaultValue: "", name: "message")
   String message;
@@ -23,7 +23,7 @@ class CommentModel {
     required this.createdAt,
     required this.id,
     required this.message,
-    required this.uid,
+    required this.userDocId,
     required this.bookId,
   });
 

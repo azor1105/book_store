@@ -1,4 +1,5 @@
 import 'package:book_store/data/models/comment/comment_model.dart';
+import 'package:book_store/data/models/user/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CommentRepository {
@@ -25,5 +26,10 @@ class CommentRepository {
 
   Future<void> deleteComment({required String id}) async {
     await _firestore.collection('comments').doc(id).delete();
+  }
+
+  Future<UserModel> getUser({required String userDocId}) async {
+    var user = await _firestore.collection('users').doc(userDocId).get();
+    return UserModel.fromJson(user.data()!);
   }
 }

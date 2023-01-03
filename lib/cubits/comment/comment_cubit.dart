@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:book_store/data/models/comment/comment_model.dart';
 import 'package:book_store/data/models/status.dart';
@@ -20,10 +19,12 @@ class CommentCubit extends Cubit<CommentState> {
     emit(state.copyWith(status: Status.loading));
     _streamSubscriptionComment =
         _commentRepository.getComments(bookId: bookId).listen(
-              (comments) => emit(state.copyWith(
-                comments: comments,
-                status: Status.success,
-              )),
+              (comments) => emit(
+                state.copyWith(
+                  comments: comments,
+                  status: Status.success,
+                ),
+              ),
             );
   }
 
