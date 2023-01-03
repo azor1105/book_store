@@ -28,6 +28,14 @@ class CommentRepository {
     await _firestore.collection('comments').doc(id).delete();
   }
 
+  Future<void> editComment(
+      {required String message, required String docId}) async {
+    await _firestore
+        .collection('comments')
+        .doc(docId)
+        .update({'message': message});
+  }
+
   Future<UserModel> getUser({required String userDocId}) async {
     var user = await _firestore.collection('users').doc(userDocId).get();
     return UserModel.fromJson(user.data()!);
