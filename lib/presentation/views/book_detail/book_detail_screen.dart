@@ -5,6 +5,7 @@ import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
+import 'package:book_store/presentation/views/book_detail/comment/comment_view.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_info_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/download_button.dart';
@@ -90,6 +91,27 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                       ),
                     ),
                     BookDetailInfoItem(bookItem: widget.bookModel),
+                    SizedBox(height: 20.h),
+                    SimpleTextButton(
+                      title: 'Comments',
+                      onPressed: () {
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          backgroundColor: ColorConst.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(15.r),
+                            ),
+                          ),
+                          context: context,
+                          builder: (context) => CommentView(
+                            bookId: widget.bookModel.id,
+                            userDocId:
+                                context.read<AppCubit>().state.user!.docId,
+                          ),
+                        );
+                      },
+                    ),
                     SizedBox(height: 20.h),
                     BlocBuilder<AppCubit, AppState>(
                       buildWhen: (previous, current) {

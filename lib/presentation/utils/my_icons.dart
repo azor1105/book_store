@@ -26,12 +26,14 @@ class MyIcons {
   // .svg
   static const String unselectedHomeIcon =
       "assets/svg/home_unselected_icon.svg";
+  static const String sendIcon = "assets/svg/send.svg";
   static const String selectedHomeIcon = "assets/svg/home_selected_icon.svg";
   static const String arrowBackIcon = "assets/svg/arrow_back_icon.svg";
   static const String deleteIcon = "assets/svg/delete_icon.svg";
   static const String intoIcon = "assets/svg/into_icon.svg";
   static const String settingsIcon = "assets/svg/settings_icon.svg";
-  static const String profileScreenUserIcon = "assets/svg/profile_screen_user_icon.svg";
+  static const String profileScreenUserIcon =
+      "assets/svg/profile_screen_user_icon.svg";
   static const String passwordIcon = "assets/svg/password_icon.svg";
   static const String cameraIcon = "assets/svg/camera_icon.svg";
   static const String aboutUsIcon = "assets/svg/about_us_icon.svg";
