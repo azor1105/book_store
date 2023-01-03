@@ -7,5 +7,23 @@ class CommentRepository {
 
   final FirebaseFirestore _firestore;
 
-  // Stream<CommentModel> getComments(){}
+  Stream<List<CommentModel>> getComments({required String bookId}) => _firestore
+      .collection('comments')
+      .where('bookId', isEqualTo: bookId)
+      .snapshots()
+      .map((snapshot) => snapshot.docs
+          .map(
+            (doc) => CommentModel.fromJson(doc.data()),
+          )
+          .toList());
+
+  Future<void> addComment(CommentModel commentModel) async {
+    var addedComment =
+        await _firestore.collection('comments').add(commentModel.toJson());
+    await addedComment.update({'id': addedComment.id});
+  }
+
+  Future<void> deleteComment({required String id}) async {
+    await _firestore.collection('comments').doc(id).delete();
+  }
 }
