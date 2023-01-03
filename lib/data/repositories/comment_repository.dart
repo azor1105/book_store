@@ -11,6 +11,7 @@ class CommentRepository {
   Stream<List<CommentModel>> getComments({required String bookId}) => _firestore
       .collection('comments')
       .where('bookId', isEqualTo: bookId)
+      .orderBy('createdAt')
       .snapshots()
       .map((snapshot) => snapshot.docs
           .map(
