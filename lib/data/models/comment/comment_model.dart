@@ -16,11 +16,15 @@ class CommentModel {
   @JsonKey(defaultValue: "", name: "message")
   String message;
 
+  @JsonKey(defaultValue: "", name: "bookId")
+  String bookId;
+
   CommentModel({
     required this.createdAt,
     required this.id,
     required this.message,
     required this.uid,
+    required this.bookId,
   });
 
   factory CommentModel.fromJson(Map<String, dynamic> json) =>
