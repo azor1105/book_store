@@ -17,7 +17,7 @@ class MessageItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.h),
+      padding: EdgeInsets.only(bottom: 8.h),
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.7,
         child: Row(
