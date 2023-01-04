@@ -1,10 +1,10 @@
-import 'package:book_store/cubits/comment/comment_cubit.dart';
 import 'package:book_store/data/models/comment/comment_model.dart';
 import 'package:book_store/data/models/status.dart';
 import 'package:book_store/data/models/user/user_model.dart';
 import 'package:book_store/data/repositories/comment_repository.dart';
-import 'package:book_store/presentation/views/book_detail/comment/widgets/comment_input.dart';
-import 'package:book_store/presentation/views/book_detail/comment/widgets/message_item.dart';
+import 'package:book_store/presentation/views/book_detail/comment/cubit/comment_cubit.dart';
+import 'package:book_store/presentation/views/book_detail/comment/view/widgets/comment_input.dart';
+import 'package:book_store/presentation/views/book_detail/comment/view/widgets/message_item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

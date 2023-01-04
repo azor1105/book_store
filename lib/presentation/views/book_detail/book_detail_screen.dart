@@ -5,7 +5,7 @@ import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
-import 'package:book_store/presentation/views/book_detail/comment/comment_view.dart';
+import 'package:book_store/presentation/views/book_detail/comment/view/comment_view.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_info_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/download_button.dart';
