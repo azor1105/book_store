@@ -10,29 +10,44 @@ class CommentRepository {
 
   Stream<List<CommentModel>> getComments({required String bookId}) => _firestore
       .collection('comments')
-      .where('bookId', isEqualTo: bookId)
-      .orderBy('createdAt')
+      .doc(bookId)
+      .collection(bookId)
       .snapshots()
-      .map((snapshot) => snapshot.docs
-          .map(
-            (doc) => CommentModel.fromJson(doc.data()),
-          )
-          .toList());
-
-  Future<void> addComment(CommentModel commentModel) async {
-    var addedComment =
-        await _firestore.collection('comments').add(commentModel.toJson());
-    await addedComment.update({'id': addedComment.id});
+      .map(
+        (snapshot) => snapshot.docs
+            .map(
+              (doc) => CommentModel.fromJson(json: doc.data(), docId: doc.id),
+            )
+            .toList(),
+      );
+  Future<void> addComment(
+      {required CommentModel commentModel, required String bookId}) async {
+    await _firestore.collection('comments').doc(bookId).collection(bookId).add(
+          commentModel.toJson(),
+        );
   }
 
-  Future<void> deleteComment({required String id}) async {
-    await _firestore.collection('comments').doc(id).delete();
-  }
-
-  Future<void> editComment(
-      {required String message, required String docId}) async {
+  Future<void> deleteComment({
+    required String id,
+    required String bookId,
+  }) async {
     await _firestore
         .collection('comments')
+        .doc(bookId)
+        .collection(bookId)
+        .doc(id)
+        .delete();
+  }
+
+  Future<void> editComment({
+    required String message,
+    required String docId,
+    required String bookId,
+  }) async {
+    await _firestore
+        .collection('comments')
+        .doc(bookId)
+        .collection(bookId)
         .doc(docId)
         .update({'message': message});
   }

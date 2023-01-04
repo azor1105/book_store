@@ -1,4 +1,6 @@
 import 'package:book_store/app/app_cubit/app_cubit.dart';
+import 'package:book_store/data/models/comment/comment_model.dart';
+import 'package:book_store/data/repositories/comment_repository.dart';
 import 'package:book_store/data/service/hive/downloaded_books_hive/downloaded_books_hive.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
@@ -11,8 +13,10 @@ import 'package:book_store/presentation/views/book_detail/widgets/book_detail_it
 import 'package:book_store/presentation/views/book_detail/widgets/download_button.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/save_button.dart';
 import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
+import 'package:book_store/presentation/widgets/buttons/outlined_text_button.dart';
 import 'package:book_store/presentation/widgets/buttons/simple_text_button.dart';
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -91,28 +95,32 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                       ),
                     ),
                     BookDetailInfoItem(bookItem: widget.bookModel),
-                    SizedBox(height: 20.h),
-                    SimpleTextButton(
-                      title: 'Comments',
-                      onPressed: () {
-                        showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: ColorConst.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(15.r),
+                    SizedBox(height: 10.h),
+                    Center(
+                      child: MyOutlinedButton(
+                        width: 180.w,
+                        onPressed: () {
+                          showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: ColorConst.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(15.r),
+                              ),
                             ),
-                          ),
-                          context: context,
-                          builder: (context) => CommentView(
-                            bookId: widget.bookModel.id,
-                            userDocId:
-                                context.read<AppCubit>().state.user!.docId,
-                          ),
-                        );
-                      },
+                            context: context,
+                            builder: (context) => CommentView(
+                              bookId: widget.bookModel.id,
+                              userDocId:
+                                  context.read<AppCubit>().state.user!.docId,
+                            ),
+                          );
+                        },
+                        height: 35.h,
+                        title: 'Read comments',
+                      ),
                     ),
-                    SizedBox(height: 20.h),
+                    SizedBox(height: 10.h),
                     BlocBuilder<AppCubit, AppState>(
                       buildWhen: (previous, current) {
                         return previous.connectivityResult !=
