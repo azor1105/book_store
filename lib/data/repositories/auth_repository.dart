@@ -1,7 +1,5 @@
 import 'dart:io';
-import 'package:book_store/data/local_data/local_data.dart';
 import 'package:book_store/data/models/user/user_model.dart';
-import 'package:book_store/presentation/utils/constants/shared_pref_keys.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';

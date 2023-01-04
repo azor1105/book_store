@@ -1,6 +1,5 @@
 import 'package:book_store/data/models/comment/comment_model.dart';
 import 'package:book_store/data/models/status.dart';
-import 'package:book_store/data/models/user/user_model.dart';
 import 'package:book_store/data/repositories/comment_repository.dart';
 import 'package:book_store/presentation/views/book_detail/comment/cubit/comment_cubit.dart';
 import 'package:book_store/presentation/views/book_detail/comment/view/widgets/comment_input.dart';
@@ -22,6 +21,8 @@ class CommentView extends StatelessWidget {
       create: (context) => CommentCubit(commentRepository: commentRepository)
         ..getComments(bookId: bookId),
       child: BlocBuilder<CommentCubit, CommentState>(
+        buildWhen: (previous, current) =>
+            previous.userComments.length != current.userComments.length,
         builder: (context, state) {
           return Container(
             padding: EdgeInsets.only(
@@ -36,28 +37,19 @@ class CommentView extends StatelessWidget {
                       Expanded(
                         child: ListView.builder(
                           physics: const BouncingScrollPhysics(),
-                          padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
-                          itemBuilder: (context, index) =>
-                              FutureBuilder<UserModel>(
-                            future: commentRepository.getUser(
-                                userDocId: state.comments[index].userDocId),
-                            builder: (context, snapshot) {
-                              if (snapshot.hasData) {
-                                return MessageItem(
-                                  user: snapshot.data!,
-                                  showUserName: index == 0
-                                      ? true
-                                      : state.comments[index - 1].userDocId !=
-                                          state.comments[index].userDocId,
-                                  comment: state.comments[index],
-                                  isUser: state.comments[index].userDocId ==
-                                      userDocId,
-                                );
-                              }
-                              return const SizedBox();
-                            },
+                          padding: EdgeInsets.symmetric(
+                              vertical: 5.h, horizontal: 10.w),
+                          itemBuilder: (context, index) => MessageItem(
+                            showUserName: index == 0
+                                ? true
+                                : state.userComments[index - 1].commentModel.userDocId !=
+                                    state.userComments[index].commentModel.userDocId,
+                            userComment: state.userComments[index],
+                            isUser:
+                                state.userComments[index].userModel.docId == userDocId,
                           ),
-                          itemCount: state.comments.length,
+                          itemCount: state.userComments
+                          .length,
                         ),
                       ),
                       CommentInput(

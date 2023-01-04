@@ -37,8 +37,8 @@ class CommentRepository {
         .update({'message': message});
   }
 
-  Future<UserModel> getUser({required String userDocId}) async {
-    var user = await _firestore.collection('users').doc(userDocId).get();
-    return UserModel.fromJson(user.data()!);
+  Future<List<UserModel>> getUsers() async {
+    var user = await _firestore.collection('users').get();
+    return user.docs.map((doc) => UserModel.fromJson(doc.data())).toList();
   }
 }
