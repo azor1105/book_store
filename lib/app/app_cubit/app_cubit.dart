@@ -84,7 +84,7 @@ class AppCubit extends Cubit<AppState> {
     }
     if (file != null) {
       emit(state.copyWith(status: Status.loading));
-      await _authRepository.uploadImage(docId: state.user!.docId, file: file);
+      await _authRepository.uploadImage(userModel: state.user!, file: file);
       emit(state.copyWith(status: Status.success));
     } else {
       MyUtils.getMyToast(message: 'Image is not picked');

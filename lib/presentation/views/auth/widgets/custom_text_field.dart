@@ -6,12 +6,10 @@ import '../../../utils/constants/poppins_font.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-    this.validator,
+    required this.validator,
     required this.controller,
     required this.isObsecure,
     required this.hintText,
-    this.maxLines,
-    this.minLines,
   });
 
   @override
@@ -24,8 +22,6 @@ class CustomTextField extends StatelessWidget {
       style: PoppinsFont.w400.copyWith(
         fontSize: 15.sp,
       ),
-      maxLines: maxLines,
-      minLines: minLines,
       validator: validator,
       decoration: InputDecoration(
         hintText: hintText,
@@ -55,7 +51,5 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool isObsecure;
   final String hintText;
-  final String? Function(String? v)? validator;
-  final int? maxLines;
-  final int? minLines;
+  final String? Function(String? v) validator;
 }

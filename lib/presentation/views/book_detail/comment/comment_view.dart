@@ -1,6 +1,7 @@
 import 'package:book_store/cubits/comment/comment_cubit.dart';
 import 'package:book_store/data/models/comment/comment_model.dart';
 import 'package:book_store/data/models/status.dart';
+import 'package:book_store/data/models/user/user_model.dart';
 import 'package:book_store/data/repositories/comment_repository.dart';
 import 'package:book_store/presentation/views/book_detail/comment/widgets/comment_input.dart';
 import 'package:book_store/presentation/views/book_detail/comment/widgets/message_item.dart';
@@ -34,11 +35,27 @@ class CommentView extends StatelessWidget {
                     children: [
                       Expanded(
                         child: ListView.builder(
-                          padding: EdgeInsets.all(5.sp),
-                          itemBuilder: (context, index) => MessageItem(
-                            comment: state.comments[index],
-                            isUser:
-                                state.comments[index].userDocId == userDocId,
+                          physics: const BouncingScrollPhysics(),
+                          padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
+                          itemBuilder: (context, index) =>
+                              FutureBuilder<UserModel>(
+                            future: commentRepository.getUser(
+                                userDocId: state.comments[index].userDocId),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return MessageItem(
+                                  user: snapshot.data!,
+                                  showUserName: index == 0
+                                      ? true
+                                      : state.comments[index - 1].userDocId !=
+                                          state.comments[index].userDocId,
+                                  comment: state.comments[index],
+                                  isUser: state.comments[index].userDocId ==
+                                      userDocId,
+                                );
+                              }
+                              return const SizedBox();
+                            },
                           ),
                           itemCount: state.comments.length,
                         ),

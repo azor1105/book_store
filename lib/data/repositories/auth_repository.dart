@@ -118,28 +118,21 @@ class AuthRepository {
 
   Future<void> uploadImage({
     required XFile file,
-    required String docId,
+    required UserModel userModel,
   }) async {
     try {
-      //1- qadam eski rasmni ochirib tashlash
-      String? userImgStorage = StorageRepository.getString(
-          keyOfValue: SharedPrefKeys.userImgStorage);
-      if (userImgStorage != null) {
-        String storagePath = "users_img/$userImgStorage";
-        await FirebaseStorage.instance.ref().child(storagePath).delete();
+      if (userModel.photoUrl != '') {
+        var photoRef = FirebaseStorage.instance.refFromURL(userModel.photoUrl);
+        await photoRef.delete();
       }
-      //2- qadam rasm yuklandi
+      //1- qadam rasm yuklandi
       String storagePath = "users_img/${file.name}";
       var ref = FirebaseStorage.instance.ref().child(storagePath);
       var task = await ref.putFile(File(file.path));
-      //3 -qadam rasm url get
+      //2 -qadam rasm url get
       String downloadUrl = await task.ref.getDownloadURL();
-      //4-qadam rasm url qaytaradi
-      StorageRepository.putString(
-        key: SharedPrefKeys.userImgStorage,
-        value: file.name,
-      );
-      await _firestore.collection('users').doc(docId).update(
+      //3-qadam rasm url qaytaradi
+      await _firestore.collection('users').doc(userModel.docId).update(
         {'photoUrl': downloadUrl},
       );
     } on FirebaseException catch (error) {
