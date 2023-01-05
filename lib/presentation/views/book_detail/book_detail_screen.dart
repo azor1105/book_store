@@ -1,26 +1,24 @@
 import 'package:book_store/app/app_cubit/app_cubit.dart';
-import 'package:book_store/data/models/comment/comment_model.dart';
-import 'package:book_store/data/repositories/comment_repository.dart';
 import 'package:book_store/data/service/hive/downloaded_books_hive/downloaded_books_hive.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/constants/poppins_font.dart';
+import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/utils/utility_functions.dart';
-import 'package:book_store/presentation/views/book_detail/comment/view/comment_view.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_info_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/book_detail_item.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/download_button.dart';
 import 'package:book_store/presentation/views/book_detail/widgets/save_button.dart';
 import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
-import 'package:book_store/presentation/widgets/buttons/outlined_text_button.dart';
 import 'package:book_store/presentation/widgets/buttons/simple_text_button.dart';
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'comment/view/comment_view.dart';
 
 class BookDetailScreen extends StatefulWidget {
   const BookDetailScreen({
@@ -38,96 +36,91 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
   bool readMore = true;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: SimpleAppBar(
-        title: '',
-        actions: [
-          Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: SaveBookButton(
-                bookModel: widget.bookModel,
-                userId: context.read<AppCubit>().state.user!.uid,
-              ),
-            ),
-          ),
-        ],
-      ),
-      backgroundColor: ColorConst.white,
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+    return BlocBuilder<AppCubit, AppState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: SimpleAppBar(
+            title: '',
+            actions: [
+              state.connectivityResult == ConnectivityResult.none
+                  ? const SizedBox()
+                  : IconButton(
+                      onPressed: () => showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: ColorConst.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(15.r),
+                          ),
+                        ),
+                        context: context,
+                        builder: (context) => CommentView(
+                          bookId: widget.bookModel.id,
+                          userDocId: context.read<AppCubit>().state.user!.docId,
+                        ),
+                      ),
+                      icon: Image.asset(
+                        MyIcons.comment,
+                        color: Colors.grey,
+                        height: 24.h,
+                      ),
+                    ),
               Center(
-                child: BookDetailItem(
-                  bookItem: widget.bookModel,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 10.w),
+                  child: SaveBookButton(
+                    connectivityResult: state.connectivityResult!,
+                    bookModel: widget.bookModel,
+                    userId: context.read<AppCubit>().state.user!.uid,
+                  ),
                 ),
               ),
-              SizedBox(height: 18.h),
-              Padding(
-                padding: EdgeInsets.only(left: 17.w, right: 24.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: readMore ? 60.h : null,
-                      child: Text(
-                        widget.bookModel.description,
-                        style: PoppinsFont.w300.copyWith(
-                          fontSize: 18.sp,
-                          color: ColorConst.blackWithOpacity087,
-                          overflow: readMore ? TextOverflow.ellipsis : null,
+            ],
+          ),
+          backgroundColor: ColorConst.white,
+          body: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: BookDetailItem(
+                      bookItem: widget.bookModel,
+                    ),
+                  ),
+                  SizedBox(height: 18.h),
+                  Padding(
+                    padding: EdgeInsets.only(left: 17.w, right: 24.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: readMore ? 60.h : null,
+                          child: Text(
+                            widget.bookModel.description,
+                            style: PoppinsFont.w300.copyWith(
+                              fontSize: 18.sp,
+                              color: ColorConst.blackWithOpacity087,
+                              overflow: readMore ? TextOverflow.ellipsis : null,
+                            ),
+                            maxLines: readMore ? 2 : null,
+                          ),
                         ),
-                        maxLines: readMore ? 2 : null,
-                      ),
-                    ),
-                    Center(
-                      child: SimpleTextButton(
-                        title: readMore ? "Read more" : "Close",
-                        onPressed: () {
-                          setState(() {
-                            readMore = !readMore;
-                          });
-                        },
-                      ),
-                    ),
-                    BookDetailInfoItem(bookItem: widget.bookModel),
-                    SizedBox(height: 10.h),
-                    Center(
-                      child: MyOutlinedButton(
-                        width: 180.w,
-                        onPressed: () {
-                          showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: ColorConst.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(15.r),
-                              ),
-                            ),
-                            context: context,
-                            builder: (context) => CommentView(
-                              bookId: widget.bookModel.id,
-                              userDocId:
-                                  context.read<AppCubit>().state.user!.docId,
-                            ),
-                          );
-                        },
-                        height: 35.h,
-                        title: 'Read comments',
-                      ),
-                    ),
-                    SizedBox(height: 10.h),
-                    BlocBuilder<AppCubit, AppState>(
-                      buildWhen: (previous, current) {
-                        return previous.connectivityResult !=
-                            current.connectivityResult;
-                      },
-                      builder: (context, state) {
-                        return Row(
+                        Center(
+                          child: SimpleTextButton(
+                            title: readMore ? "Read more" : "Close",
+                            onPressed: () {
+                              setState(() {
+                                readMore = !readMore;
+                              });
+                            },
+                          ),
+                        ),
+                        BookDetailInfoItem(bookItem: widget.bookModel),
+                        SizedBox(height: 20.h),
+                        Row(
                           children: [
                             Expanded(
                               child: CustomRectangleTextButton(
@@ -165,16 +158,16 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                               connectivityResult: state.connectivityResult!,
                             ),
                           ],
-                        );
-                      },
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

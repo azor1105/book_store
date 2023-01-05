@@ -44,7 +44,7 @@ class MessageItem extends StatelessWidget {
                             : CrossAxisAlignment.start,
                         children: [
                           Text(
-                            DateFormat.jm().format(
+                            DateFormat.Hm().format(
                               DateTime.parse(
                                   userComment.commentModel.createdAt),
                             ),
@@ -57,10 +57,11 @@ class MessageItem extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.r),
-                                color: !isUser
-                                    ? ColorConst.cE5E5E5
-                                    : ColorConst.c8875FF),
+                              borderRadius: BorderRadius.circular(12.r),
+                              color: !isUser
+                                  ? ColorConst.cE5E5E5
+                                  : ColorConst.c8875FF,
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

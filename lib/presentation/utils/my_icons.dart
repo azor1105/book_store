@@ -6,6 +6,7 @@ class MyIcons {
   static const String noCommentLottie = 'assets/lottie/no_comment.json';
 
   // .png
+  static const String comment = "assets/images/comment.png";
   static const String splashLogo = "assets/images/splash_logo.png";
   static const String onBoardingImg1 = "assets/images/on_boarding_img1.png";
   static const String onBoardingImg2 = "assets/images/on_boarding_img2.png";
