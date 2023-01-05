@@ -3,6 +3,7 @@ class MyIcons {
   static const String signUpLottie = "assets/lottie/login_animation.json";
   static const String noBookLottie = "assets/lottie/no_book_lottie.json";
   static const String noInternetLottie = "assets/lottie/no_internet.json";
+  static const String noCommentLottie = 'assets/lottie/no_comment.json';
 
   // .png
   static const String splashLogo = "assets/images/splash_logo.png";

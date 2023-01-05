@@ -1,16 +1,19 @@
 import 'package:book_store/data/models/comment/comment_model.dart';
 import 'package:book_store/data/models/status.dart';
 import 'package:book_store/data/repositories/comment_repository.dart';
-import 'package:book_store/presentation/utils/constants/color_const.dart';
+import 'package:book_store/presentation/utils/constants/poppins_font.dart';
+import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/book_detail/comment/cubit/comment_cubit.dart';
 import 'package:book_store/presentation/views/book_detail/comment/view/widgets/comment_input.dart';
 import 'package:book_store/presentation/views/book_detail/comment/view/widgets/message_item.dart';
-import 'package:book_store/presentation/widgets/no_books_item.dart';
+import 'package:book_store/presentation/views/book_detail/comment/view/widgets/no_comment_item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
+
+import 'widgets/close_item.dart';
 
 class CommentView extends StatelessWidget {
   const CommentView({super.key, required this.userDocId, required this.bookId});
@@ -45,7 +48,7 @@ class CommentView extends StatelessWidget {
                       closeItem(),
                       Expanded(
                         child: state.userComments.isEmpty
-                            ? const NoBookItem()
+                            ? const NoCommentItem()
                             : ListView.builder(
                                 physics: const BouncingScrollPhysics(),
                                 padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -92,22 +95,4 @@ class CommentView extends StatelessWidget {
 
   final String userDocId;
   final String bookId;
-
-  Widget closeItem() => Padding(
-        padding: EdgeInsets.only(top: 5.h),
-        child: Row(
-          children: [
-            const Spacer(),
-            Container(
-              width: 50.w,
-              height: 4.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50.r),
-                color: ColorConst.c979797,
-              ),
-            ),
-            const Spacer(),
-          ],
-        ),
-      );
 }
