@@ -4,12 +4,12 @@ import 'package:book_store/data/models/book/book_model.dart';
 import 'package:book_store/data/models/status.dart';
 import 'package:book_store/data/repositories/saved_book_repository.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
+import 'package:book_store/presentation/views/tab_box/tabs/saved/widgets/no_saved_book_item.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/saved/widgets/shimmer_saved_book_item.dart';
 import 'package:book_store/presentation/widgets/buttons/custom_rectangle_text_button.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/saved/widgets/saved_book_item.dart';
-import 'package:book_store/presentation/widgets/no_books_item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +43,7 @@ class SavedBooksScreen extends StatelessWidget {
                         return savedBooksShimmerList();
                       } else if (state.status == Status.success) {
                         if (state.savedBooks.isEmpty) {
-                          return const NoBookItem();
+                          return const NoSavedBookItem();
                         } else {
                           return SingleChildScrollView(
                             physics: const BouncingScrollPhysics(),

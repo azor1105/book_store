@@ -4,6 +4,7 @@ class MyIcons {
   static const String noBookLottie = "assets/lottie/no_book_lottie.json";
   static const String noInternetLottie = "assets/lottie/no_internet.json";
   static const String noCommentLottie = 'assets/lottie/no_comment.json';
+  static const String noSavedBookLottie = 'assets/lottie/no_saved_book.json';
 
   // .png
   static const String comment = "assets/images/comment.png";
