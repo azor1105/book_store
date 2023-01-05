@@ -1,4 +1,3 @@
-import 'package:book_store/presentation/utils/constants/color_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,7 +12,7 @@ Widget closeItem() => Padding(
               height: 4.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50.r),
-                color: ColorConst.c979797,
+                color: Colors.grey,
               ),
             ),
             const Spacer(),

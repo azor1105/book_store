@@ -1,6 +1,6 @@
 class CommentModel {
   String id;
-  String createdAt;
+  DateTime createdAt;
   String userDocId;
   String message;
 
@@ -16,14 +16,14 @@ class CommentModel {
     required String docId,
   }) =>
       CommentModel(
-        createdAt: json['createdAt'] as String? ?? '',
+        createdAt: DateTime.parse(json['createdAt'] as String? ?? ''),
         id: docId,
         message: json['message'] as String? ?? '',
         userDocId: json['userDocId'] as String? ?? '',
       );
 
   Map<String, dynamic> toJson() => {
-        'createdAt': createdAt,
+        'createdAt': createdAt.toString(),
         'userDocId': userDocId,
         'message': message,
       };
