@@ -12,6 +12,7 @@ class CommentRepository {
       .collection('comments')
       .doc(bookId)
       .collection(bookId)
+      .orderBy('createdAt')
       .snapshots()
       .map(
         (snapshot) => snapshot.docs

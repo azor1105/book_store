@@ -23,7 +23,6 @@ class CommentModel {
       );
 
   Map<String, dynamic> toJson() => {
-        'id': id,
         'createdAt': createdAt,
         'userDocId': userDocId,
         'message': message,
