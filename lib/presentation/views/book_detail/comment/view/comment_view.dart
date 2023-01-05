@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:book_store/data/models/comment/comment_model.dart';
 import 'package:book_store/data/models/status.dart';
 import 'package:book_store/data/repositories/comment_repository.dart';
 import 'package:book_store/presentation/views/book_detail/comment/cubit/comment_cubit.dart';
 import 'package:book_store/presentation/views/book_detail/comment/view/widgets/comment_input.dart';
+import 'package:book_store/presentation/views/book_detail/comment/view/widgets/comment_shimmer_item.dart';
 import 'package:book_store/presentation/views/book_detail/comment/view/widgets/day_item.dart';
 import 'package:book_store/presentation/views/book_detail/comment/view/widgets/message_item.dart';
 import 'package:book_store/presentation/views/book_detail/comment/view/widgets/no_comment_item.dart';
@@ -21,6 +24,7 @@ class CommentView extends StatelessWidget {
     final TextEditingController msgController = TextEditingController();
     final CommentRepository commentRepository =
         CommentRepository(firestore: context.read<FirebaseFirestore>());
+    var random = Random();
     return BlocProvider(
       create: (context) => CommentCubit(commentRepository: commentRepository)
         ..getComments(bookId: bookId),
@@ -34,11 +38,20 @@ class CommentView extends StatelessWidget {
                 ? Column(
                     children: [
                       closeItem(),
-                      const Spacer(),
-                      const Center(
-                        child: CircularProgressIndicator.adaptive(),
+                      Expanded(
+                        child: ListView(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10.w,
+                            vertical: 5.h,
+                          ),
+                          children: List.generate(
+                            9,
+                            (index) => CommentShimmerItem(
+                                width: random.nextInt(90) + 80,
+                                isUser: index % 4 == 0),
+                          ),
+                        ),
                       ),
-                      const Spacer(),
                     ],
                   )
                 : Column(
@@ -49,7 +62,10 @@ class CommentView extends StatelessWidget {
                             ? const NoCommentItem()
                             : ListView.builder(
                                 physics: const BouncingScrollPhysics(),
-                                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 10.w,
+                                  vertical: 5.h,
+                                ),
                                 itemBuilder: (context, index) {
                                   return MessageItem(
                                     showDate: index == 0 ||
