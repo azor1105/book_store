@@ -2,6 +2,7 @@ import 'package:book_store/app/app_cubit/app_cubit.dart';
 import 'package:book_store/cubits/downloaded_books/downloaded_books_cubit.dart';
 import 'package:book_store/presentation/utils/constants/route_names.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
+import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/search_delegate/widget/suggestion_item.dart';
 import 'package:book_store/presentation/widgets/no_books_item.dart';
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
@@ -9,6 +10,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 
 class DownloadedBooksScreen extends StatelessWidget {
   const DownloadedBooksScreen({super.key});
@@ -33,7 +35,12 @@ class DownloadedBooksScreen extends StatelessWidget {
                       !(appState.connectivityResult == ConnectivityResult.none),
                 ),
                 body: bookState.books.isEmpty
-                    ? const NoBookItem()
+                    ? Center(
+                        child: Lottie.asset(
+                          MyIcons.noDownloadedBooksLottie,
+                          reverse: true,
+                        ),
+                      )
                     : ListView(
                         children: List.generate(
                           bookState.books.length,
