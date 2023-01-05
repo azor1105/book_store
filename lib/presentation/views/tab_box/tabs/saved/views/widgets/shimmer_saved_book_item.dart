@@ -1,7 +1,7 @@
 import 'package:book_store/presentation/widgets/shimmers/rectangle_shimmer_item.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../../../../utils/constants/color_const.dart';
+import '../../../../../../utils/constants/color_const.dart';
 
 class ShimmerSavedBookItem extends StatelessWidget {
   const ShimmerSavedBookItem({Key? key}) : super(key: key);

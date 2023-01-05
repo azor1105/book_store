@@ -3,7 +3,7 @@ import 'package:book_store/presentation/utils/constants/poppins_font.dart';
 import 'package:book_store/presentation/utils/my_icons.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/home/home_screen.dart';
 import 'package:book_store/presentation/views/tab_box/tabs/profile/profile_screen.dart';
-import 'package:book_store/presentation/views/tab_box/tabs/saved/saved_books_screen.dart';
+import 'package:book_store/presentation/views/tab_box/tabs/saved/views/saved_books_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

@@ -4,13 +4,13 @@ import 'package:book_store/data/models/category/category_model.dart';
 import 'package:book_store/data/models/status.dart';
 import 'package:book_store/presentation/widgets/simple_app_bar.dart';
 import 'package:book_store/presentation/utils/constants/color_const.dart';
-import 'package:book_store/presentation/views/category_book/widgets/category_book_img_item.dart';
+import 'package:book_store/presentation/views/category_book/view/widgets/category_book_img_item.dart';
 import 'package:book_store/presentation/widgets/no_books_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../utils/constants/route_names.dart';
-import '../../widgets/book_info_item.dart';
+import '../../../utils/constants/route_names.dart';
+import '../../../widgets/book_info_item.dart';
 
 class CategoryBookScreen extends StatefulWidget {
   const CategoryBookScreen({

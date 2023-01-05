@@ -5,9 +5,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../../utils/constants/color_const.dart';
-import '../../../../../utils/constants/poppins_font.dart';
-import '../../../../../utils/my_icons.dart';
+import '../../../../../../utils/constants/color_const.dart';
+import '../../../../../../utils/constants/poppins_font.dart';
+import '../../../../../../utils/my_icons.dart';
 
 class SavedBookItem extends StatelessWidget {
   const SavedBookItem({
