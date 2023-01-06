@@ -85,9 +85,8 @@ class MessageItem extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                    Text(
+                                    SelectableText(
                                       userComment.commentModel.message,
-                                      maxLines: 100,
                                       style: PoppinsFont.w400.copyWith(
                                         fontSize: 15.sp,
                                         color: isUser

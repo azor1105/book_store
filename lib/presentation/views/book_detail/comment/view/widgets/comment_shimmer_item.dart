@@ -42,7 +42,7 @@ class CommentShimmerItem extends StatelessWidget {
                 RectangleShimmerItem(
                   radius: 12.r,
                   width: width.w,
-                  height: 45.h,
+                  height: 50.h,
                 )
               ],
             ),
