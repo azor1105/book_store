@@ -1,33 +1,50 @@
 import 'dart:math';
-
 import 'package:book_store/data/models/comment/comment_model.dart';
 import 'package:book_store/data/models/status.dart';
 import 'package:book_store/data/repositories/comment_repository.dart';
 import 'package:book_store/presentation/views/book_detail/comment/cubit/comment_cubit.dart';
 import 'package:book_store/presentation/views/book_detail/comment/view/widgets/comment_input.dart';
 import 'package:book_store/presentation/views/book_detail/comment/view/widgets/comment_shimmer_item.dart';
-import 'package:book_store/presentation/views/book_detail/comment/view/widgets/day_item.dart';
 import 'package:book_store/presentation/views/book_detail/comment/view/widgets/message_item.dart';
 import 'package:book_store/presentation/views/book_detail/comment/view/widgets/no_comment_item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'widgets/close_item.dart';
 
-class CommentView extends StatelessWidget {
+class CommentView extends StatefulWidget {
   const CommentView({super.key, required this.userDocId, required this.bookId});
+  @override
+  State<CommentView> createState() => _CommentViewState();
+
+  final String userDocId;
+  final String bookId;
+}
+
+class _CommentViewState extends State<CommentView> {
+  late final TextEditingController msgController;
+  final CommentRepository commentRepository =
+      CommentRepository(firestore: FirebaseFirestore.instance);
+
+  @override
+  void initState() {
+    msgController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    msgController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController msgController = TextEditingController();
-    final CommentRepository commentRepository =
-        CommentRepository(firestore: context.read<FirebaseFirestore>());
     var random = Random();
     return BlocProvider(
       create: (context) => CommentCubit(commentRepository: commentRepository)
-        ..getComments(bookId: bookId),
+        ..getComments(bookId: widget.bookId),
       child: BlocBuilder<CommentCubit, CommentState>(
         builder: (context, state) {
           return Container(
@@ -86,7 +103,7 @@ class CommentView extends StatelessWidget {
                                     userComment: state.userComments[index],
                                     isUser: state.userComments[index].userModel
                                             .docId ==
-                                        userDocId,
+                                        widget.userDocId,
                                   );
                                 },
                                 itemCount: state.userComments.length,
@@ -101,9 +118,9 @@ class CommentView extends StatelessWidget {
                                 createdAt: DateTime.now(),
                                 id: '',
                                 message: msgController.text.trim(),
-                                userDocId: userDocId,
+                                userDocId: widget.userDocId,
                               ),
-                              bookId: bookId,
+                              bookId: widget.bookId,
                             );
                             msgController.clear();
                             FocusScope.of(context).unfocus();
@@ -117,7 +134,4 @@ class CommentView extends StatelessWidget {
       ),
     );
   }
-
-  final String userDocId;
-  final String bookId;
 }

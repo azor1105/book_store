@@ -53,12 +53,12 @@ void changePictureBottomSheet(BuildContext context) {
               SizedBox(height: 10.h),
               Divider(height: 1.h, color: ColorConst.c979797),
               SizedBox(height: 28.h),
-              TextButton(
-                onPressed: () async {
+              ListTile(
+                onTap: () async {
                   Navigator.of(context).pop();
                   context.read<AppCubit>().uploadImg();
                 },
-                child: Text(
+                title: Text(
                   "Take picture",
                   style: PoppinsFont.w400.copyWith(
                     color: ColorConst.blackWithOpacity087,
@@ -66,12 +66,12 @@ void changePictureBottomSheet(BuildContext context) {
                   ),
                 ),
               ),
-              TextButton(
-                onPressed: () async {
+              ListTile(
+                onTap: () async {
                   Navigator.of(context).pop();
                   context.read<AppCubit>().uploadImg(fromCamera: false);
                 },
-                child: Text(
+                title: Text(
                   "Import from gallery",
                   style: PoppinsFont.w400.copyWith(
                     color: ColorConst.blackWithOpacity087,
