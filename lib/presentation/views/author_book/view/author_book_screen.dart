@@ -109,7 +109,8 @@ class _AuhtorBookScreenState extends State<AuhtorBookScreen> {
                         crossAxisCount: 2,
                         mainAxisSpacing: 20.h,
                         crossAxisSpacing: 25.w,
-                        childAspectRatio: 0.45.h,
+                        childAspectRatio: MediaQuery.of(context).size.width /
+                            (MediaQuery.of(context).size.height / 1),
                       ),
                     ),
                   ),

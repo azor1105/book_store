@@ -79,7 +79,8 @@ class _CategoryBookScreenState extends State<CategoryBookScreen>
                           crossAxisCount: 2,
                           mainAxisSpacing: 20.h,
                           crossAxisSpacing: 25.w,
-                          childAspectRatio: 0.45.h,
+                          childAspectRatio: MediaQuery.of(context).size.width /
+                              (MediaQuery.of(context).size.height / 1),
                         ),
                         itemBuilder: (context, index) {
                           BookModel bookItem = state.categoryBooks[index];
