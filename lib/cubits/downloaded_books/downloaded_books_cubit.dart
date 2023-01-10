@@ -75,11 +75,11 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
           );
         }
         if (maxPercent < percent.floor()) {
-          var tasks = state.downloadTasks;
-          tasks.removeWhere(
+          var tasksInProccess = state.downloadTasks;
+          tasksInProccess.removeWhere(
             (task) => task.bookModel.bookName == bookModel.bookName,
           );
-          tasks.add(
+          tasksInProccess.add(
             DownloadTaskModel(bookModel: bookModel, progress: percent),
           );
           maxPercent = percent.toInt();
@@ -88,7 +88,7 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
       });
       getBooks();
     } catch (e) {
-      return;
+      throw Exception(e);
     }
   }
 }
