@@ -22,10 +22,7 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
   }
 
   void cancelDownloading(BookModel bookModel) {
-    var tasks = state.downloadTasks;
-    tasks.removeWhere(
-      (task) => task.bookModel.bookName == bookModel.bookName,
-    );
+    var tasks = deleteTask(bookModel: bookModel);
     cancelToken.cancel('Xato bermasngchi. Ha maylin sokish yozmiman.');
     cancelToken = CancelToken();
     emit(state.copyWith(downloadTasks: tasks));
@@ -38,15 +35,22 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
     getBooks();
   }
 
+  bool contains({required String bookId}) {
+    var downloadTasks = state.downloadTasks;
+    for (var downloadTask in downloadTasks) {
+      if (downloadTask.bookModel.id == bookId) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   Future<void> downloadFile({required BookModel bookModel}) async {
     await Permission.storage.request();
     bool permissionStorage = await Permission.storage.request().isGranted;
     if (!permissionStorage) return;
     var documentDir = await getApplicationDocumentsDirectory();
-    var tasks = state.downloadTasks;
-    tasks.removeWhere(
-      (task) => task.bookModel.bookName == bookModel.bookName,
-    );
+    var tasks = deleteTask(bookModel: bookModel);
     tasks.add(DownloadTaskModel(bookModel: bookModel, progress: 0));
     emit(state.copyWith(downloadTasks: tasks));
     String path = '${documentDir.path}/${bookModel.id}.pdf';
@@ -87,8 +91,17 @@ class DownloadedBooksCubit extends Cubit<DownloadedBooksState> {
         }
       });
       getBooks();
+      emit(state.copyWith(downloadTasks: deleteTask(bookModel: bookModel)));
     } catch (e) {
-      throw Exception(e);
+      return;
     }
+  }
+
+  List<DownloadTaskModel> deleteTask({required BookModel bookModel}) {
+    var tasks = state.downloadTasks;
+    tasks.removeWhere(
+      (task) => task.bookModel.id == bookModel.id,
+    );
+    return tasks;
   }
 }

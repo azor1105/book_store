@@ -57,7 +57,10 @@ class DownloadButton extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              if (!isDownloaded && downloadTask.isEmpty) {
+              bool contains = context
+                  .read<DownloadedBooksCubit>()
+                  .contains(bookId: bookModel.id);
+              if (!isDownloaded && !contains) {
                 if (connectivityResult == ConnectivityResult.none) {
                   MyUtils.getMyToast(
                       message: 'Please check internet connection');
@@ -66,6 +69,10 @@ class DownloadButton extends StatelessWidget {
                       .read<DownloadedBooksCubit>()
                       .downloadFile(bookModel: bookModel);
                 }
+              } else if (contains) {
+                context
+                    .read<DownloadedBooksCubit>()
+                    .cancelDownloading(bookModel);
               } else {
                 showDialog(
                   barrierDismissible: false,
@@ -95,18 +102,11 @@ class DownloadButton extends StatelessWidget {
                               child: TextButtonWithBackground(
                                 height: 40.h,
                                 onPressed: () async {
-                                  if (!isDownloaded &&
-                                      downloadTask.isNotEmpty) {
-                                    context
-                                        .read<DownloadedBooksCubit>()
-                                        .cancelDownloading(bookModel);
-                                  } else {
-                                    context
-                                        .read<DownloadedBooksCubit>()
-                                        .deleteBook(
-                                          bookId: bookModel.id,
-                                        );
-                                  }
+                                  context
+                                      .read<DownloadedBooksCubit>()
+                                      .deleteBook(
+                                        bookId: bookModel.id,
+                                      );
                                   Navigator.of(context).pop();
                                 },
                                 title: "delete",
